@@ -63,7 +63,8 @@ namespace IT_News.Models
     }
 
     public class RegisterViewModel
-    {
+    {       
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
@@ -79,6 +80,10 @@ namespace IT_News.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Your role on the site")]
+        public List<string> RoleUser { get; set; }
     }
 
     public class ResetPasswordViewModel
