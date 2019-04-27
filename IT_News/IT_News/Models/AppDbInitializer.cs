@@ -29,7 +29,7 @@ namespace IT_News.Models
             roleManager.Create(role4);
 
             // создаем пользователей
-            var admin = new ApplicationUser { Email = "polushka.yulia@gmai.com", UserName = "Poluhina" };
+            var admin = new ApplicationUser { Email = "polushka.yulia@gmail.com", UserName = "polushka.yulia@gmail.com" };
             string password = "2502666z";
             var result = userManager.Create(admin, password);
 

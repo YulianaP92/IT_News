@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -71,16 +68,24 @@ namespace IT_News.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
+                
                 if (user != null)
                 {
-                    if (user.EmailConfirmed == true)
+                    if (user.Email != "polushka.yulia@gmail.com")
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+                        if (user.EmailConfirmed == true)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToLocal(returnUrl);
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Не подтвержден email.");
+                        }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Не подтвержден email.");
+                        return View("~/Views/Home/Index.cshtml");
                     }
                 }
                 else
@@ -88,12 +93,13 @@ namespace IT_News.Controllers
                     ModelState.AddModelError("", "Неверный логин или пароль");
                 }
             }
-            return View(model);
+            return View("~/Views/Home/Index.cshtml");
         }
 
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
+        //проверка пользователя 
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -120,6 +126,8 @@ namespace IT_News.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
+            //Если пользователь вводит неправильные коды в течение указанного периода времени, 
+            //то учетная запись пользователя будет заблокирована в течение указанного периода времени.
             var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
@@ -169,7 +177,6 @@ namespace IT_News.Controllers
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 
@@ -182,6 +189,7 @@ namespace IT_News.Controllers
             {
                 return View("Error");
             }
+            //Подтверждает электронную почту пользователя токеном подтверждения
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -283,9 +291,9 @@ namespace IT_News.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
-        // GET: /Account/SendCode
-        [AllowAnonymous]
+
+        //GET: /Account/SendCode
+       [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -298,8 +306,8 @@ namespace IT_News.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
-        // POST: /Account/SendCode
+        ////
+        //// POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -319,7 +327,7 @@ namespace IT_News.Controllers
         }
 
         //
-        // GET: /Account/ExternalLoginCallback
+        //// GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -348,8 +356,8 @@ namespace IT_News.Controllers
             }
         }
 
-        //
-        // POST: /Account/ExternalLoginConfirmation
+        //////
+        ////// POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
