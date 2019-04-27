@@ -16,11 +16,11 @@ namespace IT_News
         public Task SendAsync(IdentityMessage message)
         {
             // настройка логина, пароля отправителя
-            var from = "Poluhina";
+            var from = "belez.spk@mail.ru";
             var pass = "2502666z";
 
             // адрес и порт smtp-сервера, с которого мы и будем отправлять письмо
-            SmtpClient client = new SmtpClient("smtp.yandex.ru", 25);
+            SmtpClient client = new SmtpClient("smtp.mail.ru", 25);
 
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
@@ -58,10 +58,10 @@ namespace IT_News
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // Configure user lockout defaults  (Настройка параметров блокировки пользователя по умолчанию)

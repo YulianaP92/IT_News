@@ -33,10 +33,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.RoleUser, new { @class = "col-md-2 control-label" })
-        @Html.LabelFor(m => m.RoleUser, "reader")
-        @Html.RadioButtonFor(m => m.RoleUser, "reader")
-        @Html.LabelFor(m => m.RoleUser, "writer")
-        @Html.RadioButtonFor(m => m.RoleUser, "writer")
+        @Html.ListBoxFor(m => m.RoleUser, new MultiSelectList(new string[] { "reader", "writer"}))
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">

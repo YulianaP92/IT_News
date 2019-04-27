@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IT_News.Models
 {
-    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class AppDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -29,7 +29,7 @@ namespace IT_News.Models
             roleManager.Create(role4);
 
             // создаем пользователей
-            var admin = new ApplicationUser { Email = "polushka.yulia@gmail.com", UserName = "polushka.yulia@gmail.com" };
+            var admin = new ApplicationUser { Email = "belez.spk@mail.ru", UserName = "belez.spk@mail.ru" };
             string password = "2502666z";
             var result = userManager.Create(admin, password);
 

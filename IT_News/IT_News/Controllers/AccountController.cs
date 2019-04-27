@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -71,7 +72,7 @@ namespace IT_News.Controllers
                 
                 if (user != null)
                 {
-                    if (user.Email != "polushka.yulia@gmail.com")
+                    if (user.Email != "belez.spk@mail.ru")
                     {
                         if (user.EmailConfirmed == true)
                         {
@@ -163,9 +164,18 @@ namespace IT_News.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (model.RoleUser== "reader")
+                    if (model.RoleUser.Contains("reader")& model.RoleUser.Contains("writer"))
                     {
-                        
+                        await UserManager.AddToRoleAsync(user.Id, "reader");
+                        await UserManager.AddToRoleAsync(user.Id, "writer");
+                    }
+                    if (model.RoleUser.Count==1 & model.RoleUser.Contains("writer"))
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, "writer");
+                    }
+                    if (model.RoleUser.Count == 1 & model.RoleUser.Contains("reader"))
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, "reader");
                     }
                     // генерируем токен для подтверждения регистрации
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -173,17 +183,10 @@ namespace IT_News.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
                         protocol: Request.Url.Scheme);
                     // отправка письма
-                    await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты",
-                        "Для завершения регистрации перейдите по ссылке:: <a href=\""
-                        + callbackUrl + "\">завершить регистрацию</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты", $"Для завершения регистрации перейдите по ссылке: <a href='\''{callbackUrl}'\''>завершить регистрацию</a>");
+
                     return View("DisplayEmail");
                 }
-
-
-                    // если создание прошло успешно, то добавляем роль пользователя
-                    await UserManager.AddToRoleAsync(user.Id, "user");
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
                 AddErrors(result);
             }
 
