@@ -163,6 +163,10 @@ namespace IT_News.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (model.RoleUser== "reader")
+                    {
+                        
+                    }
                     // генерируем токен для подтверждения регистрации
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // создаем ссылку для подтверждения
@@ -174,6 +178,12 @@ namespace IT_News.Controllers
                         + callbackUrl + "\">завершить регистрацию</a>");
                     return View("DisplayEmail");
                 }
+
+
+                    // если создание прошло успешно, то добавляем роль пользователя
+                    await UserManager.AddToRoleAsync(user.Id, "user");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                 AddErrors(result);
             }
 
