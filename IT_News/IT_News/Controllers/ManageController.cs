@@ -241,13 +241,7 @@ namespace IT_News.Controllers
         //    return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         //}
 
-        // [Authorize(Roles = "admin")]
-        public ActionResult EditUser()
-        {
-            var listUser = UserManager.Users.ToList();
-            return View(listUser);
-        }
-
+ 
 
         protected override void Dispose(bool disposing)
         {

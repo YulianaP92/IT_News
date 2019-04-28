@@ -10,7 +10,7 @@ using IT_News.Models;
 
 namespace IT_News.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -425,6 +425,34 @@ namespace IT_News.Controllers
             return View();
         }
 
+        public ActionResult EditUser()
+        {
+            var listUser = UserManager.Users.ToList();
+            return View(listUser);
+        }
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        //[ActionName("Delete")]
+        //[Authorize(Roles = "admin")]
+        public async Task<ActionResult> DeleteUser(string userName)
+        {
+            ApplicationUser user = await UserManager.FindByEmailAsync(userName);
+            if (user != null)
+            {
+                IdentityResult result = await UserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Logout", "Account");
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -445,29 +473,7 @@ namespace IT_News.Controllers
             base.Dispose(disposing);
         }
 
-        //[HttpGet]
-        //[Authorize(Roles = "admin")]
-        //public ActionResult Delete()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ActionName("Delete")]
-        //[Authorize(Roles = "admin")]
-        //public async Task<ActionResult> DeleteConfirmed()
-        //{
-        //    ApplicationUser user = await UserManager.FindByEmailAsync(User.Identity.Name);
-        //    if (user != null)
-        //    {
-        //        IdentityResult result = await UserManager.DeleteAsync(user);
-        //        if (result.Succeeded)
-        //        {
-        //            return RedirectToAction("Logout", "Account");
-        //        }
-        //    }
-        //    return RedirectToAction("Index", "Home");
-        //}
+       
 
 
 

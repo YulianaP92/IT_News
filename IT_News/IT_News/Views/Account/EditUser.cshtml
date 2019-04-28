@@ -1,0 +1,37 @@
+﻿@model IEnumerable<IT_News.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+<h2>EditUser</h2>
+<table>
+    <tr>
+        <td><p>NameUser</p></td>
+        <td><p>View</p></td>
+        <td><p>Block</p></td>
+        <td><p>Delete</p></td>
+        <td><p>Edit Role</p></td>
+
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            
+            <td>
+                <p>@user.UserName</p></td>
+            <td>
+                <p>@Html.ActionLink("View", "View", new {id = user.Id})</p></td>
+            <td>
+
+                    <p>@Html.ActionLink("Delete", "DeleteUser", "Account" ,  new { userName = user.UserName }, null)</p>
+            </td>
+            <td>
+                <p>@Html.ActionLink("Block", "Block", new {id = user.Id})</p></td>
+            <td>
+                <p>@Html.ActionLink("EditRole", "EditRole", new {id = user.Id})</p></td>
+        </tr>
+        }
+</table>
+</div>
