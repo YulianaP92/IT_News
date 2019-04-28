@@ -469,13 +469,7 @@ namespace IT_News.Controllers
         //    return RedirectToAction("Index", "Home");
         //}
 
-        [HttpGet]
-        [Authorize(Roles = "admin")]
-        public ActionResult EditUser()
-        {
-            var listUser = _userManager.Users.ToList();
-            return View(listUser);
-        }
+
 
 
         #region Helpers

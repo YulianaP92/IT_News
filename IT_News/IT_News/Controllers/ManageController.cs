@@ -10,7 +10,7 @@ using IT_News.Models;
 
 namespace IT_News.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -240,6 +240,14 @@ namespace IT_News.Controllers
         //    var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
         //    return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         //}
+
+        // [Authorize(Roles = "admin")]
+        public ActionResult EditUser()
+        {
+            var listUser = UserManager.Users.ToList();
+            return View(listUser);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
