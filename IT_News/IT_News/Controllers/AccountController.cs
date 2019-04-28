@@ -183,7 +183,7 @@ namespace IT_News.Controllers
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
                         protocol: Request.Url.Scheme);
                     // отправка письма
-                    await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты", $"Для завершения регистрации перейдите по ссылке: <a href='\''{callbackUrl}'\''>завершить регистрацию</a>");
+                    await UserManager.SendEmailAsync(user.Id, "Подтверждение электронной почты", $"Для завершения регистрации перейдите по ссылке: <a href=\"{callbackUrl}\">завершить регистрацию</a>");
 
                     return View("DisplayEmail");
                 }
