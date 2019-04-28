@@ -445,6 +445,39 @@ namespace IT_News.Controllers
             base.Dispose(disposing);
         }
 
+        //[HttpGet]
+        //[Authorize(Roles = "admin")]
+        //public ActionResult Delete()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //[ActionName("Delete")]
+        //[Authorize(Roles = "admin")]
+        //public async Task<ActionResult> DeleteConfirmed()
+        //{
+        //    ApplicationUser user = await UserManager.FindByEmailAsync(User.Identity.Name);
+        //    if (user != null)
+        //    {
+        //        IdentityResult result = await UserManager.DeleteAsync(user);
+        //        if (result.Succeeded)
+        //        {
+        //            return RedirectToAction("Logout", "Account");
+        //        }
+        //    }
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public ActionResult EditUser()
+        {
+            var listUser = _userManager.Users.ToList();
+            return View(listUser);
+        }
+
+
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
