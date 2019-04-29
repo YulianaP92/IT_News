@@ -10,7 +10,7 @@ using IT_News.Models;
 
 namespace IT_News.Controllers
 {
-   // [Authorize]
+    // [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -20,7 +20,7 @@ namespace IT_News.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -32,9 +32,9 @@ namespace IT_News.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -69,7 +69,7 @@ namespace IT_News.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.Email, model.Password);
-                
+
                 if (user != null)
                 {
                     if (user.Email != "belez.spk@mail.ru")
@@ -129,7 +129,7 @@ namespace IT_News.Controllers
             // You can configure the account lockout settings in IdentityConfig
             //Если пользователь вводит неправильные коды в течение указанного периода времени, 
             //то учетная запись пользователя будет заблокирована в течение указанного периода времени.
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -164,12 +164,12 @@ namespace IT_News.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    if (model.RoleUser.Contains("reader")& model.RoleUser.Contains("writer"))
+                    if (model.RoleUser.Contains("reader") & model.RoleUser.Contains("writer"))
                     {
                         await UserManager.AddToRoleAsync(user.Id, "reader");
                         await UserManager.AddToRoleAsync(user.Id, "writer");
                     }
-                    if (model.RoleUser.Count==1 & model.RoleUser.Contains("writer"))
+                    if (model.RoleUser.Count == 1 & model.RoleUser.Contains("writer"))
                     {
                         await UserManager.AddToRoleAsync(user.Id, "writer");
                     }
@@ -306,7 +306,7 @@ namespace IT_News.Controllers
 
 
         //GET: /Account/SendCode
-       [AllowAnonymous]
+        [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -452,7 +452,18 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
 
+        public ActionResult BlockUser(string userId)
+        {
+            //var context = new ApplicationDbContext();
+            //var allRoles = context.Roles.ToList();
+            var roles = UserManager.GetRoles(userId).ToArray();
+            UserManager.RemoveFromRoles(userId, roles);
+            // var guestRole = allRoles.Find(x => x.Name.Contains("guest")).ToString();
+            UserManager.AddToRole(userId, "guest");
+            return RedirectToAction("Index", "Home");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -473,7 +484,7 @@ namespace IT_News.Controllers
             base.Dispose(disposing);
         }
 
-       
+
 
 
 
