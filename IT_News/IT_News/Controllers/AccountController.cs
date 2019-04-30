@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Eventing.Reader;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -464,6 +465,7 @@ namespace IT_News.Controllers
             UserManager.AddToRole(userId, "guest");
             return RedirectToAction("Index", "Home");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

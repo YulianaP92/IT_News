@@ -30,6 +30,5 @@ namespace IT_News.Models
             return new ApplicationDbContext();
         }
 
-      //  public System.Data.Entity.DbSet<IT_News.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

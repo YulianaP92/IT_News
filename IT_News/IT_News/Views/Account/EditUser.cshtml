@@ -30,7 +30,7 @@
             <td>
                 <p>@Html.ActionLink("Block", "BlockUser", "Account", new { userId = user.Id}, null)</p></td>
             <td>
-                <p>@Html.ActionLink("EditRole", "EditRole", new {id = user.Id})</p></td>
+                <p>@Html.ActionLink("Edit Role", "Edit", "Role", new { userId = user.Id}, null)</p></td>
         </tr>
         }
 </table>
