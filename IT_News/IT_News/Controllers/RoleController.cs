@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -13,30 +14,17 @@ namespace IT_News.Controllers
     public class RoleController : Controller
     {
         private ApplicationDbContext _context;
-        private RoleManager<IdentityRole> _roleManager;
         private ApplicationUserManager _userManager;
 
         public RoleController()
         {
                 
         }
-        public RoleController(RoleManager<IdentityRole> roleManager, ApplicationUserManager userManager)
+        public RoleController(ApplicationUserManager userManager)
         {
-            
-            _roleManager = roleManager;
             UserManager = userManager;
         }
-        //public RoleManager<IdentityRole> RoleManager
-        //{
-        //    get
-        //    {
-        //        return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-        //    }
-        //    private set
-        //    {
-        //        _roleManager = value;
-        //    }
-        //}
+
 
         public ApplicationUserManager UserManager
         {
@@ -47,8 +35,7 @@ namespace IT_News.Controllers
             private set
             {
                 _userManager = value;
-            }
-            
+            }            
         }
 
         public async Task<ActionResult> Edit(string userId)
@@ -74,5 +61,27 @@ namespace IT_News.Controllers
             return HttpNotFound();
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Edit(string userId, List<string> roles)
+        {           
+            // получаем пользователя
+            var user = await UserManager.FindByIdAsync(userId);
+            if (user != null)
+            {
+                // получем список ролей пользователя
+                var userRoles = await UserManager.GetRolesAsync(userId);
+                // получаем список ролей, которые были добавлены
+                var addedRoles = roles.Except(userRoles).ToArray();
+                // получаем роли, которые были удалены
+                var removedRoles = userRoles.Except(roles).ToArray();
+
+                await UserManager.AddToRolesAsync(userId, addedRoles);
+
+                await UserManager.RemoveFromRolesAsync(userId, removedRoles);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return HttpNotFound();
+        }
     }
 }
