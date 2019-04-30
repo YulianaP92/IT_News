@@ -13,7 +13,6 @@ namespace IT_News.Controllers
 {
     public class RoleController : Controller
     {
-        private ApplicationDbContext _context;
         private ApplicationUserManager _userManager;
 
         public RoleController()
@@ -40,14 +39,13 @@ namespace IT_News.Controllers
 
         public async Task<ActionResult> Edit(string userId)
         {
-            _context = new ApplicationDbContext();//??????????????????????????????????????
             // получаем пользователя
             var user = await UserManager.FindByIdAsync(userId);
             if (user != null)
             {
                 // получем список ролей пользователя
                 var userRoles = await UserManager.GetRolesAsync(userId);
-                var allRoles = _context.Roles.ToList();
+                var allRoles = ApplicationDbContext.Create().Roles.ToList();
                 ChangeRoleViewModel model = new ChangeRoleViewModel
                 {
                     UserId = user.Id,
