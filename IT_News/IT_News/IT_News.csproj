@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -169,6 +172,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -181,6 +185,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\MappingProfiles\CommentMappingProfile.cs" />
+    <Compile Include="Infrastructure\MappingProfiles\NewsMappingProfile.cs" />
+    <Compile Include="Infrastructure\MappingProfiles\SectionMappingProfile.cs" />
+    <Compile Include="Infrastructure\MappingProfiles\TagMappingProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ChangeRoleViewModel.cs" />
@@ -264,6 +272,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IT_News_BLL\IT_News_BLL.csproj">
+      <Project>{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}</Project>
+      <Name>IT_News_BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IT_News_DAL\IT_News_DAL.csproj">
+      <Project>{A8423B5D-8E91-406C-844C-CFDB2E0CE886}</Project>
+      <Name>IT_News_DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

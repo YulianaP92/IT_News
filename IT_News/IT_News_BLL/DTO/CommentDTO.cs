@@ -10,7 +10,7 @@ namespace IT_News_BLL.DTO
     {
         public string Description { get; set; }
         public DateTime? Date { get; set; }
-        public int CommentDtoId { get; set; }
+        public int CommentId { get; set; }
         public int AuthorDtoId { get; set; }
         public int NewsDtoId { get; set; }
     }
