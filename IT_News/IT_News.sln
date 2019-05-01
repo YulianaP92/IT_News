@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT_News", "IT_News\IT_News.csproj", "{24E86097-B8AD-4BF8-91AA-B9E98F4106EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT_News_DAL", "IT_News_DAL\IT_News_DAL.csproj", "{A8423B5D-8E91-406C-844C-CFDB2E0CE886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT_News_BLL", "IT_News_BLL\IT_News_BLL.csproj", "{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{24E86097-B8AD-4BF8-91AA-B9E98F4106EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24E86097-B8AD-4BF8-91AA-B9E98F4106EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24E86097-B8AD-4BF8-91AA-B9E98F4106EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8423B5D-8E91-406C-844C-CFDB2E0CE886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8423B5D-8E91-406C-844C-CFDB2E0CE886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8423B5D-8E91-406C-844C-CFDB2E0CE886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8423B5D-8E91-406C-844C-CFDB2E0CE886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC47C7DC-5DAB-47C0-B994-F56A2C37B2C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

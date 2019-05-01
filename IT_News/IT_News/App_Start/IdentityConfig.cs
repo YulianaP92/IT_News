@@ -105,12 +105,4 @@ namespace IT_News
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
         }
     }
-
-    //public class ApplicationRoleManager : RoleManager<IdentityRole>
-    //{
-    //    public ApplicationRoleManager(IRoleStore<IdentityRole> store)
-    //        : base(store)
-    //    {
-    //    }
-    //}
 }
