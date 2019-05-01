@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace IT_News_DAL.Entities
 {
-   public  class TagDal
+   public class Section
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
-
-        public IList<NewsDal> News { get; set; }
+        public virtual IList<News> News { get; set; }
     }
 }

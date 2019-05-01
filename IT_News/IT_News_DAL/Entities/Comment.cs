@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_News_DAL.Entities
 {
-    public class CommentDal
+    public class Comment
     {
         public string Description { get; set; }
         public DateTime? Date { get; set; }

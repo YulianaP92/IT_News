@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IT_News_DAL.Entities
 {
-   public  class NewsDal
+   public  class News
     {
         public int Id { get; set; }
 
@@ -20,10 +20,10 @@ namespace IT_News_DAL.Entities
 
         public DateTime? Modified { get; set; }
 
-        public SectionDal Section { get; set; }
+        public Section Section { get; set; }
 
-        public IList<TagDal> Tags { get; set; }
+        public IList<Tag> Tags { get; set; }
 
-        public IList<CommentDal> Comments { get; set; }
+        public IList<Comment> Comments { get; set; }
     }
 }
