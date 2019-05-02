@@ -2,7 +2,7 @@
 using IT_News_DAL.Entities;
 using Profile = AutoMapper.Profile;
 
-namespace IT_News.Infrastructure.MappingProfiles
+namespace IT_News_BLL.Infrastructure.MappingProfiles
 {
     public class CommentMappingProfile: Profile
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using IT_News.Infrastructure.MappingProfiles;
+using IT_News_BLL.Infrastructure.MappingProfiles;
 
 namespace IT_News.App_Start
 {

@@ -185,10 +185,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\MappingProfiles\CommentMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\NewsMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\SectionMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\TagMappingProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ChangeRoleViewModel.cs" />

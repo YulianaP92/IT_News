@@ -1,30 +1,27 @@
 ﻿using IT_News_BLL.DTO;
 using IT_News_DAL.Entities;
 using Profile = AutoMapper.Profile;
-
-namespace IT_News.Infrastructure.MappingProfiles
+namespace IT_News_BLL.Infrastructure.MappingProfiles
 {
-    public class TagMappingProfile:Profile
+    public class SectionMappingProfile:Profile
     {
-        public TagMappingProfile()
+        public SectionMappingProfile()
         {
-            MapTagToTagDTO();
-            MapTagDTOToTag();
+            MapSectionToSectionDTO();
+            MapSectionDTOToSection();
         }
-        private void MapTagToTagDTO()
+        private void MapSectionToSectionDTO()
         {
-            CreateMap<Tag, TagDTO>()
+            CreateMap<Section, SectionDTO>()
                 .ForMember(dest => dest.Id, c => c.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, c => c.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForAllOtherMembers(c => c.Ignore());
         }
-        private void MapTagDTOToTag()
+        private void MapSectionDTOToSection()
         {
-            CreateMap<TagDTO, Tag>()
+            CreateMap<SectionDTO, Section>()
                 .ForMember(dest => dest.Id, c => c.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Name, c => c.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForAllOtherMembers(c => c.Ignore());
         }
     }
