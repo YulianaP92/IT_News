@@ -14,6 +14,6 @@ namespace IT_News_DAL.Entities
 
         public string Description { get; set; }
 
-        public IList<News> News { get; set; }
+        public virtual IList<News> News { get; set; }
     }
 }

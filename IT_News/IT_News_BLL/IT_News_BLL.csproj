@@ -35,6 +35,7 @@
       <HintPath>..\packages\AutoMapper.8.1.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,7 +53,9 @@
     <Compile Include="Infrastructure\MappingProfiles\NewsMappingProfile.cs" />
     <Compile Include="Infrastructure\MappingProfiles\SectionMappingProfile.cs" />
     <Compile Include="Infrastructure\MappingProfiles\TagMappingProfile.cs" />
+    <Compile Include="Interfaces\INewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NewsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IT_News_DAL\IT_News_DAL.csproj">

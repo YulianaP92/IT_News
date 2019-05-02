@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IT_News_DAL.Entities;
+using System.Configuration;
 
 namespace IT_News_DAL.EF
 {
@@ -23,6 +24,24 @@ namespace IT_News_DAL.EF
         public NewsContext(string connectionString) : base(connectionString)
         {
                 
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<News>().HasMany(c => c.Tags)
+                .WithMany(s => s.News)
+                .Map(t => t.MapLeftKey("NewsId")
+                    .MapRightKey("TagsId")
+                    .ToTable("NewsTags"));
+
+            modelBuilder.Entity<Section>()
+                .HasMany(p => p.News)
+                .WithRequired(p => p.Section);
+
+            modelBuilder.Entity<News>()
+                .HasMany(c => c.Comments);
+
+
+
         }
     }
 }

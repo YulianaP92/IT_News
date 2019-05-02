@@ -19,11 +19,10 @@ namespace IT_News_DAL.Entities
         public DateTime PostedOn{ get; set; }
 
         public DateTime? Modified { get; set; }
+        public virtual Section Section { get; set; }
 
-        public Section Section { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
 
-        public IList<Tag> Tags { get; set; }
-
-        public IList<Comment> Comments { get; set; }
+        public virtual IList<Comment> Comments { get; set; }
     }
 }
