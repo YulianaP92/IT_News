@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -241,9 +239,7 @@ namespace IT_News.Controllers
         //    return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         //}
 
- 
-
-        protected override void Dispose(bool disposing)
+ protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
             {

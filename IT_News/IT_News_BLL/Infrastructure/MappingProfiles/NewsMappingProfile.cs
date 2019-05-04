@@ -19,7 +19,10 @@ namespace IT_News_BLL.Infrastructure.MappingProfiles
                 .ForMember(dest => dest.ShortDescription, c => c.MapFrom(src => src.ShortDescription))
                 .ForMember(dest => dest.Published, c => c.MapFrom(src => src.Published))
                 .ForMember(dest => dest.PostedOn, c => c.MapFrom(src => src.PostedOn))
-                .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))            
+                .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
+                .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
+                .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
+                .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapNewsDTOToNews()

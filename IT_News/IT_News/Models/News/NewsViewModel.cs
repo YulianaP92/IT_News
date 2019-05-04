@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IT_News_BLL.DTO
+namespace IT_News.Models.News
 {
-   public  class NewsDTO
+    public  class NewsViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
@@ -11,8 +11,8 @@ namespace IT_News_BLL.DTO
         public bool Published { get; set; }
         public DateTime PostedOn { get; set; }
         public DateTime? Modified { get; set; }
-        public SectionDTO Section { get; set; }
-        public IList<TagDTO> Tags { get; set; }
-        public IList<CommentDTO> Comments { get; set; }
+        public SectionViewModel Section { get; set; }
+        public IList<TagViewModel> Tags { get; set; }
+        public IList<CommentViewModel> Comments { get; set; }
     }
 }

@@ -190,6 +190,10 @@
     <Compile Include="Models\ChangeRoleViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\News\CommentViewModel.cs" />
+    <Compile Include="Models\News\NewsViewModel.cs" />
+    <Compile Include="Models\News\SectionViewModel.cs" />
+    <Compile Include="Models\News\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

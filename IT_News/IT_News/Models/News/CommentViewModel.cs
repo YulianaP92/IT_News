@@ -1,14 +1,13 @@
 ﻿using System;
 
-namespace IT_News_DAL.Entities
+namespace IT_News.Models.News
 {
-    public class Comment
+   public class CommentViewModel
     {
         public string Description { get; set; }
         public DateTime? Date { get; set; }
         public int CommentId { get; set; }
-        public int AuthorId { get; set; }
-        public News News { get; set; }
-
+        public int AuthorDtoId { get; set; }
+        public NewsViewModel NewsDtoId { get; set; }
     }
 }

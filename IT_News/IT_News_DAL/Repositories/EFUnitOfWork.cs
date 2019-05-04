@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IT_News_DAL.EF;
 using IT_News_DAL.Entities;
 using IT_News_DAL.Interfaces;
