@@ -9,9 +9,9 @@ namespace IT_News_BLL.Services
 {
     public class NewsService : INewsService
     {
-        EFUnitOfWork Database { get; set; }
+        IUnitOfWork Database { get; set; }
 
-        public NewsService(EFUnitOfWork database)
+        public NewsService(IUnitOfWork database)
         {
             this.Database = database;
         }

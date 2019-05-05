@@ -31,5 +31,6 @@ namespace IT_News_BLL.Infrastructure.MappingProfiles
                 .ForMember(dest => dest.News, c => c.MapFrom(src => src.NewsDtoId))
                 .ForAllOtherMembers(c => c.Ignore());
         }
+
     }
 }

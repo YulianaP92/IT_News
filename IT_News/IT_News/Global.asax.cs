@@ -7,6 +7,10 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using IT_News.Models;
+using IT_News.Util;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
 
 namespace IT_News
 {
@@ -20,6 +24,10 @@ namespace IT_News
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            NinjectModule newsModule = new NinjectRegistrations();
+            var kernel = new StandardKernel(newsModule);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

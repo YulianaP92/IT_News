@@ -5,12 +5,12 @@ using IT_News_DAL.Interfaces;
 
 namespace IT_News_DAL.Repositories
 {
-    public class EFUnitOfWork : IUnitOfWork
+    public class IUnitOfWork : Interfaces.IUnitOfWork
     {
         private NewsContext db;
         private NewsRepository newsRepository;
 
-        public EFUnitOfWork(string connectionString)
+        public IUnitOfWork(string connectionString)
         {
             db = new NewsContext(connectionString);
         }
