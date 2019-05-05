@@ -7,7 +7,7 @@ namespace IT_News.Models.News
         public string Description { get; set; }
         public DateTime? Date { get; set; }
         public int CommentId { get; set; }
-        public int AuthorDtoId { get; set; }
-        public NewsViewModel NewsDtoId { get; set; }
+        public int AuthorViewModelId { get; set; }
+        public NewsViewModel NewsViewModelId { get; set; }
     }
 }

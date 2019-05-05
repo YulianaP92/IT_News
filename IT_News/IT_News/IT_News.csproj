@@ -193,10 +193,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastucture\MappingProfiles\CommentMappingProfile.cs" />
+    <Compile Include="Infrastucture\MappingProfiles\NewsMappingProfile.cs" />
+    <Compile Include="Infrastucture\MappingProfiles\SectionMappingProfile.cs" />
+    <Compile Include="Infrastucture\MappingProfiles\TagMappingProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ChangeRoleViewModel.cs" />
@@ -269,6 +274,8 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\News\GetAllNews.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,7 +299,7 @@
       <Name>IT_News_BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\IT_News_DAL\IT_News_DAL.csproj">
-      <Project>{A8423B5D-8E91-406C-844C-CFDB2E0CE886}</Project>
+      <Project>{a8423b5d-8e91-406c-844c-cfdb2e0ce886}</Project>
       <Name>IT_News_DAL</Name>
     </ProjectReference>
   </ItemGroup>
