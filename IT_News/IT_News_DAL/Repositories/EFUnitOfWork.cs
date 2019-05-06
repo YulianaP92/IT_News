@@ -5,14 +5,14 @@ using IT_News_DAL.Interfaces;
 
 namespace IT_News_DAL.Repositories
 {
-    public class IUnitOfWork : Interfaces.IUnitOfWork
+    public class EfUnitOfWork : IUnitOfWork
     {
         private readonly NewsContext db;
         private NewsRepository newsRepository;
 
-        public IUnitOfWork(string connectionString)
+        public EfUnitOfWork()
         {
-            db = new NewsContext(connectionString);
+            db = new NewsContext();
         }
         public IRepository<News> News
         {

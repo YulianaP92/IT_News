@@ -1,6 +1,7 @@
 ﻿using Ninject.Modules;
 using IT_News_BLL.Interfaces;
 using IT_News_BLL.Services;
+using IT_News_DAL.Interfaces;
 using IT_News_DAL.Repositories;
 
 namespace IT_News.Util
@@ -10,7 +11,7 @@ namespace IT_News.Util
         public override void Load()
         {
             Bind<INewsService>().To<NewsService>();
-            Bind<IUnitOfWork>().To<IUnitOfWork>();
+            Bind<IUnitOfWork>().To<EfUnitOfWork>();
         }
     }
 }
