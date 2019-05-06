@@ -10,10 +10,10 @@ namespace IT_News_DAL.EF
         public DbSet<Section> Sections { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
-        //public NewsContext()
-        //{
-        //    Database.SetInitializer<NewsContext>(new StoreDbInitializer());
-        //}
+        public NewsContext()
+        {
+            Database.SetInitializer<NewsContext>(new StoreDbInitializer());
+        }
 
         public NewsContext(string connectionString) : base(connectionString)
         {

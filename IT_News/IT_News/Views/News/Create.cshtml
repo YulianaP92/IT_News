@@ -7,4 +7,6 @@
 
 <h2>Create</h2>
 
-@Html.LabelFor()
+@Html.LabelFor(model => model.Title, "Title")
+<br />
+@Html.TextAreaFor(model => model.ShortDescription)

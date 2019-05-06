@@ -7,7 +7,7 @@ namespace IT_News_DAL.Repositories
 {
     public class IUnitOfWork : Interfaces.IUnitOfWork
     {
-        private NewsContext db;
+        private readonly NewsContext db;
         private NewsRepository newsRepository;
 
         public IUnitOfWork(string connectionString)
