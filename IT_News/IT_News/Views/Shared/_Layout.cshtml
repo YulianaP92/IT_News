@@ -9,32 +9,37 @@
 
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0000FF;">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" >
-                <ul class="nav navbar-nav" >
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "About", "Home")</li>
-                    <li>@Html.ActionLink("Caregory", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("EditUser", "EditUser", "Account")</li>
-                    <li>@Html.ActionLink("News", "Index", "News")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-                <nav class="navbar navbar-light bg-light">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </nav>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #0000FF">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
         </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Users", "About", "Home")</li>
+                <li>@Html.ActionLink("Caregory", "Contact", "Home")</li>
+                <li>@Html.ActionLink("EditUser", "EditUser", "Account")</li>
+                <li>@Html.ActionLink("News", "Index", "News")</li>
+                <li><a href="#">
+                        <span class="glyphicon glyphicon-globe">EN/RU </span>
+                </a></li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div>
+        
+    </div>
+    
     </div>
     <div class="container body-content">
         @RenderBody()
