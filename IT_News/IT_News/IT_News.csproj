@@ -274,7 +274,7 @@
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\EditUser.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
-    <Content Include="Views\News\GetAllNews.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

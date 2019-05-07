@@ -21,14 +21,17 @@ namespace IT_News.Controllers
         }
         public ActionResult Index()
         {
-           return RedirectToAction("Index", "Home");
-        }
-        public ActionResult GetAllNews()
-        {
             var news = newsService.GetAll();
             var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
             return View(result);
+            //return RedirectToAction("Index", "Home");
         }
+        //public ActionResult GetAllNews()
+        //{
+        //    var news = newsService.GetAll();
+        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+        //    return View(result);
+        //}
 
         [HttpGet]
         public ActionResult Create()
