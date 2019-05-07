@@ -26,6 +26,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapNewsDTOToNewsViewModel()
@@ -38,6 +39,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.PostedOn, c => c.MapFrom(src => src.PostedOn))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
+                .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
 
@@ -53,6 +55,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapNewsDTOToNews()
@@ -65,6 +68,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.PostedOn, c => c.MapFrom(src => src.PostedOn))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
+                .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
     }

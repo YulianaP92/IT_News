@@ -7,6 +7,7 @@ namespace IT_News_DAL.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public string Text { get; set; }
         public string ShortDescription{ get; set; }
         public bool Published { get; set; }
         public DateTime PostedOn{ get; set; }

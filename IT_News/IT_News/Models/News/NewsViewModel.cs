@@ -8,6 +8,7 @@ namespace IT_News.Models.News
         public int Id { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
+        public string Text { get; set; }
         public bool Published { get; set; }
         public DateTime PostedOn { get; set; }
         public DateTime? Modified { get; set; }
