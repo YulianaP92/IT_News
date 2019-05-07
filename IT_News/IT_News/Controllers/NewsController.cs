@@ -11,43 +11,43 @@ using IT_News_DAL.Entities;
 
 namespace IT_News.Controllers
 {
-    public class NewsController : Controller
-    {
-        private INewsService newsService;
+    //public class NewsController : Controller
+    //{
+    //    private INewsService newsService;
 
-        public NewsController(INewsService newsService)
-        {
-            this.newsService = newsService;
-        }
-        public ActionResult Index()
-        {
-            var news = newsService.GetAll();
-            var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-            return View(result);
-            //return RedirectToAction("Index", "Home");
-        }
-        //public ActionResult GetAllNews()
-        //{
-        //    var news = newsService.GetAll();
-        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-        //    return View(result);
-        //}
+    //    public NewsController(INewsService newsService)
+    //    {
+    //        this.newsService = newsService;
+    //    }
+    //    public ActionResult Index()
+    //    {
+    //        var news = newsService.GetAll();
+    //        var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+    //        return View(result);
+    //        //return RedirectToAction("Index", "Home");
+    //    }
+    //    //public ActionResult GetAllNews()
+    //    //{
+    //    //    var news = newsService.GetAll();
+    //    //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+    //    //    return View(result);
+    //    //}
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(NewsViewModel news)
-        {
-            if (news!=null)
-            {
-                var result = Mapper.Map<NewsDTO>(news);
-                newsService.Create(result);
+    //    [HttpGet]
+    //    public ActionResult Create()
+    //    {
+    //        return View();
+    //    }
+    //    [HttpPost]
+    //    public ActionResult Create(NewsViewModel news)
+    //    {
+    //        if (news!=null)
+    //        {
+    //            var result = Mapper.Map<NewsDTO>(news);
+    //            newsService.Create(result);
                
-            }
-            return RedirectToAction("Index", "Home");
-        }
-    }
+    //        }
+    //        return RedirectToAction("Index", "Home");
+    //    }
+    //}
 }

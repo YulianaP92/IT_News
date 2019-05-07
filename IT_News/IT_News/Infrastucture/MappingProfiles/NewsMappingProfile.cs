@@ -7,12 +7,18 @@ namespace IT_News.Infrastucture.MappingProfiles
 {
     public class NewsMappingProfile:Profile
     {
+        private CommentMappingProfile commentMappingProfile;
+        private SectionMappingProfile sectionMappingProfile;
+        private TagMappingProfile tagMappingProfile;
         public NewsMappingProfile()
         {
             MapNewsViewModelToNewsDTO();
             MapNewsDTOToNewsViewModel();
             MapNewsToNewsDTO();
             MapNewsDTOToNews();
+            commentMappingProfile=new CommentMappingProfile();
+            sectionMappingProfile=new SectionMappingProfile();
+            tagMappingProfile=new TagMappingProfile();
         }
         private void MapNewsViewModelToNewsDTO()
         {
@@ -38,8 +44,10 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Published, c => c.MapFrom(src => src.Published))
                 .ForMember(dest => dest.PostedOn, c => c.MapFrom(src => src.PostedOn))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
-                .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
+                .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
+                .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
+                .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
                 .ForAllOtherMembers(c => c.Ignore());
         }
 
@@ -67,9 +75,12 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Published, c => c.MapFrom(src => src.Published))
                 .ForMember(dest => dest.PostedOn, c => c.MapFrom(src => src.PostedOn))
                 .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
-                .ForMember(dest => dest.Modified, c => c.MapFrom(src => src.Modified))
+                .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
+                .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
+                .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
+
     }
 }

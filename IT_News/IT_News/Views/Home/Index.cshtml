@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<IT_News.Models.News.NewsViewModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 @Styles.Render("~/Content/css")
@@ -6,3 +8,8 @@
 <div id="heading">
     <h1>HOME</h1>
 </div>
+<p>@foreach (var news in Model)
+   {
+       @news.ShortDescription
+   }
+</p>

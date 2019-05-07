@@ -25,6 +25,7 @@ namespace IT_News
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutoMapperConfig.Configure();
 
             NinjectModule newsModule = new NinjectRegistrations();
             var kernel = new StandardKernel(newsModule);
