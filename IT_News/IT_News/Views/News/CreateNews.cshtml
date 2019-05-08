@@ -1,0 +1,32 @@
+﻿@using IT_News_DAL.Entities
+@model IT_News.Models.News.NewsViewModel
+
+@{
+    ViewBag.Title = "Create News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create News</h2>
+
+@using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.LabelFor(model => model.Title, "Title")
+    <br />
+    @Html.TextBoxFor(model => model.Title, "Title")
+    <br /><br />
+    @Html.LabelFor(model => model.ShortDescription, "Short Description")
+    <br />
+    @Html.TextAreaFor(model => model.ShortDescription)
+    <br /><br />
+    @Html.LabelFor(model => model.Text, "Text")
+    <br />
+    @Html.TextAreaFor(model => model.Text)
+    <br /><br />
+    @Html.LabelFor(model => model.Section, "Section")
+    <br />
+    @Html.DropDownListFor(model => model.Section, ViewBag.Sections as SelectList)
+    <br /><br />
+    @Html.LabelFor(model => model.Tags, "Tags")
+    <input class="btn-primary" type="submit" value="Add" />
+}

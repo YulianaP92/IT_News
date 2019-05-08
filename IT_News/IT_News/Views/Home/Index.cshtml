@@ -8,8 +8,6 @@
 <div id="heading">
     <h1>HOME</h1>
 </div>
-<p>@foreach (var news in Model)
-   {
-       @news.ShortDescription
-   }
+<p>
+    @Html.ActionLink("Create News", "CreateNews", "News")
 </p>
