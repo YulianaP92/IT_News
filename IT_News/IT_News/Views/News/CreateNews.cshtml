@@ -10,23 +10,24 @@
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
 {
-   // @Html.HiddenFor(model => model.Id)
+    // @Html.HiddenFor(model => model.Id)
     @Html.LabelFor(model => model.Title, "Title")
     <br />
     @Html.TextBoxFor(model => model.Title, "Title")
     <br /><br />
     @Html.LabelFor(model => model.ShortDescription, "Short Description")
     <br />
-    @Html.TextAreaFor(model => model.ShortDescription)
+    @Html.TextAreaFor(model => model.ShortDescription, new { style = "width: 40%; max-width: 40%;" })
     <br /><br />
     @Html.LabelFor(model => model.Text, "Text")
     <br />
-    @Html.TextAreaFor(model => model.Text)
+    @Html.TextAreaFor(model => model.Text, new { @cols = "100", @rows = "8", @style = "width:100%;" })
     <br /><br />
     @Html.LabelFor(model => model.Section, "Section")
     <br />
     @Html.DropDownListFor(model => model.Section, ViewBag.Sections as SelectList)
     <br /><br />
     @Html.LabelFor(model => model.Tags, "Tags")
+    <br /><br />
     <input class="btn-primary" type="submit" value="Add" />
 }
