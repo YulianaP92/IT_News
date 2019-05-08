@@ -27,8 +27,10 @@ namespace IT_News
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.Configure();
 
+
             NinjectModule newsModule = new NinjectRegistrations();
             var kernel = new StandardKernel(newsModule);
+            kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
