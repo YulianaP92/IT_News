@@ -7,6 +7,6 @@ namespace IT_News.Models.News
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IList<NewsViewModel> News { get; set; }
+        public virtual IList<NewsViewModel> News { get; set; }
     }
 }

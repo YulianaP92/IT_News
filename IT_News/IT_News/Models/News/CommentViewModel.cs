@@ -8,6 +8,6 @@ namespace IT_News.Models.News
         public DateTime? Date { get; set; }
         public int CommentId { get; set; }
         public int AuthorViewModelId { get; set; }
-        public NewsViewModel NewsViewModelId { get; set; }
+        public virtual NewsViewModel NewsViewModelId { get; set; }
     }
 }

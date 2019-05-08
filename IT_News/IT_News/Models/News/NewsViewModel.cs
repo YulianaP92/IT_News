@@ -12,8 +12,8 @@ namespace IT_News.Models.News
         public bool Published { get; set; }
         public DateTime PostedOn { get; set; }
         public DateTime? Modified { get; set; }
-        public SectionViewModel Section { get; set; }
-        public IList<TagViewModel> Tags { get; set; }
-        public IList<CommentViewModel> Comments { get; set; }
+        public virtual SectionViewModel Section { get; set; }
+        public virtual IList<TagViewModel> Tags { get; set; }
+        public virtual IList<CommentViewModel> Comments { get; set; }
     }
 }

@@ -36,7 +36,8 @@ namespace IT_News.Controllers
         [HttpGet]
         public ActionResult CreateNews()
         {
-            var result = Mapper.Map<List<SectionDTO>>(new List<SectionDTO>());
+            var allSections = newsService.GetAllSections();
+            var result = Mapper.Map<List<SectionViewModel>>(allSections);
             SelectList sections = new SelectList(result, "Id", "Name");
             ViewBag.Sections = sections;
             return View();

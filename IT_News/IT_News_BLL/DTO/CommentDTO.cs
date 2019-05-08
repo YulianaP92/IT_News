@@ -8,6 +8,6 @@ namespace IT_News_BLL.DTO
         public DateTime? Date { get; set; }
         public int CommentId { get; set; }
         public int AuthorDtoId { get; set; }
-        public NewsDTO NewsDtoId { get; set; }
+        public virtual NewsDTO NewsDtoId { get; set; }
     }
 }

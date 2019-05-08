@@ -12,8 +12,8 @@ namespace IT_News_BLL.DTO
         public bool Published { get; set; }
         public DateTime PostedOn { get; set; }
         public DateTime? Modified { get; set; }
-        public SectionDTO Section { get; set; }
-        public IList<TagDTO> Tags { get; set; }
-        public IList<CommentDTO> Comments { get; set; }
+        public virtual SectionDTO Section { get; set; }
+        public virtual IList<TagDTO> Tags { get; set; }
+        public virtual IList<CommentDTO> Comments { get; set; }
     }
 }

@@ -36,6 +36,11 @@ namespace IT_News_DAL.Repositories
             return _db.News;
         }
 
+        public IEnumerable<Section> GetAllSections()
+        {
+            return _db.Sections;
+        }
+
         public void Update(News news)
         {
             _db.Entry(news).State = EntityState.Modified;

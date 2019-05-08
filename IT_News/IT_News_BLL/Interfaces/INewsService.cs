@@ -14,5 +14,6 @@ namespace IT_News_BLL.Interfaces
         void Create(NewsDTO item);
         void Update(NewsDTO item);
         void Delete(int id);
+        IEnumerable<SectionDTO> GetAllSections();
     }
 }

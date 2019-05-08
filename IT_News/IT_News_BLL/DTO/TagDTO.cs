@@ -8,6 +8,6 @@ namespace IT_News_BLL.DTO
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IList<NewsDTO> News { get; set; }
+        public virtual IList<NewsDTO> News { get; set; }
     }
 }

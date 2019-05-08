@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IT_News_DAL.Entities;
 
 namespace IT_News_DAL.Interfaces
 {
@@ -9,5 +10,6 @@ namespace IT_News_DAL.Interfaces
         void Create(T item);
         void Update(T item);
         void Delete(int id);
+        IEnumerable<Section> GetAllSections();
     }
 }

@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
 {
-    @Html.HiddenFor(model => model.Id)
+   // @Html.HiddenFor(model => model.Id)
     @Html.LabelFor(model => model.Title, "Title")
     <br />
     @Html.TextBoxFor(model => model.Title, "Title")

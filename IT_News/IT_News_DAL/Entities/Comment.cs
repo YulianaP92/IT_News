@@ -8,7 +8,7 @@ namespace IT_News_DAL.Entities
         public DateTime? Date { get; set; }
         public int CommentId { get; set; }
         public int AuthorId { get; set; }
-        public News News { get; set; }
+        public virtual News News { get; set; }
 
     }
 }

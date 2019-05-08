@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
@@ -99,6 +100,13 @@ namespace IT_News_BLL.Services
             var newsDAL = Mapper.Map<NewsDTO, News>(item);
             Database.News.Update(newsDAL);
             Database.Save();
+        }
+
+        public IEnumerable<SectionDTO> GetAllSections()
+        {
+            var allSections = Database.News.GetAllSections().ToList();
+            var sectionDTO= Mapper.Map<IEnumerable<SectionDTO>>(allSections).ToList();
+            return sectionDTO;
         }
     }
 }
