@@ -48,8 +48,8 @@ namespace IT_News.Controllers
             if (news != null)
             {
                 news.PostedOn = DateTime.Now;
-                var result = Mapper.Map<NewsDTO>(news);
-                newsService.Create(result);                
+                var newsDto = Mapper.Map<NewsDTO>(news);
+                newsService.Create(newsDto);                
             }
             return RedirectToAction("Index", "Home");
         }
