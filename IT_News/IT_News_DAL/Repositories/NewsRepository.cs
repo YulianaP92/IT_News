@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using IT_News_DAL.EF;
 using IT_News_DAL.Entities;
 using IT_News_DAL.Interfaces;
@@ -40,6 +41,21 @@ namespace IT_News_DAL.Repositories
         {
             return _db.Sections;
         }
+
+        //public IEnumerable<TagClouds> GetTagClouds()
+        //{
+        //    var totalNews = _db.News.Count();
+        //    var tags = _db.Tags.ToList();
+        //    return (from c in tags
+        //            orderby c.Name
+        //        select new TagClouds
+        //        {
+        //            Id = c.Id,
+        //            Name = c.Name,
+        //            CountOfTag = c.News.Count,
+        //            TotalNews = totalNews,
+        //        });
+        //}
 
         public void Update(News news)
         {

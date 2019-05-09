@@ -210,6 +210,7 @@
     <Compile Include="Models\News\CommentViewModel.cs" />
     <Compile Include="Models\News\NewsViewModel.cs" />
     <Compile Include="Models\News\SectionViewModel.cs" />
+    <Compile Include="Models\News\TagClouds.cs" />
     <Compile Include="Models\News\TagViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -276,6 +277,7 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\CreateNews.cshtml" />
+    <Content Include="Views\News\_Partial_CreateTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

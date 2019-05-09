@@ -11,5 +11,6 @@ namespace IT_News_DAL.Interfaces
         void Update(T item);
         void Delete(int id);
         IEnumerable<Section> GetAllSections();
+        //IEnumerable<TagClouds> GetTagClouds();
     }
 }

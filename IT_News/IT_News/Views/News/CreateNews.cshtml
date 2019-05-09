@@ -3,8 +3,10 @@
 @model IT_News.Models.News.NewsViewModel
 
 @{
-    ViewBag.Title = "Create News";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                ViewBag.Title = "Create News";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create News</h2>
@@ -27,8 +29,9 @@
     @Html.LabelFor(model => model.Section, "Section")
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
+    <br /><br />  
+    @Html.LabelFor(model => model.Tags, "Tags:")
     <br /><br />
-    @Html.LabelFor(model => model.Tags, "Tags")
-    <br /><br />
+    @Html.Partial("_Partial_CreateTag");
     <input class="btn-primary" type="submit" value="Add" />
 }
