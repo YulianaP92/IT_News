@@ -90,7 +90,7 @@ namespace IT_News_BLL.Services
 
         public IEnumerable<NewsDTO> GetAll()
         {
-            var allNews = Database.News.GetAll();
+            var allNews = Database.News.GetAll().ToList();
             var result = Mapper.Map<IEnumerable<NewsDTO>>(allNews);
             return result;
         }

@@ -49,7 +49,6 @@ namespace IT_News.Controllers
             {
                 var allSections = newsService.GetAllSections();
                 var selectedSection = allSections.FirstOrDefault(x => x.Id == news.SectionId);
-
                 news.PostedOn = DateTime.Now;
                 var newsDto = Mapper.Map<NewsDTO>(news);
                 newsDto.Section = selectedSection;
