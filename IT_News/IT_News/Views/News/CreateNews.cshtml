@@ -1,4 +1,5 @@
-﻿@using IT_News_DAL.Entities
+﻿@using IT_News.Models.News
+@using IT_News_DAL.Entities
 @model IT_News.Models.News.NewsViewModel
 
 @{
@@ -25,7 +26,7 @@
     <br /><br />
     @Html.LabelFor(model => model.Section, "Section")
     <br />
-    @Html.DropDownListFor(model => model.Section, ViewBag.Sections as SelectList)
+    @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
     @Html.LabelFor(model => model.Tags, "Tags")
     <br /><br />

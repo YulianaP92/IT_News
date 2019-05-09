@@ -47,9 +47,13 @@ namespace IT_News.Controllers
         {
             if (news != null)
             {
+                var allSections = newsService.GetAllSections();
+                var selectedSection = allSections.FirstOrDefault(x => x.Id == news.Id);
+
                 news.PostedOn = DateTime.Now;
                 var newsDto = Mapper.Map<NewsDTO>(news);
-                newsService.Create(newsDto);                
+                newsDto.Section = selectedSection;
+                newsService.Create(newsDto);
             }
             return RedirectToAction("Index", "Home");
         }
