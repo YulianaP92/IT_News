@@ -17,11 +17,11 @@ namespace IT_News_DAL.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<News>()
-                .HasMany(c => c.Tags)
-                .WithMany(s => s.News)
-                .Map(t => t.MapLeftKey("NewsId")
-                    .MapRightKey("TagsId")
-                    .ToTable("NewsTags"));
+                .HasMany<Tag>(c => c.Tags)
+                .WithMany(s => s.News);
+                //.Map(t => t.MapLeftKey("NewsId")
+                //    .MapRightKey("TagsId")
+                //    .ToTable("NewsTags"));
 
             modelBuilder.Entity<Section>()
                 .HasMany(p => p.News)
