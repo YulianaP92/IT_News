@@ -277,7 +277,6 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\CreateNews.cshtml" />
-    <Content Include="Views\News\_Partial_CreateTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
