@@ -36,7 +36,6 @@ namespace IT_News_DAL.Repositories
                 news.Tags.Add(tagRes);
                
             }
-            //_db.SaveChanges();
         }
 
         public void Delete(int id)

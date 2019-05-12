@@ -29,13 +29,28 @@
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-    @Html.LabelFor(model => model.Tags, "Tags:")
-    <br /><br />
-    for (var i = 0; i < 3; i++)
-    {
-        @Html.LabelFor(model => model.Tags[i].Name)
-        @Html.TextBoxFor(model => model.Tags[i].Name, "Tags")
-        <br />
-    }
+    @Html.LabelFor(model => model.Tags,"Tags:")
+    <div id="block">
+        <input type="text" name="Tags[0].Name" />
+    </div>
+   // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
+    //<input id="Name" name="Name" type="text" />
+    <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
+}
+@section Scripts {
+    <script>
+        $(function () {
+            var i = 0;
+            $('.addLink').click(function()
+            {
+                i++;
+                var html2Add= "<div>"+
+                    "<h5>Tag "+(i+1) + "</h5>"+
+                    "<input type='text' name='Tags["+i+"].Name' />"+
+                    "</div>";
+                $('#block').append(html2Add);
+            })
+        })
+    </script>
 }
