@@ -7,10 +7,11 @@ namespace IT_News_DAL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
-        void Create(T item);
+        void Create(T item, List<Tag> tags);
         void Update(T item);
         void Delete(int id);
         IEnumerable<Section> GetAllSections();
+        IEnumerable<Tag> GetAllTags();
         //IEnumerable<TagClouds> GetTagClouds();
     }
 }

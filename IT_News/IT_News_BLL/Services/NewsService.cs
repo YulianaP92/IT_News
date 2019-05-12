@@ -5,7 +5,6 @@ using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using IT_News_DAL.Entities;
 using IT_News_DAL.Interfaces;
-using IT_News_DAL.Repositories;
 
 namespace IT_News_BLL.Services
 {
@@ -17,33 +16,11 @@ namespace IT_News_BLL.Services
         {
             this.Database = database;
         }
-        public void Create(NewsDTO newsDto)
+        public void Create(NewsDTO newsDto, List<TagDTO> tags)
         {
-           // var sectionDAL = new Section()
-           // {
-           //     Id = newsDto.Section.Id,
-           //     Name = newsDto.Section.Name
-           // };
-           // var tagsDAL = newsDto.Tags.Select(x => new Tag(){ Id = x.Id, Name = x.Name ,Description =x.Description}).ToList();
-           // var commentsDAL = newsDto.Comments.Select(x => new Comment() { Description = x.Description,AuthorId =x.AuthorDtoId,
-           //     CommentId = x.CommentId,Date =x.Date }).ToList();
-           // var newsDAL = new News()
-           // {
-           //     Id = newsDto.Id,
-           //     Modified = newsDto.Modified,
-           //     PostedOn = newsDto.PostedOn,
-           //     Published = newsDto.Published,
-           //     ShortDescription = newsDto.ShortDescription,
-           //     Title = newsDto.Title,
-           //     Section = sectionDAL,
-           //     Tags = tagsDAL,
-           //     Comments = commentsDAL                
-           // };
-           //Database.News.Create(newsDAL);
-           //Database.Save();
-
-            var result = Mapper.Map<News>(newsDto);
-            Database.News.Create(result);
+            var tagCollection = Mapper.Map<List<Tag>>(tags);
+            var newsDal = Mapper.Map<News>(newsDto);
+            Database.News.Create(newsDal, tagCollection);
             Database.Save();
         }
 
@@ -96,7 +73,7 @@ namespace IT_News_BLL.Services
         }
 
         public void Update(NewsDTO item)
-        {          
+        {
             var newsDAL = Mapper.Map<NewsDTO, News>(item);
             Database.News.Update(newsDAL);
             Database.Save();
@@ -105,8 +82,15 @@ namespace IT_News_BLL.Services
         public IEnumerable<SectionDTO> GetAllSections()
         {
             var allSections = Database.News.GetAllSections().ToList();
-            var sectionDTO= Mapper.Map<IEnumerable<SectionDTO>>(allSections).ToList();
+            var sectionDTO = Mapper.Map<IEnumerable<SectionDTO>>(allSections).ToList();
             return sectionDTO;
+        }
+
+        public IEnumerable<TagDTO> GetAllTags()
+        {
+            var allTags = Database.News.GetAllTags().ToList();
+            var tagDto = Mapper.Map<IEnumerable<TagDTO>>(allTags).ToList();
+            return tagDto;
         }
     }
 }

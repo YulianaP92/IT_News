@@ -15,9 +15,28 @@ namespace IT_News_DAL.Repositories
         {
             this._db = context;
         }
-        public void Create(News news)
+        public void Create(News news, List<Tag> tags)
         {
+            // https://www.codeproject.com/Tips/893609/CRUD-Many-to-Many-Entity-Framework
             _db.News.Add(news);
+
+            foreach (var tag in tags)
+            {
+                var allTags = _db.Tags.ToList();
+                Tag tagRes;
+                if (!allTags.Select(x=>x.Name).Contains(tag.Name))
+                {
+                    tagRes = _db.Tags.Add(tag);
+                }
+                else
+                {
+                    tagRes = _db.Tags.FirstOrDefault(x => x.Name.Equals(tag.Name));
+                }
+
+                news.Tags.Add(tagRes);
+               
+            }
+            //_db.SaveChanges();
         }
 
         public void Delete(int id)
@@ -40,6 +59,11 @@ namespace IT_News_DAL.Repositories
         public IEnumerable<Section> GetAllSections()
         {
             return _db.Sections;
+        }
+
+        public IEnumerable<Tag> GetAllTags()
+        {
+            return _db.Tags;
         }
 
         //public IEnumerable<TagClouds> GetTagClouds()

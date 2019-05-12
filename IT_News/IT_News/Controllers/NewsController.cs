@@ -47,12 +47,15 @@ namespace IT_News.Controllers
         {
             if (news != null)
             {
+                var tags = Mapper.Map<List<TagDTO>>(news.Tags);
+
                 var allSections = newsService.GetAllSections();
                 var selectedSection = allSections.FirstOrDefault(x => x.Id == news.SectionId);
                 news.PostedOn = DateTime.Now;
                 var newsDto = Mapper.Map<NewsDTO>(news);
+                newsDto.Tags.Clear();
                 newsDto.Section = selectedSection;
-                newsService.Create(newsDto);
+                newsService.Create(newsDto, tags);
             }
             return RedirectToAction("Index", "Home");
         }
