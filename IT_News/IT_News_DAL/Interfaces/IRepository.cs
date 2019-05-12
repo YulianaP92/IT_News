@@ -12,6 +12,5 @@ namespace IT_News_DAL.Interfaces
         void Delete(int id);
         IEnumerable<Section> GetAllSections();
         IEnumerable<Tag> GetAllTags();
-        //IEnumerable<TagClouds> GetTagClouds();
     }
 }

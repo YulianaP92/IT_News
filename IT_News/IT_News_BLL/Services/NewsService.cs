@@ -32,34 +32,6 @@ namespace IT_News_BLL.Services
 
         public NewsDTO Get(int id)
         {
-
-            //var news = Database.News.Get(id);
-            //var tagsDto = news.Tags.Select(x => new TagDTO() { Id = x.Id, Name = x.Name, Description = x.Description }).ToList();
-            //var sectionDto = new SectionDTO()
-            //{
-            //    Id = news.Section.Id,
-            //    Name = news.Section.Name
-            //};            
-
-            //var commentsDto = news.Comments.Select(x => new CommentDTO()
-            //{
-            //    Description = x.Description,
-            //    AuthorDtoId = x.AuthorId,
-            //    CommentId = x.CommentId,
-            //    Date = x.Date
-            //}).ToList();
-            //return new NewsDTO()
-            //{
-            //    Id = news.Id,
-            //    Modified = news.Modified,
-            //    PostedOn = news.PostedOn,
-            //    Published = news.Published,
-            //    Title = news.Title,
-            //    ShortDescription = news.ShortDescription,
-            //    Section = sectionDto,
-            //    Comments = commentsDto,
-            //    Tags = tagsDto,               
-            //};
             var news = Database.News.Get(id);
             var result = Mapper.Map<NewsDTO>(news);
             return result;

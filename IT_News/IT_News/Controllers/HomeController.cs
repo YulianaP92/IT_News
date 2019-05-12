@@ -19,10 +19,53 @@ namespace IT_News.Controllers
         }
         public ActionResult Index()
         {
-            var news = newsService.GetAll();
-            var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-            return View(result);
+            var newsDto = newsService.GetAll().ToList();
+            var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
+
+            var tagsDto = newsService.GetAllTags().ToList();
+            var tagsViewModel= Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
+            var show = new StartPageView()
+            {
+                NewsViewModels = newsViewModel,
+                TagViewModel = tagsViewModel
+            };
+            ViewData["TagCloud"] = GetTagClouds();
+            return View(show);
             //return RedirectToAction("Index", "Home");
+        }
+        public IEnumerable<TagCloud> GetTagClouds()
+        {
+            var totalNews = newsService.GetAll().Count();
+            var tags = newsService.GetAllTags().ToList();
+            return (from c in tags
+                orderby c.Name
+                select new TagCloud
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    CountOfTag = c.News.Count,
+                    TotalNews = totalNews,
+                });
+        }
+
+        public static string GetTagClass(int tag, int news, string name)
+        {
+            var result = (tag * 100) / news;//процент содержания новостей в каждом теге
+            if (result <= 1)
+                return "tag1";
+            if (result <= 2)
+                return "tag2";
+            if (result <= 4)
+                return "tag3";
+            if (result <= 8)
+                return "tag4";
+            if (result <= 12)
+                return "tag5";
+            if (result <= 18)
+                return "tag6";
+            if (result <= 30)
+                return "tag7";
+            return result <= 50 ? "tag8" : "tag9";
         }
 
         public ActionResult About()

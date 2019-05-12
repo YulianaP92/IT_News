@@ -55,7 +55,6 @@
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Tag.cs" />
-    <Compile Include="Entities\TagClouds.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

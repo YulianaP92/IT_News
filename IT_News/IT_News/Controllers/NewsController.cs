@@ -59,5 +59,7 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+       
     }
 }
