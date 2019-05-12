@@ -49,10 +49,6 @@
     <Compile Include="DTO\NewsDTO.cs" />
     <Compile Include="DTO\SectionDTO.cs" />
     <Compile Include="DTO\TagDTO.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\CommentMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\NewsMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\SectionMappingProfile.cs" />
-    <Compile Include="Infrastructure\MappingProfiles\TagMappingProfile.cs" />
     <Compile Include="Interfaces\INewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NewsService.cs" />

@@ -65,21 +65,6 @@ namespace IT_News_DAL.Repositories
             return _db.Tags;
         }
 
-        //public IEnumerable<TagClouds> GetTagClouds()
-        //{
-        //    var totalNews = _db.News.Count();
-        //    var tags = _db.Tags.ToList();
-        //    return (from c in tags
-        //            orderby c.Name
-        //        select new TagClouds
-        //        {
-        //            Id = c.Id,
-        //            Name = c.Name,
-        //            CountOfTag = c.News.Count,
-        //            TotalNews = totalNews,
-        //        });
-        //}
-
         public void Update(News news)
         {
             _db.Entry(news).State = EntityState.Modified;

@@ -19,9 +19,7 @@ namespace IT_News_DAL.EF
             modelBuilder.Entity<News>()
                 .HasMany<Tag>(c => c.Tags)
                 .WithMany(s => s.News);
-                //.Map(t => t.MapLeftKey("NewsId")
-                //    .MapRightKey("TagsId")
-                //    .ToTable("NewsTags"));
+
 
             modelBuilder.Entity<Section>()
                 .HasMany(p => p.News)
