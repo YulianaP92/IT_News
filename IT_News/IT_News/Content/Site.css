@@ -20,13 +20,18 @@
 .dl-horizontal dt {
     white-space: normal;
 }
-
+#myTextArea {
+    max-width:100px;
+    height: 100px;
+    border: 2px;
+    border-color: aqua;
+}
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+/*textarea {
     max-width: 280px;
-}
+}*/
 
 #heading {
     margin: 30px 0;

@@ -7,7 +7,10 @@
     ViewBag.Title = "Create News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
+<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+@Styles.Render("~/Content/css")
 <h2>Create News</h2>
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
@@ -23,34 +26,48 @@
     <br /><br />
     @Html.LabelFor(model => model.Text, "Text")
     <br />
-    @Html.TextAreaFor(model => model.Text, new { @cols = "100", @rows = "8", @style = "width:100%;" })
+    <textarea name="Text" id="myTextArea"></textarea>
+    //@Html.TextAreaFor(model => model.Text, new { @cols = "100", @rows = "8", @style = "width:100%;" })
     <br /><br />
+
     @Html.LabelFor(model => model.Section, "Section")
     <br />
+
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-    @Html.LabelFor(model => model.Tags,"Tags:")
+
+    @Html.LabelFor(model => model.Tags, "Tags:")
     <div id="block">
         <input type="text" name="Tags[0].Name" />
+
     </div>
-   // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
+    // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
     //<input id="Name" name="Name" type="text" />
+
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
+
 }
 @section Scripts {
     <script>
         $(function () {
             var i = 0;
-            $('.addLink').click(function()
-            {
+            $('.addLink').click(function () {
                 i++;
-                var html2Add= "<div>"+
-                    "<h5>Tag "+(i+1) + "</h5>"+
-                    "<input type='text' name='Tags["+i+"].Name' />"+
+                var html2Add = "<div>" +
+                    "<h5>Tag " + (i + 1) + "</h5>" +
+                    "<input type='text' name='Tags[" + i + "].Name' />" +
                     "</div>";
                 $('#block').append(html2Add);
             })
         })
+    </script>
+
+    <script>
+        var editor = new Editor({
+            element: document.getElementById("myTextArea")
+        });
+
+        editor.render();
     </script>
 }
