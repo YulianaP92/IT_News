@@ -10,11 +10,7 @@
 <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
 <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
 <script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
-<style>
-    .CodeMirror {
-        height: 200px;
-    }   
-</style>
+
 <h2>Create News</h2>
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
@@ -30,8 +26,8 @@
     <br /><br />
     @Html.LabelFor(model => model.Text, "Text")
     <br />
-    <div id="text"> 
-    <textarea name="Text" id="myTextArea"></textarea>
+    <div id="text">
+        <textarea name="Text" id="myTextArea"></textarea>
     </div>
     <br /><br />
     @Html.LabelFor(model => model.Section, "Section")
@@ -46,6 +42,7 @@
     //<input id="Name" name="Name" type="text" />
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
+    <markdown>![](https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg)</markdown>
 
 }
 @section Scripts {
@@ -69,5 +66,11 @@
         });
 
         editor.render();
+
+        drawImage = function (editor) {
+            var cm = editor.codemirror;
+            var stat = getState(cm);
+            _replaceSelection(cm, stat.image, '!!!!!!![', '](http://)!!!!!');
+        }
     </script>
 }

@@ -5,6 +5,9 @@ using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
+using Markdig;
+using Markdig.Syntax;
+
 
 namespace IT_News.Controllers
 {
@@ -31,6 +34,9 @@ namespace IT_News.Controllers
                 TagViewModel = tagsViewModel
             };
             ViewData["TagCloud"] = GetTagClouds();
+         
+            ViewData["Mark"] = Markdown.ToHtml("Ololo ![](https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg)");
+
             return View(show);
             //return RedirectToAction("Index", "Home");
         }
