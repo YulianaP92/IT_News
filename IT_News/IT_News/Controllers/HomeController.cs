@@ -17,9 +17,12 @@ namespace IT_News.Controllers
         }
         public ActionResult Index()
         {
-            var newsDto = newsService.GetAll().ToList();
-            var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
+            //var newsDto = newsService.GetAll().ToList();
+            var newsDto = newsService.GetAll().ToList().LastOrDefault();
 
+            //var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
+            var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
+            //newsViewModel.Text = 
             var tagsDto = newsService.GetAllTags().ToList();
             var tagsViewModel= Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
             var show = new StartPageView()

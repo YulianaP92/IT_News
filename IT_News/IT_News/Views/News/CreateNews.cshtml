@@ -10,7 +10,11 @@
 <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
 <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
 <script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
-@Styles.Render("~/Content/css")
+<style>
+    .CodeMirror {
+        height: 200px;
+    }   
+</style>
 <h2>Create News</h2>
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
@@ -26,24 +30,20 @@
     <br /><br />
     @Html.LabelFor(model => model.Text, "Text")
     <br />
+    <div id="text"> 
     <textarea name="Text" id="myTextArea"></textarea>
-    //@Html.TextAreaFor(model => model.Text, new { @cols = "100", @rows = "8", @style = "width:100%;" })
+    </div>
     <br /><br />
-
     @Html.LabelFor(model => model.Section, "Section")
     <br />
-
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-
     @Html.LabelFor(model => model.Tags, "Tags:")
     <div id="block">
         <input type="text" name="Tags[0].Name" />
-
     </div>
     // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
     //<input id="Name" name="Name" type="text" />
-
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
 

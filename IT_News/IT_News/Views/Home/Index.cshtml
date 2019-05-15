@@ -19,10 +19,6 @@
     @Html.ActionLink("Create News", "CreateNews", "News")
 </p>
 <div style="color: white">
-    @*@foreach (var tag in Model.TagViewModel)
-    {
-    <p>@tag.Name</p>*@
-    @*}*@
     <h2>Tags</h2>
     <div id="tagsCloud">
         @foreach (var t in (IEnumerable<TagCloud>)ViewData["TagCloud"]) { 
@@ -32,4 +28,8 @@
             <span></span><span></span>
         }
     </div>
+    <div>
+        <p>@Model.NewsViewModels.Title</p>
+        <p>@Model.NewsViewModels.Text</p>
     </div>
+</div>
