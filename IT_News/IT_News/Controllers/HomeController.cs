@@ -25,6 +25,7 @@ namespace IT_News.Controllers
 
             //var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
             var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
+
             //newsViewModel.Text = 
             var tagsDto = newsService.GetAllTags().ToList();
             var tagsViewModel= Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
@@ -35,7 +36,7 @@ namespace IT_News.Controllers
             };
             ViewData["TagCloud"] = GetTagClouds();
          
-            ViewData["Mark"] = Markdown.ToHtml("Ololo ![](https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg)");
+            ViewData["Mark"] = Markdown.ToHtml(@"![file](~/App_Data/Files/image-1558039166305.jpg)");
 
             return View(show);
             //return RedirectToAction("Index", "Home");

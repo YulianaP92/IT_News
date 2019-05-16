@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
@@ -60,6 +62,23 @@ namespace IT_News.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-       
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            string shortPath = null;
+            if (file != null)
+            {
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(file.FileName);
+                // сохраняем файл в папку Files в проекте
+                shortPath = "~/App_Data/Files/" + fileName;
+                var path = Server.MapPath(shortPath);
+                file.SaveAs(path);
+            }
+
+            var result = new {filename = shortPath };
+            return Json(result);
+        }
+
     }
 }

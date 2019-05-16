@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
 <script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
 <script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
+@*<script type="text/javascript" src="/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>*@
+<script type="text/javascript" src="/Scripts/inline-attachment/inline-attachment.js"></script>
+<script type="text/javascript" src="/Scripts/inline-attachment/input.inline-attachment.js"></script>
 
 <h2>Create News</h2>
 
@@ -42,9 +45,12 @@
     //<input id="Name" name="Name" type="text" />
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
-    <markdown>![](https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg)</markdown>
 
 }
+<textarea id="code" rows="10" cols="50"></textarea>
+<script type="text/javascript">
+    inlineAttachment.editors.input.attachToInput(document.getElementById("code"));
+</script>
 @section Scripts {
     <script>
         $(function () {
@@ -74,3 +80,7 @@
         }
     </script>
 }
+
+
+
+
