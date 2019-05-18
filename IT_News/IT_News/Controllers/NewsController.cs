@@ -71,7 +71,7 @@ namespace IT_News.Controllers
                 // получаем имя файла
                 string fileName = System.IO.Path.GetFileName(file.FileName);
                 // сохраняем файл в папку Files в проекте
-                shortPath = "~/App_Data/Files/" + fileName;
+                shortPath = "/Files/" + fileName;
                 var path = Server.MapPath(shortPath);
                 file.SaveAs(path);
             }

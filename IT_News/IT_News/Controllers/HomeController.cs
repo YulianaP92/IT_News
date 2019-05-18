@@ -35,8 +35,8 @@ namespace IT_News.Controllers
                 TagViewModel = tagsViewModel
             };
             ViewData["TagCloud"] = GetTagClouds();
-         
-            ViewData["Mark"] = Markdown.ToHtml(@"![file](~/App_Data/Files/image-1558039166305.jpg)");
+         var html = Markdown.ToHtml(@"![file](/Files/image-1558038759236.jpg)");
+            ViewData["Mark"] = html;
 
             return View(show);
             //return RedirectToAction("Index", "Home");

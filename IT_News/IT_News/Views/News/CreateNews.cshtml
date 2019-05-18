@@ -7,12 +7,9 @@
     ViewBag.Title = "Create News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
-<script type="text/javascript" src="http://lab.lepture.com/editor/editor.js"></script>
-<script type="text/javascript" src="http://lab.lepture.com/editor/marked.js"></script>
-@*<script type="text/javascript" src="/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>*@
-<script type="text/javascript" src="/Scripts/inline-attachment/inline-attachment.js"></script>
-<script type="text/javascript" src="/Scripts/inline-attachment/input.inline-attachment.js"></script>
+<link rel="stylesheet" href="~/Scripts/simplemde/codemirror/codemirror.css">
+<link rel="stylesheet" href="~/Scripts/simplemde/simplemde.min.css">
+<script src="~/Scripts/simplemde/simplemde.min.js"></script>
 
 <h2>Create News</h2>
 
@@ -47,10 +44,7 @@
     <input class="btn-primary" type="submit" value="Add" />
 
 }
-<textarea id="code" rows="10" cols="50"></textarea>
-<script type="text/javascript">
-    inlineAttachment.editors.input.attachToInput(document.getElementById("code"));
-</script>
+
 @section Scripts {
     <script>
         $(function () {
@@ -65,20 +59,11 @@
             })
         })
     </script>
-
     <script>
-        var editor = new Editor({
-            element: document.getElementById("myTextArea")
-        });
+        var simplemde = new SimpleMDE({ element: document.getElementById("myTextArea") });
 
-        editor.render();
-
-        drawImage = function (editor) {
-            var cm = editor.codemirror;
-            var stat = getState(cm);
-            _replaceSelection(cm, stat.image, '!!!!!!![', '](http://)!!!!!');
-        }
     </script>
+    simplemde.value();
 }
 
 

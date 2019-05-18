@@ -227,7 +227,7 @@
     <Compile Include="Util\NinjectRegistrations.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Files\image-1558038759236.jpg" />
+    <Content Include="Files\image-1558038759236.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -239,14 +239,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\dropzone\basic.css" />
-    <Content Include="Scripts\dropzone\basic.min.css" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
-    <Content Include="Scripts\dropzone\dropzone.css" />
-    <Content Include="Scripts\dropzone\dropzone.js" />
-    <Content Include="Scripts\dropzone\dropzone.min.css" />
-    <Content Include="Scripts\dropzone\dropzone.min.js" />
     <Content Include="Scripts\inline-attachment\codemirror-4.inline-attachment.js" />
     <Content Include="Scripts\inline-attachment\inline-attachment.js" />
     <Content Include="Scripts\inline-attachment\input.inline-attachment.js" />
@@ -260,6 +252,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\simplemde\codemirror\codemirror.css" />
+    <Content Include="Scripts\simplemde\codemirror\tablist.js" />
+    <Content Include="Scripts\simplemde\simplemde.min.css" />
+    <Content Include="Scripts\simplemde\simplemde.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -301,6 +297,7 @@
     <Content Include="Views\News\CreateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Files\" />
     <Folder Include="Content\Image\" />
   </ItemGroup>
   <ItemGroup>
