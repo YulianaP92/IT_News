@@ -7,9 +7,17 @@
     ViewBag.Title = "Create News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <link rel="stylesheet" href="~/Scripts/simplemde/codemirror/codemirror.css">
 <link rel="stylesheet" href="~/Scripts/simplemde/simplemde.min.css">
 <script src="~/Scripts/simplemde/simplemde.min.js"></script>
+<script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
+<script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
+
+@*<script type="text/javascript" src="~/Scripts/inline-attachment/input.inline-attachment.js"></script>*@
+
+
+
 
 <h2>Create News</h2>
 
@@ -59,11 +67,7 @@
             })
         })
     </script>
-    <script>
-        var simplemde = new SimpleMDE({ element: document.getElementById("myTextArea") });
-
-    </script>
-    simplemde.value();
+    <script src="~/Scripts/simplemde/simplemde.js"></script>
 }
 
 

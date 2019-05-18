@@ -30,9 +30,9 @@
     </div>
     <div>
         <p>@Model.NewsViewModels.Title</p>
-        <p>@Model.NewsViewModels.Text</p>
+        <p>@Html.Raw(ViewData["Mark"])</p>
     </div>
     <div>
-        @Html.Raw(ViewData["Mark"])
+        
     </div>
 </div>
