@@ -12,11 +12,17 @@
 .container {
     padding-left: 15px;
     padding-right: 15px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
 }
-
+.nav {
+    font-size: 20px;
+    padding-top: 10px;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
-*/
+
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -31,7 +37,9 @@ select,
     margin: 30px 0;
     padding-left: 20px;
 }
-
+.navbar-fixed-top {   
+    height: 70px;
+}
 #tagsCloud {
     width: 500px;
 }
@@ -47,55 +55,46 @@ h1 {
 
 A.tag1 {
     font-size: 0.7em;
-    color: aqua;
+    color: aquamarine;
 }
 
 A.tag2 {
     font-size: 0.85em;
-    color: aquamarine;
+    color: brown;
 }
 
 A.tag3 {
     font-size: 0.9em;
-    color: blue;
+    color: antiquewhite;
 }
 
 A.tag4 {
     font-size: 1em;
-    color: fuchsia;
+    color: beige;
 }
 
 A.tag5 {
     font-size: 1.2em;
-    color: black;
+    color: blueviolet;
 }
 
 A.tag6 {
     font-size: 1.4em;
-    color: #7e7e7e;
+    color: darkblue;
 }
 
 A.tag7 {
     font-size: 1.7em;
-    color: crimson;
+    color: darkgreen;
 }
 
 A.tag8 {
     font-size: 2.0em;
-    color: blueviolet
+    color: gold;
 }
 
 A.tag9 {
-    color: yellow;
     font-size: 4.0em;
-}
-
-A:visited {
-    color: #cecece;
-}
-
-A:active {
-    color: #ffff00;
 }
 
 #htmlArea {
@@ -104,4 +103,15 @@ A:active {
 }
 #text {
     max-width: 500px;
+}
+
+img {
+    width: 95%;
+}
+#tagsCloud a{
+    font-family: Arial;  
+    /*position: relative !important;
+    float: left;*/
+    padding: 5px 3px;
+    margin: 0 5px 5px 0;
 }

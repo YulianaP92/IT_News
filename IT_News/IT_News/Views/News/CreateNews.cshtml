@@ -14,11 +14,6 @@
 <script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
 <script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
 
-@*<script type="text/javascript" src="~/Scripts/inline-attachment/input.inline-attachment.js"></script>*@
-
-
-
-
 <h2>Create News</h2>
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
@@ -42,7 +37,6 @@
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-    @Html.LabelFor(model => model.Tags, "Tags:")
     <div id="block">
         <input type="text" name="Tags[0].Name" />
     </div>

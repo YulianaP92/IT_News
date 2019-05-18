@@ -4,14 +4,13 @@
 
 @{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
     body {
         background-image: url(/Content/Image/picture2.jpg);
     }
 </style>
-@Styles.Render("~/Content/css")
-@Scripts.Render("~/bundles/modernizr")
 <div id="heading">
     <h1>HOME</h1>
 </div>
@@ -19,7 +18,6 @@
     @Html.ActionLink("Create News", "CreateNews", "News")
 </p>
 <div style="color: white">
-    <h2>Tags</h2>
     <div id="tagsCloud">
         @foreach (var t in (IEnumerable<TagCloud>)ViewData["TagCloud"]) { 
         @*{@Html.RouteLink(t.Name,"Name",new{controller = "News",action = "GetTagClouds", id = t.Id},
@@ -28,11 +26,14 @@
             <span></span><span></span>
         }
     </div>
-    <div>
-        <p>@Model.NewsViewModels.Title</p>
-        <p>@Html.Raw(ViewData["Mark"])</p>
+    <div style="width: 45%">
+        <p style="font-size: 30px;color: brown">@Model.NewsViewModels.Title</p>
+        <p style="color: grey">@Model.NewsViewModels.ShortDescription</p>
+        <p style="color: white">@Html.Raw(ViewData["Mark"])</p>
+        <p style="color: grey">@Model.NewsViewModels.PostedOn</p>
+        <p style="color: grey">@Model.NewsViewModels.Section.Name</p>
+
     </div>
-    <div>
-        
+    <div>       
     </div>
 </div>
