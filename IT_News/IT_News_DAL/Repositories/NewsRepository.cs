@@ -71,8 +71,13 @@ namespace IT_News_DAL.Repositories
 
         public void Update(News news)
         {
-            _db.Entry(news).State = EntityState.Modified;
-            _db.SaveChanges();
+            var modifiedNewsInDb = _db.News.Find(news.Id); 
+            if(modifiedNewsInDb == null) return;
+            
+            _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
+            _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
+
+            //_db.SaveChanges();
         }
     }
 }

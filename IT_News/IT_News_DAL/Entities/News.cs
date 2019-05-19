@@ -10,7 +10,7 @@ namespace IT_News_DAL.Entities
         public string Text { get; set; }
         public string ShortDescription{ get; set; }
         public bool Published { get; set; }
-        public DateTime PostedOn{ get; set; }
+        public DateTime? PostedOn{ get; set; }
         public DateTime? Modified { get; set; }
         public virtual Section Section { get; set; }
         public virtual IList<Tag> Tags { get; set; }
