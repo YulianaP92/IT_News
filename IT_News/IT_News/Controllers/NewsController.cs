@@ -10,13 +10,13 @@ using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using IT_News_DAL.Entities;
+using Markdig;
 
 namespace IT_News.Controllers
 {
     public class NewsController : Controller
     {
         private INewsService newsService;
-
         public NewsController(INewsService newsService)
         {
             this.newsService = newsService;
@@ -54,7 +54,7 @@ namespace IT_News.Controllers
                 var allSections = newsService.GetAllSections();
                 var selectedSection = allSections.FirstOrDefault(x => x.Id == news.SectionId);
                 news.PostedOn = DateTime.Now;
-                var newsDto = Mapper.Map<NewsDTO>(news);
+                var newsDto = Mapper.Map<NewsDTO>(news);               
                 newsDto.Tags.Clear();
                 newsDto.Section = selectedSection;
                 newsService.Create(newsDto, tags);
@@ -79,6 +79,31 @@ namespace IT_News.Controllers
             var result = new {filename = shortPath };
             return Json(result);
         }
-
+        [HttpGet]
+        public ActionResult EditNews(int id)
+        {
+            var newsDto = newsService.Get(id);
+            if (newsDto == null)
+                return HttpNotFound();
+            var allSections = newsService.GetAllSections();
+            var result = Mapper.Map<List<SectionViewModel>>(allSections);
+            var html = Markdown.ToHtml(newsDto.Text);
+            ViewData["Mark"] = html;
+            
+            SelectList sections = new SelectList(result, "Id", "Name");
+            ViewBag.Sections = sections;
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
+            return View(newsViewModel);
+        }
+        [HttpPost]
+        public ActionResult EditNews(NewsViewModel newsViewModel)
+        {
+           var news= Mapper.Map<NewsDTO>(newsViewModel);
+            var allSections = newsService.GetAllSections();
+            var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
+            news.Section = selectedSection;
+            newsService.Update(news);
+            return RedirectToAction("Index","Home");
+        }
     }
 }

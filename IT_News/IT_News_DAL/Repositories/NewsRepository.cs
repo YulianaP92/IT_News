@@ -17,12 +17,15 @@ namespace IT_News_DAL.Repositories
         }
         public void Create(News news, List<Tag> tags)
         {
+            Section sectionRes;
+            sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name));
+            news.Section = sectionRes;
             // https://www.codeproject.com/Tips/893609/CRUD-Many-to-Many-Entity-Framework
             _db.News.Add(news);
 
             foreach (var tag in tags)
             {
-                var allTags = _db.Tags.ToList();
+                var allTags = _db.Tags.AsNoTracking().ToList();
                 Tag tagRes;
                 if (!allTags.Select(x=>x.Name).Contains(tag.Name))
                 {
@@ -36,6 +39,7 @@ namespace IT_News_DAL.Repositories
                 news.Tags.Add(tagRes);
                
             }
+            _db.Entry(news).State = EntityState.Added;
         }
 
         public void Delete(int id)
@@ -52,21 +56,22 @@ namespace IT_News_DAL.Repositories
 
         public IEnumerable<News> GetAll()
         {
-            return _db.News;
+            return _db.News.ToList();
         }
 
         public IEnumerable<Section> GetAllSections()
         {
-            return _db.Sections;
+            return _db.Sections.ToList();
         }
 
         public IEnumerable<Tag> GetAllTags()
         {
-            return _db.Tags;
+            return _db.Tags.ToList();
         }
 
         public void Update(News news)
         {
+            _db.Entry(news).CurrentValues.SetValues(news);
             _db.Entry(news).State = EntityState.Modified;
         }
     }

@@ -1,0 +1,69 @@
+﻿@using IT_News.Models.News
+@model IT_News.Models.News.NewsViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Edit News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Scripts/simplemde/codemirror/codemirror.css">
+<link rel="stylesheet" href="~/Scripts/simplemde/simplemde.min.css">
+<script src="~/Scripts/simplemde/simplemde.min.js"></script>
+<script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
+<script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
+
+<h2>Edit News</h2>
+
+@using (Html.BeginForm("EditNews", "News", FormMethod.Post))
+{
+    // @Html.HiddenFor(model => model.Id)
+    @Html.LabelFor(model => model.Title, "Title")
+    <br />
+    @Html.TextBoxFor(model => model.Title)
+    <br /><br />
+    @Html.LabelFor(model => model.ShortDescription, "Short Description")
+    <br />
+    @Html.TextAreaFor(model => model.ShortDescription, new { style = "width: 40%; max-width: 40%;" })
+    <br /><br />
+    @Html.LabelFor(model => model.Text, "Text")
+    <br />
+    <div id="text">
+        <textarea name="Text" id="myTextArea">@Html.Raw(ViewData["Mark"])</textarea>
+    </div>
+    <br /><br />
+    @Html.LabelFor(model => model.Section, "Section")
+    <br />
+    @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
+    <br /><br />
+    <div id="block">
+        <input type="text" name="Tags[0].Name" />
+    </div>
+    // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
+    //<input id="Name" name="Name" type="text" />
+    <p><a class="addLink">Add new tag</a></p>
+    <input class="btn-primary" type="submit" value="Save" />
+
+}
+
+@section Scripts {
+    <script>
+        $(function () {
+            var i = 0;
+            $('.addLink').click(function () {
+                i++;
+                var html2Add = "<div>" +
+                    "<h5>Tag " + (i + 1) + "</h5>" +
+                    "<input type='text' name='Tags[" + i + "].Name' />" +
+                    "</div>";
+                $('#block').append(html2Add);
+            })
+        })
+    </script>
+    <script src="~/Scripts/simplemde/simplemde.js"></script>
+}
+
+
+
+
