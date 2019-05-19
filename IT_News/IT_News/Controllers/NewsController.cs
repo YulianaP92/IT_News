@@ -87,9 +87,10 @@ namespace IT_News.Controllers
                 return HttpNotFound();
             var allSections = newsService.GetAllSections();
             var result = Mapper.Map<List<SectionViewModel>>(allSections);
-            var html = Markdown.ToHtml(newsDto.Text);
+            //var html = Markdown.ToHtml(newsDto.Text);
+            //ViewData["Mark"] = html;
+            var html = newsDto.Text;
             ViewData["Mark"] = html;
-            
             SelectList sections = new SelectList(result, "Id", "Name");
             ViewBag.Sections = sections;
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);

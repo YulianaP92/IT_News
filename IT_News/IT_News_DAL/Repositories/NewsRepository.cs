@@ -39,6 +39,7 @@ namespace IT_News_DAL.Repositories
                 news.Tags.Add(tagRes);
                
             }
+            _db.Entry(news).State = EntityState.Added;
         }
 
         public void Delete(int id)
@@ -71,6 +72,7 @@ namespace IT_News_DAL.Repositories
         public void Update(News news)
         {
             _db.Entry(news).State = EntityState.Modified;
+            _db.SaveChanges();
         }
     }
 }

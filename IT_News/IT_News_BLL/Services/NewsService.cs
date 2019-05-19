@@ -46,9 +46,8 @@ namespace IT_News_BLL.Services
 
         public void Update(NewsDTO item)
         {
-            var newsDAL = Mapper.Map<NewsDTO, News>(item);
+            var newsDAL = Mapper.Map<News>(item);
             Database.News.Update(newsDAL);
-            Database.Save();
         }
 
         public IEnumerable<SectionDTO> GetAllSections()

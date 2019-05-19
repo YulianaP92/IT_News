@@ -30,7 +30,7 @@
     @Html.LabelFor(model => model.Text, "Text")
     <br />
     <div id="text">
-        <textarea name="Text" id="myTextArea">@Html.Raw(ViewData["Mark"])</textarea>
+        <textarea name="Text" id="myTextArea">@ViewData["Mark"]</textarea>
     </div>
     <br /><br />
     @Html.LabelFor(model => model.Section, "Section")
