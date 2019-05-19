@@ -37,9 +37,13 @@
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-    <div id="block">
-        <input type="text" name="Tags[0].Name" />
-    </div>
+    foreach (var i in Model.Tags)
+    {
+        <div id="block">
+            @*<input type="text" name="i.Name" />*@
+            @Html.TextBoxFor(model => i.Name)
+        </div>
+    }
     // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
     //<input id="Name" name="Name" type="text" />
     <p><a class="addLink">Add new tag</a></p>
