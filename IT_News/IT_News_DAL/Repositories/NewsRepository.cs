@@ -76,8 +76,6 @@ namespace IT_News_DAL.Repositories
             
             _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
             _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
-
-            //_db.SaveChanges();
         }
     }
 }
