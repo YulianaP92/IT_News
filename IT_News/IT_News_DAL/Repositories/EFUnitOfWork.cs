@@ -9,6 +9,7 @@ namespace IT_News_DAL.Repositories
     {
         private readonly NewsContext db;
         private NewsRepository newsRepository;
+        private UserPageRepository userPageRepository;
 
         public EfUnitOfWork()
         {
@@ -21,6 +22,16 @@ namespace IT_News_DAL.Repositories
                 if (newsRepository == null)
                     newsRepository = new NewsRepository(db);
                 return newsRepository;
+            }
+        }
+
+        public IRepository<UserPage> UserPage
+        {
+            get
+            {
+                if (userPageRepository == null)
+                    userPageRepository = new UserPageRepository(db);
+                return userPageRepository;
             }
         }
 

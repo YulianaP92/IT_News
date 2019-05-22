@@ -7,7 +7,8 @@ namespace IT_News_DAL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
-        void Create(T item, List<Tag> tags);
+        void Create(T item, List<Tag> element);
+        void Create(T item);
         void Update(T item);
         void Delete(int id);
         IEnumerable<Section> GetAllSections();

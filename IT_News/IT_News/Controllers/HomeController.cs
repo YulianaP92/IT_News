@@ -7,14 +7,15 @@ using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using Markdig;
 using Markdig.Syntax;
+using Microsoft.AspNet.Identity;
 
 
 namespace IT_News.Controllers
 {
     public class HomeController : Controller
     {
-        private INewsService newsService;
-        public HomeController(INewsService newsService)
+        private IService newsService;
+        public HomeController(IService newsService)
         {
             this.newsService = newsService;
         }

@@ -42,6 +42,11 @@ namespace IT_News_DAL.Repositories
             _db.Entry(news).State = EntityState.Added;
         }
 
+        public void Create(News item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             var news = _db.News.Find(id);

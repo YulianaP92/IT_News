@@ -203,6 +203,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -211,6 +212,7 @@
     <Compile Include="Infrastucture\MappingProfiles\NewsMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\SectionMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\TagMappingProfile.cs" />
+    <Compile Include="Infrastucture\MappingProfiles\UserPageMappingProfile.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ChangeRoleViewModel.cs" />
@@ -222,6 +224,7 @@
     <Compile Include="Models\News\StartPageView.cs" />
     <Compile Include="Models\News\TagCloud.cs" />
     <Compile Include="Models\News\TagViewModel.cs" />
+    <Compile Include="Models\UserPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Util\NinjectRegistrations.cs" />
@@ -296,6 +299,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\CreateNews.cshtml" />
     <Content Include="Views\News\EditNews.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Files\" />

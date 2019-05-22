@@ -55,11 +55,13 @@
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Entities\UserPage.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EFUnitOfWork.cs" />
     <Compile Include="Repositories\NewsRepository.cs" />
+    <Compile Include="Repositories\UserPageRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,7 +9,7 @@ namespace IT_News_DAL.EF
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Tag> Tags { get; set; }
-
+        public DbSet<UserPage> UserPage { get; set; }
         public NewsContext() : base("NewsContext")
         {
 
@@ -29,6 +29,13 @@ namespace IT_News_DAL.EF
                 .HasMany(c => c.Comments)
                 .WithRequired(p => p.News);
 
+            modelBuilder.Entity<UserPage>()
+                .HasMany(c => c.News)
+                .WithRequired(p => p.UserPage);
+
+            //modelBuilder.Entity<Arbitter>()
+            //    .HasRequired(a => a.Game)
+            //    .WithRequiredPrincipal(g => g.Arbitter);
         }
     }
 }

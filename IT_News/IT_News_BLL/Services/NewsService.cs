@@ -8,7 +8,7 @@ using IT_News_DAL.Interfaces;
 
 namespace IT_News_BLL.Services
 {
-    public class NewsService : INewsService
+    public class NewsService : IService<NewsDTO>
     {
         IUnitOfWork Database { get; set; }
 
@@ -63,6 +63,11 @@ namespace IT_News_BLL.Services
             var allTags = Database.News.GetAllTags().ToList();
             var tagDto = Mapper.Map<IEnumerable<TagDTO>>(allTags).ToList();
             return tagDto;
+        }
+
+        public void Create(NewsDTO item)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using IT_News_BLL.DTO;
 
 namespace IT_News.Models.News
 {
@@ -16,5 +17,6 @@ namespace IT_News.Models.News
         public int SectionId { get; set; }
         public virtual IList<TagViewModel> Tags { get; set; }
         public virtual IList<CommentViewModel> Comments { get; set; }
+        public virtual UserPageViewModel UserPage { get; set; }
     }
 }

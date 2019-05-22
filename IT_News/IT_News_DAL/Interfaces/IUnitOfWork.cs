@@ -6,6 +6,7 @@ namespace IT_News_DAL.Interfaces
    public  interface IUnitOfWork:IDisposable
     {
         IRepository<News> News { get; }
+        IRepository<UserPage> UserPage { get; }
         void Save();
     }
 }
