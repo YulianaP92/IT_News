@@ -5,11 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
+using IT_News_DAL.Interfaces;
 
 namespace IT_News_BLL.Services
 {
     public class PageService : IService<UserPageDTO>
     {
+        IUnitOfWork Database { get; set; }
+
+        public PageService(IUnitOfWork database)
+        {
+            this.Database = database;
+        }
         public void Create(UserPageDTO item)
         {
             throw new NotImplementedException();

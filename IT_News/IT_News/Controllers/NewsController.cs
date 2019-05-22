@@ -16,8 +16,8 @@ namespace IT_News.Controllers
 {
     public class NewsController : Controller
     {
-        private IService newsService;
-        public NewsController(IService newsService)
+        private IService<NewsDTO> newsService;
+        public NewsController(IService<NewsDTO> newsService)
         {
             this.newsService = newsService;
         }

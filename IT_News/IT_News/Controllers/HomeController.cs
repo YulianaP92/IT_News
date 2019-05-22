@@ -14,23 +14,27 @@ namespace IT_News.Controllers
 {
     public class HomeController : Controller
     {
-        private IService newsService;
-        public HomeController(IService newsService)
+        private IService<NewsDTO> newsService;
+        public HomeController(IService<NewsDTO> newsService)
         {
             this.newsService = newsService;
         }
         public ActionResult Index()
         {
+            StartPageView show=null;
             //var newsDto = newsService.GetAll().ToList();
             var newsDto = newsService.GetAll().ToList().LastOrDefault();
-
+            if (newsDto!=null)
+            {
+                
+            
             //var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
             var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
 
             //newsViewModel.Text = 
             var tagsDto = newsService.GetAllTags().ToList();
             var tagsViewModel= Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
-            var show = new StartPageView()
+            show = new StartPageView()
             {
                 NewsViewModels = newsViewModel,
                 TagViewModel = tagsViewModel
@@ -39,7 +43,7 @@ namespace IT_News.Controllers
 
          var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
-
+            }
             return View(show);
             //return RedirectToAction("Index", "Home");
         }

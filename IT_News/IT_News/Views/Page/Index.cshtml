@@ -6,5 +6,22 @@
 }
 
 <h2>My Page</h2>
+@using (Html.BeginForm("Index", "Page", FormMethod.Post))
+{
 
+    @Html.LabelFor(model => model.Name, "Name")
+    <br/>
+    @Html.TextBoxFor(model => model.Name, "Name")
+    <br/><br/>
+    @Html.LabelFor(model => model.LastName, "Last Name")
+    <br/>
+    @Html.TextBoxFor(model => model.LastName, "LastName")
+    <br/><br/>
+    @Html.LabelFor(model => model.Age, "Age")
+    <br/>
+    @Html.TextBoxFor(model => model.Age, "Age")
+    <br/><br/>
+    <input class="btn-primary" type="submit" value="Add"/>
+
+}
 
