@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace IT_News.Controllers
 {
+    
     public class RoleController : Controller
     {
         private ApplicationUserManager _userManager;

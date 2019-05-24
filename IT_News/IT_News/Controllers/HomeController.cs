@@ -81,19 +81,5 @@ namespace IT_News.Controllers
                 return "tag7";
             return result <= 50 ? "tag8" : "tag9";
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

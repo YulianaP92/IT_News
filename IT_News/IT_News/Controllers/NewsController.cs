@@ -14,6 +14,7 @@ using Markdig;
 
 namespace IT_News.Controllers
 {
+    [Authorize(Roles = "admin,writer")]
     public class NewsController : Controller
     {
         private IService<NewsDTO> newsService;
@@ -21,20 +22,19 @@ namespace IT_News.Controllers
         {
             this.newsService = newsService;
         }
-        //    public ActionResult Index()
-        //    {
-        //        var news = newsService.GetAll();
-        //        var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-        //        return View(result);
-        //        //return RedirectToAction("Index", "Home");
-        //    }
-        //    //public ActionResult GetAllNews()
-        //    //{
-        //    //    var news = newsService.GetAll();
-        //    //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-        //    //    return View(result);
-        //    //}
-
+        public ActionResult MyNewsList()
+        {
+            var news = newsService.GetAll();
+            var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+            return View(result);
+            //return RedirectToAction("Index", "Home");
+        }
+        //public ActionResult GetAllNews()
+        //{
+        //    var news = newsService.GetAll();
+        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+        //    return View(result);
+        //}
         [HttpGet]
         public ActionResult CreateNews()
         {
@@ -61,7 +61,6 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file)
         {
@@ -105,6 +104,13 @@ namespace IT_News.Controllers
             news.Section = selectedSection;
             newsService.Update(news);
             return RedirectToAction("Index","Home");
+        }
+
+        public ViewResult Details(int id)
+        {
+            var newsDTO = newsService.Get(id);
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
+            return View(newsViewModel);
         }
     }
 }

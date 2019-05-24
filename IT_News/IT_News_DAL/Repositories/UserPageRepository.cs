@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,10 @@ namespace IT_News_DAL.Repositories
         {
            _db = context;
         }
-        public void Create(UserPage item)
+        public void Create(UserPage page)
         {
-            throw new NotImplementedException();
+            _db.UserPage.Add(page);
+            _db.Entry(page).State = EntityState.Added;
         }
 
         public void Create(UserPage item, List<Tag> element)
@@ -32,9 +34,9 @@ namespace IT_News_DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public UserPage Get(int id)
+        public UserPage Get(int idUser)
         {
-            throw new NotImplementedException();
+            return _db.UserPage.Find(idUser);
         }
 
         public IEnumerable<UserPage> GetAll()

@@ -4,24 +4,36 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>My Page</h2>
-@using (Html.BeginForm("Index", "Page", FormMethod.Post))
-{
+@*<link href="/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
 
-    @Html.LabelFor(model => model.Name, "Name")
-    <br/>
-    @Html.TextBoxFor(model => model.Name, "Name")
-    <br/><br/>
-    @Html.LabelFor(model => model.LastName, "Last Name")
-    <br/>
-    @Html.TextBoxFor(model => model.LastName, "LastName")
-    <br/><br/>
-    @Html.LabelFor(model => model.Age, "Age")
-    <br/>
-    @Html.TextBoxFor(model => model.Age, "Age")
-    <br/><br/>
-    <input class="btn-primary" type="submit" value="Add"/>
+    <link href="/Content/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <script src="/Scripts/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    <a href="#" id="username">Name</a>
+    <a href="#" id="username">Last Name</a>
+    <a href="#" id="username">Age</a>
 
-}
+    <script>
+        $('#username').editable({
+            type: 'text',
+            pk: 2,
+            url: '@Url.Action("Edit","Page")',
+            title: 'Enter username'
+        });
+    </script>*@
+@Html.LabelFor(model => model.Name, "Name")
+<br />
+@Html.TextBoxFor(model => model.Name, "Name")
+<br /><br />
+@Html.LabelFor(model => model.LastName, "Last Name")
+<br />
+@Html.TextBoxFor(model => model.LastName, "LastName")
+<br /><br />
+@Html.LabelFor(model => model.Age, "Age")
+<br />
+@Html.TextBoxFor(model => model.Age, "Age")
+<br /><br />
+@Html.Partial("/Views/News/MyNewsList.cshtml")
 

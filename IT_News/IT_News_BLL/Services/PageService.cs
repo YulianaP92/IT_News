@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
+using IT_News_DAL.Entities;
 using IT_News_DAL.Interfaces;
 
 namespace IT_News_BLL.Services
@@ -17,9 +19,12 @@ namespace IT_News_BLL.Services
         {
             this.Database = database;
         }
-        public void Create(UserPageDTO item)
+        public void Create(UserPageDTO pageDto)
         {
-            throw new NotImplementedException();
+
+            var pageDal = Mapper.Map<UserPage>(pageDto);
+            Database.UserPage.Create(pageDal);
+            Database.Save();
         }
 
         public void Create(UserPageDTO item, List<TagDTO> tags)
@@ -34,7 +39,9 @@ namespace IT_News_BLL.Services
 
         public UserPageDTO Get(int id)
         {
-            throw new NotImplementedException();
+            var page = Database.UserPage.Get(id);
+            var result = Mapper.Map<UserPageDTO>(page);
+            return result;
         }
 
         public IEnumerable<UserPageDTO> GetAll()

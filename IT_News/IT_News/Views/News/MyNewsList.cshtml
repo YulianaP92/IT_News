@@ -1,0 +1,40 @@
+﻿@model IEnumerable<IT_News.Models.News.NewsViewModel>
+
+<p>
+    @Html.ActionLink("Create News", "CreateNews")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>Title</th>
+        <th>ShortDescription</th>
+        <th>Section</th>
+        <th>Tags</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "EditNews", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Name)
+            </td>
+            <td>
+                @foreach (var tag in item.Tags)
+                {
+                   <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
+            </td>
+        </tr>
+    }
+
+</table>

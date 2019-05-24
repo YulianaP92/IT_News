@@ -9,7 +9,7 @@ using IT_News.Models;
 
 namespace IT_News.Controllers
 {
-    // [Authorize]
+    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -94,7 +94,6 @@ namespace IT_News.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
-        // GET: /Account/VerifyCode
         [AllowAnonymous]
         //проверка пользователя 
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -200,14 +199,12 @@ namespace IT_News.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
         }
 
-        // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -416,9 +413,9 @@ namespace IT_News.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
         }
-
+        [Authorize(Roles = "admin")]
         [HttpGet]
-        //[Authorize(Roles = "admin")]
+        
         public async Task<ActionResult> DeleteUser(string userName)
         {
             ApplicationUser user = await UserManager.FindByEmailAsync(userName);

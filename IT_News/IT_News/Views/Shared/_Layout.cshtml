@@ -1,10 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@model IT_News.Models.UserPageViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - IТ News</title>
-    
+
 
 </head>
 <body>
@@ -20,10 +22,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "About", "Home")</li>
-                    <li>@Html.ActionLink("Caregory", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("User Page", "Index", "Page")</li>
-                    <li>@Html.ActionLink("News", "Index", "News")</li>
+                    @if (Model!= null)
+                    {
+                        <li>@Html.ActionLink("User Page", "Index", "Page", new {id = Model.UserId}, new object())</li>
+                    }
+                    <li>@Html.ActionLink("Create Page", "Create", "Page")</li>
                     <li>
                         <a href="#">
                             <span class="glyphicon glyphicon-globe">EN/RU </span>
