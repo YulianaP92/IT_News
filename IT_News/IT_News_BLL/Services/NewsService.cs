@@ -69,5 +69,15 @@ namespace IT_News_BLL.Services
         {
             throw new System.NotImplementedException();
         }
+
+        public NewsDTO Get(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Create(NewsDTO item, List<NewsDTO> element)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

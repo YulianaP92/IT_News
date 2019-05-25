@@ -1,7 +1,7 @@
-﻿@model IEnumerable<IT_News.Models.News.NewsViewModel>
+﻿@model IT_News.Models.UserPageViewModel
 
 <p>
-    @Html.ActionLink("Create News", "CreateNews")
+    @Html.ActionLink("Create News", "CreateNews","News")
 </p>
 <table>
     <tr>
@@ -12,7 +12,7 @@
         <th>Tags</th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.News)
     {
         <tr>
             <td>
@@ -32,7 +32,7 @@
             <td>
                 @foreach (var tag in item.Tags)
                 {
-                   <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
+                    <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
             </td>
         </tr>
     }

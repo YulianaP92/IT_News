@@ -22,13 +22,13 @@ namespace IT_News.Controllers
         {
             this.newsService = newsService;
         }
-        public ActionResult MyNewsList()
-        {
-            var news = newsService.GetAll();
-            var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-            return View(result);
-            //return RedirectToAction("Index", "Home");
-        }
+        //public ActionResult MyNewsList()
+        //{
+        //    var news = newsService.GetAll();
+        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
+        //    return View(result);
+        //    //return RedirectToAction("Index", "Home");
+        //}
         //public ActionResult GetAllNews()
         //{
         //    var news = newsService.GetAll();

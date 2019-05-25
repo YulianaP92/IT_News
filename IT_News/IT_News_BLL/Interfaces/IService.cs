@@ -7,8 +7,10 @@ namespace IT_News_BLL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
+        T Get(string id);
         void Create(T item);
-        void Create(T item, List<TagDTO> tags);
+        void Create(T item, List<TagDTO> element);
+        void Create(T item, List<NewsDTO> element);
         void Update(T item);
         void Delete(int id);
         IEnumerable<SectionDTO> GetAllSections();

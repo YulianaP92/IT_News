@@ -7,7 +7,9 @@ namespace IT_News_DAL.Interfaces
     {
         IEnumerable<T> GetAll();
         T Get(int id);
+        T Get(string id);
         void Create(T item, List<Tag> element);
+        void Create(T item, List<News> element);
         void Create(T item);
         void Update(T item);
         void Delete(int id);

@@ -15,6 +15,12 @@ namespace IT_News_DAL.Repositories
         {
             this._db = context;
         }
+
+        public News Get(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Create(News news, List<Tag> tags)
         {
             Section sectionRes;
@@ -59,6 +65,7 @@ namespace IT_News_DAL.Repositories
             return _db.News.Find(id);
         }
 
+
         public IEnumerable<News> GetAll()
         {
             return _db.News.ToList();
@@ -81,6 +88,11 @@ namespace IT_News_DAL.Repositories
             
             _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
             _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
+        }
+
+        public void Create(News item, List<News> element)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

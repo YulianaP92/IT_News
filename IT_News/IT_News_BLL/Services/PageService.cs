@@ -29,7 +29,7 @@ namespace IT_News_BLL.Services
 
         public void Create(UserPageDTO item, List<TagDTO> tags)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(int id)
@@ -46,7 +46,9 @@ namespace IT_News_BLL.Services
 
         public IEnumerable<UserPageDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var allPage = Database.UserPage.GetAll().ToList();
+            var result = Mapper.Map<IEnumerable<UserPageDTO>>(allPage);
+            return result;
         }
 
         public IEnumerable<SectionDTO> GetAllSections()
@@ -62,6 +64,21 @@ namespace IT_News_BLL.Services
         public void Update(UserPageDTO item)
         {
             throw new NotImplementedException();
+        }
+
+        public UserPageDTO Get(string id)
+        {
+            var userPage = Database.UserPage.Get(id);
+            var result = Mapper.Map<UserPageDTO>(userPage);
+            return result;          
+        }
+
+        public void Create(UserPageDTO item, List<NewsDTO> news)
+        {
+            var newsCollection = Mapper.Map<List<News>>(news);
+            var pageDal = Mapper.Map<UserPage>(newsCollection);
+            Database.UserPage.Create(pageDal, newsCollection);
+            Database.Save();
         }
     }
 }

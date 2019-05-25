@@ -22,10 +22,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (Model!= null)
-                    {
-                        <li>@Html.ActionLink("User Page", "Index", "Page", new {id = Model.UserId}, new object())</li>
-                    }
+                    <li>@Html.ActionLink("User Page", "Index", "Page")</li>
                     <li>@Html.ActionLink("Create Page", "Create", "Page")</li>
                     <li>
                         <a href="#">

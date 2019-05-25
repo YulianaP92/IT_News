@@ -21,25 +21,21 @@ namespace IT_News.Controllers
         {
             this.pageService = pageService;
         }
-        public ActionResult Index(string page)
+        public ActionResult Index()
         {
-            UserPageViewModel userPageViewModel = null;
-            if (page!=null)
-            {
-               
-                var currentUserId = User.Identity.GetUserId();
-                if (currentUserId == page)
+           UserPageViewModel userPageViewModel = null;
+            var currentUserId = User.Identity.GetUserId();
+            if (currentUserId !=null)
+            {               
+                var userPageDto = pageService.Get(currentUserId);
+                if (userPageDto != null)
                 {
-                    var userPageDto = pageService.Get(page);
-                    if (userPageDto != null)
-                    {
-                        userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
-                    }
+                    userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
                 }
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(userPageViewModel);
@@ -61,7 +57,7 @@ namespace IT_News.Controllers
                 var pageDto = Mapper.Map<UserPageDTO>(page);
                 pageService.Create(pageDto);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Page");
         }
     }
 }
