@@ -79,5 +79,12 @@ namespace IT_News_BLL.Services
         {
             throw new System.NotImplementedException();
         }
+
+        public IEnumerable<UserPageDTO> GetAllUsers()
+        {
+            var allUsers = Database.News.GetAllUsers().ToList();
+            var allUsersDto = Mapper.Map<IEnumerable<UserPageDTO>>(allUsers).ToList();
+            return allUsersDto;
+        }
     }
 }

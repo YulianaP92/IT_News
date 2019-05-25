@@ -6,6 +6,7 @@ namespace IT_News_DAL.Interfaces
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
+        IEnumerable<UserPage> GetAllUsers();
         T Get(int id);
         T Get(string id);
         void Create(T item, List<Tag> element);

@@ -31,21 +31,6 @@ namespace IT_News_DAL.Repositories
         }
         public void Create(UserPage page, List<News> listNews)
         {
-
-            Section sectionRes;
-            sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name));
-            news.Section = sectionRes;
-            _db.News.Add(news);
-
-            foreach (var news in listNews)
-            {
-                //var allTags = _db.Tags.AsNoTracking().ToList();
-                News newsRes;
-                newsRes = _db.News.Add(news);
-                page.News.Add(newsRes);
-
-            }
-            _db.Entry(page).State = EntityState.Added;
         }
         public void Delete(int id)
         {
@@ -72,6 +57,11 @@ namespace IT_News_DAL.Repositories
         }
 
         public IEnumerable<Tag> GetAllTags()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<UserPage> GetAllUsers()
         {
             throw new NotImplementedException();
         }

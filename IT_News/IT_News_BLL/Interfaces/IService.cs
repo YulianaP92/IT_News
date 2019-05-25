@@ -15,5 +15,6 @@ namespace IT_News_BLL.Interfaces
         void Delete(int id);
         IEnumerable<SectionDTO> GetAllSections();
         IEnumerable<TagDTO> GetAllTags();
+        IEnumerable<UserPageDTO> GetAllUsers();
     }
 }

@@ -35,6 +35,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
+                .ForMember(dest => dest.UserPage, c => c.MapFrom(src => src.UserPage))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapNewsDTOToNewsViewModel()
@@ -50,6 +51,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.UserPage, c => c.MapFrom(src => src.UserPage))
                 .ForAllOtherMembers(c => c.Ignore());
         }
 
@@ -65,6 +67,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.UserPage, c => c.MapFrom(src => src.UserPage))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }
@@ -80,6 +83,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Section, c => c.MapFrom(src => src.Section))
                 .ForMember(dest => dest.Tags, c => c.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, c => c.MapFrom(src => src.Comments))
+                .ForMember(dest => dest.UserPage, c => c.MapFrom(src => src.UserPage))
                 .ForMember(dest => dest.Text, c => c.MapFrom(src => src.Text))
                 .ForAllOtherMembers(c => c.Ignore());
         }

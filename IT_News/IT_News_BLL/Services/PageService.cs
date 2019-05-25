@@ -61,6 +61,11 @@ namespace IT_News_BLL.Services
             throw new NotImplementedException();
         }
 
+        public IEnumerable<UserPageDTO> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(UserPageDTO item)
         {
             throw new NotImplementedException();
@@ -75,10 +80,6 @@ namespace IT_News_BLL.Services
 
         public void Create(UserPageDTO item, List<NewsDTO> news)
         {
-            var newsCollection = Mapper.Map<List<News>>(news);
-            var pageDal = Mapper.Map<UserPage>(newsCollection);
-            Database.UserPage.Create(pageDal, newsCollection);
-            Database.Save();
         }
     }
 }

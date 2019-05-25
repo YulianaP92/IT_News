@@ -26,6 +26,10 @@ namespace IT_News_DAL.Repositories
             Section sectionRes;
             sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name));
             news.Section = sectionRes;
+            UserPage userPage;
+            //ОШИБКА!!!!!!!!!!!!!!!!!!!!
+            userPage = _db.UserPage.FirstOrDefault(x => x.UserId.Equals(news.UserPage.UserId));
+            news.UserPage = userPage;
             // https://www.codeproject.com/Tips/893609/CRUD-Many-to-Many-Entity-Framework
             _db.News.Add(news);
 
@@ -93,6 +97,11 @@ namespace IT_News_DAL.Repositories
         public void Create(News item, List<News> element)
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<UserPage> GetAllUsers()
+        {
+            return _db.UserPage.ToList();
         }
     }
 }

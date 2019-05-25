@@ -11,6 +11,7 @@ using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using IT_News_DAL.Entities;
 using Markdig;
+using Microsoft.AspNet.Identity;
 
 namespace IT_News.Controllers
 {
@@ -50,13 +51,20 @@ namespace IT_News.Controllers
             if (news != null)
             {
                 var tags = Mapper.Map<List<TagDTO>>(news.Tags);
-
                 var allSections = newsService.GetAllSections();
                 var selectedSection = allSections.FirstOrDefault(x => x.Id == news.SectionId);
+
+                var currentUserId = User.Identity.GetUserId();
+                var allUsers= newsService.GetAllUsers();
+                var getUser = allUsers.FirstOrDefault(x=>x.UserId== currentUserId);
+
                 news.PostedOn = DateTime.Now;
                 var newsDto = Mapper.Map<NewsDTO>(news);               
                 newsDto.Tags.Clear();
                 newsDto.Section = selectedSection;
+
+                newsDto.UserPage = getUser;
+
                 newsService.Create(newsDto, tags);
             }
             return RedirectToAction("Index", "Home");
