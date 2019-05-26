@@ -3,47 +3,60 @@
 <p>
     @Html.ActionLink("Create News", "CreateNews", "News")
 </p>
-
+<div id="news">
 <table class="table table-bordered">
     <tr scope="row" class="table-active">
         <th>Edit</th>
         <th>Details</th>
         <th>Delete</th>
-        <th>@Html.ActionLink("Title", "Index","Page", new { sortOrder = ViewBag.NameSortParm },new object()) </th>
+        <th>@*@Html.ActionLink("Title", "Index","Page", new { sortOrder = ViewBag.NameSortParm },new object())*@       
+            @Ajax.ActionLink("Title", "Index", "Page", new { sortOrder = ViewBag.TitleSort}, new AjaxOptions {
+                HttpMethod = "GET",
+                UpdateTargetId = "news",
+                InsertionMode = InsertionMode.Replace
+            })
+        
+        </th>
         <th>Short Description</th>
         <th>Section</th>
         <th>Tags</th>
-        <th> @Html.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new object()) </th>
+        <th> @*@Html.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new object())*@
+            @Ajax.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new AjaxOptions {
+           HttpMethod = "GET",
+           UpdateTargetId = "news",
+           InsertionMode = InsertionMode.Replace
+       })</th>
     </tr>
     @foreach (var item in Model.News)
     {
-    <tr scope="row">
-        <td>
-            @Html.ActionLink("Edit", "EditNews", new { id = item.Id })
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.Id })
-        </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ShortDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Section.Name)
-        </td>
-        <td>
-            @foreach (var tag in item.Tags)
-            {
-                <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostedOn)
-        </td>
-    </tr>
+        <tr scope="row">
+            <td>
+                @Html.ActionLink("Edit", "EditNews", new { id = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Name)
+            </td>
+            <td>
+                @foreach (var tag in item.Tags)
+                {
+                    <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostedOn)
+            </td>
+        </tr>
     }
 </table>
+</div>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using AutoMapper;
+using IT_News.Models;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
@@ -119,6 +120,12 @@ namespace IT_News.Controllers
             var newsDTO = newsService.Get(id);
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             return View(newsViewModel);
+        }
+
+        public ActionResult MyNewsList(UserPageViewModel userPage)
+        { 
+           
+            return PartialView("MyNewsList", userPage);
         }
     }
 }

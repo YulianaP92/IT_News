@@ -101,5 +101,6 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Page");
         }
+      
     }
 }
