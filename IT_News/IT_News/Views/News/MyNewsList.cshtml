@@ -9,11 +9,11 @@
         <th>Edit</th>
         <th>Details</th>
         <th>Delete</th>
-        <th>Title</th>
+        <th>@Html.ActionLink("Title", "Index","Page", new { sortOrder = ViewBag.NameSortParm },new object()) </th>
         <th>Short Description</th>
         <th>Section</th>
         <th>Tags</th>
-        <th>Date</th>
+        <th> @Html.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new object()) </th>
     </tr>
     @foreach (var item in Model.News)
     {

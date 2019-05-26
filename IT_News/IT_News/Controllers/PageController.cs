@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using IT_News.Models;
+using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using IT_News_BLL.Services;
@@ -21,12 +23,32 @@ namespace IT_News.Controllers
         {
             this.pageService = pageService;
         }
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    UserPageViewModel userPageViewModel = null;
+        //    var currentUserId = User.Identity.GetUserId();
+        //    if (currentUserId != null)
+        //    {
+        //        var userPageDto = pageService.Get(currentUserId);
+        //        if (userPageDto != null)
+        //        {
+        //            userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+
+        //    return View(userPageViewModel);
+        //}
+
+        public ActionResult Index(string sortOrder)
         {
-           UserPageViewModel userPageViewModel = null;
+            UserPageViewModel userPageViewModel = null;
             var currentUserId = User.Identity.GetUserId();
-            if (currentUserId !=null)
-            {               
+            if (currentUserId != null)
+            {
                 var userPageDto = pageService.Get(currentUserId);
                 if (userPageDto != null)
                 {
@@ -38,8 +60,28 @@ namespace IT_News.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
+            var news = userPageViewModel.News;
+            switch (sortOrder)
+            {
+                case "Title desc":
+                    news = news.OrderByDescending(s => s.Title).ToList();
+                    break;
+                case "Date":
+                    news = news.OrderBy(s => s.PostedOn).ToList();
+                    break;
+                case "Date desc":
+                    news = news.OrderByDescending(s => s.PostedOn).ToList();
+                    break;
+                default:
+                    news = news.OrderBy(s => s.PostedOn).ToList();
+                    break;
+            }
+            userPageViewModel.News = news.ToList();
             return View(userPageViewModel);
         }
+
         public ActionResult Create()
         {
             // var currentUserId = User.Identity.GetUserId();
