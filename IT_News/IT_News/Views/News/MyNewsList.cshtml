@@ -1,23 +1,29 @@
 ﻿@model IT_News.Models.UserPageViewModel
 
 <p>
-    @Html.ActionLink("Create News", "CreateNews","News")
+    @Html.ActionLink("Create News", "CreateNews", "News")
 </p>
-<table>
-    <tr>
-        <th></th>
+
+<table class="table table-bordered">
+    <tr scope="row" class="table-active">
+        <th>Edit</th>
+        <th>Details</th>
+        <th>Delete</th>
         <th>Title</th>
-        <th>ShortDescription</th>
+        <th>Short Description</th>
         <th>Section</th>
         <th>Tags</th>
     </tr>
-
     @foreach (var item in Model.News)
     {
-        <tr>
+        <tr scope="row">
             <td>
-                @Html.ActionLink("Edit", "EditNews", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Edit", "EditNews", new { id = item.Id })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+            <td>
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
             <td>
@@ -36,5 +42,4 @@
             </td>
         </tr>
     }
-
 </table>
