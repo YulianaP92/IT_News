@@ -10,7 +10,7 @@
     </p>
     <div>
 
-        @using (Ajax.BeginForm("NewsSearch", "Page",
+        @using (Ajax.BeginForm("SortAndSearch", "Page",
             new AjaxOptions
             {
                 UpdateTargetId = "news",
@@ -28,7 +28,7 @@
                 <th>Details</th>
                 <th>Delete</th>
                 <th>
-                    @Ajax.ActionLink("Title", "Index", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
+                    @Ajax.ActionLink("Title", "SortAndSearch", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
                     {
                         HttpMethod = "GET",
                         UpdateTargetId = "news",
@@ -41,7 +41,7 @@
                 <th>Tags</th>
                 <th>
 
-                    @Ajax.ActionLink("Date", "Index", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
+                    @Ajax.ActionLink("Date", "SortAndSearch", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
                     {
                         HttpMethod = "GET",
                         UpdateTargetId = "news",

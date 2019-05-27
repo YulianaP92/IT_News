@@ -43,7 +43,7 @@ namespace IT_News.Controllers
         //    return View(userPageViewModel);
         //}
         [HttpGet]
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index()
         {
             UserPageViewModel userPageViewModel = null;
             var currentUserId = User.Identity.GetUserId();
@@ -60,14 +60,34 @@ namespace IT_News.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            return View(userPageViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult SortAndSearch(string sortOrder, string searchString)
+        {
+            UserPageViewModel userPageViewModel = null;
+            var currentUserId = User.Identity.GetUserId();
+            if (currentUserId != null)
+            {
+                var userPageDto = pageService.Get(currentUserId);
+                if (userPageDto != null)
+                {
+                    userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
             var news = userPageViewModel.News;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    news = news.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
-            //                                   || s.Section.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
-            //}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                news = news.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Section.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
             switch (sortOrder)
             {
                 case "Title desc":
@@ -85,38 +105,12 @@ namespace IT_News.Controllers
             }
             //if (Request.IsAjaxRequest())
             //{
-               
-                userPageViewModel.News = news.ToList();
+
+            userPageViewModel.News = news.ToList();
             //    return PartialView("MyNewsList", userPageViewModel);
             //}
-            return View(userPageViewModel);
-        }
-
-        [HttpPost]
-        public ActionResult NewsSearch(string searchString)
-        {
-            UserPageViewModel userPageViewModel = null;
-            var currentUserId = User.Identity.GetUserId();
-            if (currentUserId != null)
-            {
-                var userPageDto = pageService.Get(currentUserId);
-                if (userPageDto != null)
-                {
-                    userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
-                }
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            var news = userPageViewModel.News;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                news = news.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Section.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
-            }
-            userPageViewModel.News = news.ToList();
-            return View("MyNewsList");
+            //return PartialView("MyNewsList", userPageViewModel);
+            return View("Index", userPageViewModel);
         }
         public ActionResult Create()
         {
@@ -137,6 +131,6 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Page");
         }
-      
+
     }
 }
