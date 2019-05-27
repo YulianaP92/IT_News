@@ -42,8 +42,8 @@ namespace IT_News.Controllers
 
         //    return View(userPageViewModel);
         //}
-
-        public ActionResult Index(string sortOrder)
+        
+        public ActionResult Index()
         {
             UserPageViewModel userPageViewModel = null;
             var currentUserId = User.Identity.GetUserId();
@@ -59,26 +59,6 @@ namespace IT_News.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
-            var news = userPageViewModel.News;
-            switch (sortOrder)
-            {
-                case "Title desc":
-                    news = news.OrderByDescending(s => s.Title).ToList();
-                    break;
-                case "Date":
-                    news = news.OrderBy(s => s.PostedOn).ToList();
-                    break;
-                case "Date desc":
-                    news = news.OrderByDescending(s => s.PostedOn).ToList();
-                    break;
-                default:
-                    news = news.OrderBy(s => s.PostedOn).ToList();
-                    break;
-            }
-            userPageViewModel.News = news.ToList();
             return View(userPageViewModel);
         }
 

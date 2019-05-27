@@ -27,22 +27,22 @@
 @using (Html.BeginForm("Create", "Page", FormMethod.Post))
 {
     @Html.LabelFor(model => model.Name, "Name")
-    <br/>
+    <br />
     @Html.TextBoxFor(model => model.Name, "Name")
-    <br/>
-    <br/>
+    <br />
+    <br />
     @Html.LabelFor(model => model.LastName, "Last Name")
-    <br/>
+    <br />
     @Html.TextBoxFor(model => model.LastName, "LastName")
-    <br/>
-    <br/>
+    <br />
+    <br />
     @Html.LabelFor(model => model.Age, "Age")
-    <br/>
+    <br />
     @Html.TextBoxFor(model => model.Age, "Age")
-    <br/>
-    <br/>
-    @Html.Action("MyNewsList", "News",Model)
-    <br/>
-    <br/>
-    <input class="btn-primary" type="submit" value="Save"/>
+    <br />
+    <br />
+    @Html.Action("MyNewsList", "News", Model)
+    <br />
+    <br />
+    <input class="btn-primary" type="submit" value="Save" />
 }
