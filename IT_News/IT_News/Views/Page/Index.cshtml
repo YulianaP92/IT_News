@@ -24,8 +24,8 @@
             title: 'Enter username'
         });
     </script>*@
-@using (Html.BeginForm("Create", "Page", FormMethod.Post))
-{
+@*@using (Html.BeginForm("Create", "Page", FormMethod.Post))
+{*@
     @Html.LabelFor(model => model.Name, "Name")
     <br />
     @Html.TextBoxFor(model => model.Name, "Name")
@@ -45,4 +45,4 @@
     <br />
     <br />
     <input class="btn-primary" type="submit" value="Save" />
-}
+@*}*@

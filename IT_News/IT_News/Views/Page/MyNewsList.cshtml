@@ -1,36 +1,52 @@
 ﻿@model IT_News.Models.UserPageViewModel
 
-<script src="/Scripts/jquery.unobtrusive-ajax.min.js" type = "text / javascript" ></script>
+<script src="/Scripts/jquery.unobtrusive-ajax.min.js" type="text / javascript"></script>
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 <div id="news">
     <p>
         @Html.ActionLink("Create News", "CreateNews", "News")
     </p>
     <div>
+
+        @using (Ajax.BeginForm("NewsSearch", "Page",
+            new AjaxOptions
+            {
+                UpdateTargetId = "news",
+                HttpMethod = "post"
+            }))
+        {
+            <p>
+                @Html.TextBox("searchString")
+                <input type="submit" id="submit" name="submit" value="Search" />
+            </p>
+        }
         <table class="table table-bordered">
             <tr scope="row" class="table-active">
                 <th>Edit</th>
                 <th>Details</th>
                 <th>Delete</th>
                 <th>
-                    @*@Html.ActionLink("Title", "Index","Page", new { sortOrder = ViewBag.NameSortParm },new object())*@
-                    @Ajax.ActionLink("Title", "Index","Page", new {sortOrder = ViewBag.NameSortParm }, new AjaxOptions {
-                   HttpMethod = "GET",
-                   UpdateTargetId = "news",
-                   InsertionMode = InsertionMode.Replace
-               })
+                    @Ajax.ActionLink("Title", "Index", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "news",
+                        InsertionMode = InsertionMode.Replace
+                    })
 
                 </th>
                 <th>Short Description</th>
                 <th>Section</th>
                 <th>Tags</th>
                 <th>
-                    @*@Html.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new object())*@
-                    
-                    @Ajax.ActionLink("Date", "Index", "Page", new {sortOrder = ViewBag.DateSortParm }, new AjaxOptions {
-                   HttpMethod = "GET",
-                   UpdateTargetId = "news",
-                   InsertionMode = InsertionMode.Replace
-               })
+
+                    @Ajax.ActionLink("Date", "Index", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "news",
+                        InsertionMode = InsertionMode.Replace
+                    })
                 </th>
             </tr>
 
@@ -69,3 +85,4 @@
         </table>
     </div>
 </div>
+
