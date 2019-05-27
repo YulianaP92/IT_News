@@ -13,11 +13,11 @@
                 <th>Delete</th>
                 <th>
                     @*@Html.ActionLink("Title", "Index","Page", new { sortOrder = ViewBag.NameSortParm },new object())*@
-                    @Ajax.ActionLink("Title", "MyNewsList", new { id = Model.Id, sortOrder = ViewBag.TitleSort}, new AjaxOptions {
-                        HttpMethod = "GET",
-                        UpdateTargetId = "news",
-                        InsertionMode = InsertionMode.Replace
-                    })
+                    @Ajax.ActionLink("Title", "Index","Page", new {sortOrder = ViewBag.NameSortParm }, new AjaxOptions {
+                   HttpMethod = "GET",
+                   UpdateTargetId = "news",
+                   InsertionMode = InsertionMode.Replace
+               })
 
                 </th>
                 <th>Short Description</th>
@@ -25,11 +25,12 @@
                 <th>Tags</th>
                 <th>
                     @*@Html.ActionLink("Date", "Index", "Page", new { sortOrder = ViewBag.DateSortParm }, new object())*@
-                    @Ajax.ActionLink("Date", "MyNewsList", new { id = Model.Id, sortOrder = ViewBag.DateSortParm }, new AjaxOptions {
-                        HttpMethod = "GET",
-                        UpdateTargetId = "news",
-                        InsertionMode = InsertionMode.Replace
-                    })
+                    
+                    @Ajax.ActionLink("Date", "Index", "Page", new {sortOrder = ViewBag.DateSortParm }, new AjaxOptions {
+                   HttpMethod = "GET",
+                   UpdateTargetId = "news",
+                   InsertionMode = InsertionMode.Replace
+               })
                 </th>
             </tr>
 
