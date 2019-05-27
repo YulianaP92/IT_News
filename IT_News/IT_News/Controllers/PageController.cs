@@ -61,7 +61,32 @@ namespace IT_News.Controllers
             }
             return View(userPageViewModel);
         }
-
+        //[HttpPost]
+        public ActionResult MyNewsList(int id, string sortOrder)
+        {
+            var userPageDto = pageService.Get(id);
+            var userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
+            var news = userPageViewModel.News;
+            switch (sortOrder)
+            {
+                case "Title desc":
+                    news = news.OrderByDescending(s => s.Title).ToList();
+                    break;
+                case "Date":
+                    news = news.OrderBy(s => s.PostedOn).ToList();
+                    break;
+                case "Date desc":
+                    news = news.OrderByDescending(s => s.PostedOn).ToList();
+                    break;
+                default:
+                    news = news.OrderBy(s => s.PostedOn).ToList();
+                    break;
+            }
+            userPageViewModel.News = news.ToList();
+            return PartialView("MyNewsList", userPageViewModel);
+        }
         public ActionResult Create()
         {
             // var currentUserId = User.Identity.GetUserId();
