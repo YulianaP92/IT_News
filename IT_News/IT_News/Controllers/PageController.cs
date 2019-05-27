@@ -110,7 +110,7 @@ namespace IT_News.Controllers
             //    return PartialView("MyNewsList", userPageViewModel);
             //}
             //return PartialView("MyNewsList", userPageViewModel);
-            return View("Index", userPageViewModel);
+            return View("MyNewsList", userPageViewModel);
         }
         public ActionResult Create()
         {

@@ -24,25 +24,27 @@
             title: 'Enter username'
         });
     </script>*@
-@*@using (Html.BeginForm("Create", "Page", FormMethod.Post))
-{*@
-    @Html.LabelFor(model => model.Name, "Name")
-    <br />
-    @Html.TextBoxFor(model => model.Name, "Name")
-    <br />
-    <br />
-    @Html.LabelFor(model => model.LastName, "Last Name")
-    <br />
-    @Html.TextBoxFor(model => model.LastName, "LastName")
-    <br />
-    <br />
-    @Html.LabelFor(model => model.Age, "Age")
-    <br />
-    @Html.TextBoxFor(model => model.Age, "Age")
-    <br />
-    <br />
+@Html.LabelFor(model => model.Name, "Name")
+<br />
+@Html.TextBoxFor(model => model.Name, "Name")
+<br />
+<br />
+@Html.LabelFor(model => model.LastName, "Last Name")
+<br />
+@Html.TextBoxFor(model => model.LastName, "LastName")
+<br />
+<br />
+@Html.LabelFor(model => model.Age, "Age")
+<br />
+@Html.TextBoxFor(model => model.Age, "Age")
+<br />
+<br />
+<div id="news">
     @Html.Partial("MyNewsList")
-    <br />
-    <br />
-    @*<input class="btn-primary" type="submit" value="Save" />*@
-@*}*@
+</div>
+<br />
+<br />
+<script src="/Scripts/jquery.unobtrusive-ajax.min.js" type="text / javascript"></script>
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
