@@ -103,25 +103,16 @@ namespace IT_News.Controllers
                     news = news.OrderBy(s => s.PostedOn).ToList();
                     break;
             }
-            //if (Request.IsAjaxRequest())
-            //{
-
             userPageViewModel.News = news.ToList();
-            //    return PartialView("MyNewsList", userPageViewModel);
-            //}
-            //return PartialView("MyNewsList", userPageViewModel);
-            return View("MyNewsList", userPageViewModel);
+            return PartialView("MyNewsList", userPageViewModel);
         }
         public ActionResult Create()
         {
-            // var currentUserId = User.Identity.GetUserId();
-
             return View();
         }
         [HttpPost]
         public ActionResult Create(UserPageViewModel page)
         {
-
             if (page != null)
             {
                 var currentUserId = User.Identity.GetUserId();
@@ -131,6 +122,5 @@ namespace IT_News.Controllers
             }
             return RedirectToAction("Index", "Page");
         }
-
     }
 }
