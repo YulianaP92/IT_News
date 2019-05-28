@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using AutoMapper;
-using IT_News.Models;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
-using IT_News_DAL.Entities;
-using Markdig;
 using Microsoft.AspNet.Identity;
 
 namespace IT_News.Controllers
@@ -56,11 +51,11 @@ namespace IT_News.Controllers
                 var selectedSection = allSections.FirstOrDefault(x => x.Id == news.SectionId);
 
                 var currentUserId = User.Identity.GetUserId();
-                var allUsers= newsService.GetAllUsers();
-                var getUser = allUsers.FirstOrDefault(x=>x.UserId== currentUserId);
+                var allUsers = newsService.GetAllUsers();
+                var getUser = allUsers.FirstOrDefault(x => x.UserId == currentUserId);
 
                 news.PostedOn = DateTime.Now;
-                var newsDto = Mapper.Map<NewsDTO>(news);               
+                var newsDto = Mapper.Map<NewsDTO>(news);
                 newsDto.Tags.Clear();
                 newsDto.Section = selectedSection;
 
@@ -71,7 +66,7 @@ namespace IT_News.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase file)
+        public ActionResult Upload(HttpPostedFileBase file) //сохранение картинки на сервер в markdown
         {
             string shortPath = null;
             if (file != null)
@@ -83,8 +78,7 @@ namespace IT_News.Controllers
                 var path = Server.MapPath(shortPath);
                 file.SaveAs(path);
             }
-
-            var result = new {filename = shortPath };
+            var result = new { filename = shortPath };
             return Json(result);
         }
         [HttpGet]
@@ -95,8 +89,6 @@ namespace IT_News.Controllers
                 return HttpNotFound();
             var allSections = newsService.GetAllSections();
             var result = Mapper.Map<List<SectionViewModel>>(allSections);
-            //var html = Markdown.ToHtml(newsDto.Text);
-            //ViewData["Mark"] = html;
             var html = newsDto.Text;
             ViewData["Mark"] = html;
             SelectList sections = new SelectList(result, "Id", "Name");
@@ -107,20 +99,19 @@ namespace IT_News.Controllers
         [HttpPost]
         public ActionResult EditNews(NewsViewModel newsViewModel)
         {
-           var news= Mapper.Map<NewsDTO>(newsViewModel);
+            var news = Mapper.Map<NewsDTO>(newsViewModel);
             var allSections = newsService.GetAllSections();
             var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
             news.Section = selectedSection;
             newsService.Update(news);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
-
-        public ViewResult Details(int id)
+        public ActionResult Details(int id)
         {
             var newsDTO = newsService.Get(id);
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
-            return View(newsViewModel);
+            return PartialView("Details",newsViewModel);
         }
-       
+
     }
 }

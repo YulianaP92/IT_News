@@ -114,3 +114,9 @@ img {
     padding: 5px 3px;
     margin: 0 5px 5px 0;
 }
+#details {
+    top: 10px;
+    left: 300px;
+    bottom: 400px;
+    right: 0px;
+}
