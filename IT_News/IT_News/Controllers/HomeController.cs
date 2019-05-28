@@ -6,8 +6,6 @@ using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using Markdig;
-using Markdig.Syntax;
-using Microsoft.AspNet.Identity;
 
 
 namespace IT_News.Controllers
@@ -21,45 +19,38 @@ namespace IT_News.Controllers
         }
         public ActionResult Index()
         {
-            StartPageView show=null;
-            //var newsDto = newsService.GetAll().ToList();
+            StartPageView show = null;
             var newsDto = newsService.GetAll().ToList().LastOrDefault();
-            if (newsDto!=null)
+            if (newsDto != null)
             {
-                
-            
-            //var newsViewModel = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(newsDto).ToList();
-            var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
+                var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
+                var tagsDto = newsService.GetAllTags().ToList();
+                var tagsViewModel = Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
+                show = new StartPageView()
+                {
+                    NewsViewModels = newsViewModel,
+                    TagViewModel = tagsViewModel
+                };
+                ViewData["TagCloud"] = GetTagClouds();
 
-            //newsViewModel.Text = 
-            var tagsDto = newsService.GetAllTags().ToList();
-            var tagsViewModel= Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
-            show = new StartPageView()
-            {
-                NewsViewModels = newsViewModel,
-                TagViewModel = tagsViewModel
-            };
-            ViewData["TagCloud"] = GetTagClouds();
-
-         var html = Markdown.ToHtml(newsViewModel.Text);
-            ViewData["Mark"] = html;
+                var html = Markdown.ToHtml(newsViewModel.Text);
+                ViewData["Mark"] = html;
             }
             return View(show);
-            //return RedirectToAction("Index", "Home");
         }
         public IEnumerable<TagCloud> GetTagClouds()
         {
             var totalNews = newsService.GetAll().Count();
             var tags = newsService.GetAllTags().ToList();
             return (from c in tags
-                orderby c.Name
-                select new TagCloud
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    CountOfTag = c.News.Count,
-                    TotalNews = totalNews,
-                });
+                    orderby c.Name
+                    select new TagCloud
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        CountOfTag = c.News.Count,
+                        TotalNews = totalNews,
+                    });
         }
 
         public static string GetTagClass(int tag, int news, string name)
