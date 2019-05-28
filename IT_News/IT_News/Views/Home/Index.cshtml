@@ -30,7 +30,7 @@
         }
     </div>
     <div style="width: 45%">
-        @if (Model != null)
+        @*@if (Model != null)
         {
             <p style="font-size: 30px; color: brown">@Model.NewsViewModels.Title</p>
             <p style="color: grey">@Model.NewsViewModels.ShortDescription</p>
@@ -38,7 +38,7 @@
             <p style="color: grey">@Model.NewsViewModels.PostedOn</p>
             <p style="color: grey">@Model.NewsViewModels.Section.Name</p>
             <p class="bg-warning">@Html.ActionLink("Edit", "EditNews", "News", new {id = Model.NewsViewModels.Id}, new object())</p>
-        }
+        }*@
     </div>
     <div>       
     </div>

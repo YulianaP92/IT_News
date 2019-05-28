@@ -115,6 +115,8 @@ img {
     margin: 0 5px 5px 0;
 }
 #details {
+    width: 30%;
+    height: 30%;
     top: 10px;
     left: 300px;
     bottom: 400px;

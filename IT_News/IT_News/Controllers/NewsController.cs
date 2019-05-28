@@ -7,6 +7,7 @@ using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
+using Markdig;
 using Microsoft.AspNet.Identity;
 
 namespace IT_News.Controllers
@@ -110,8 +111,17 @@ namespace IT_News.Controllers
         {
             var newsDTO = newsService.Get(id);
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
+            var html = Markdown.ToHtml(newsViewModel.Text);
+            ViewData["Mark"] = html;
             return PartialView("Details",newsViewModel);
         }
-
+        public ActionResult Delete(int id)
+        {
+            var newsDto = newsService.Get(id);
+            if (newsDto == null)
+                return HttpNotFound();
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
+            return View(newsViewModel);
+        }
     }
 }
