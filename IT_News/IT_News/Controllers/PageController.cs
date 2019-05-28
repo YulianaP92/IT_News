@@ -63,8 +63,8 @@ namespace IT_News.Controllers
             return View(userPageViewModel);
         }
 
-        [HttpPost]
-        public ActionResult SortAndSearch(string sortOrder, string searchString)
+        [HttpGet]
+        public ActionResult Sort(string sortOrder)
         {
             UserPageViewModel userPageViewModel = null;
             var currentUserId = User.Identity.GetUserId();
@@ -83,11 +83,7 @@ namespace IT_News.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
             var news = userPageViewModel.News;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                news = news.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Section.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
-            }
+           
             switch (sortOrder)
             {
                 case "Title desc":
@@ -103,6 +99,33 @@ namespace IT_News.Controllers
                     news = news.OrderBy(s => s.PostedOn).ToList();
                     break;
             }
+            userPageViewModel.News = news.ToList();
+            return PartialView("MyNewsList", userPageViewModel);
+        }
+        [HttpPost]
+        public ActionResult Search(string searchString)
+        {
+            UserPageViewModel userPageViewModel = null;
+            var currentUserId = User.Identity.GetUserId();
+            if (currentUserId != null)
+            {
+                var userPageDto = pageService.Get(currentUserId);
+                if (userPageDto != null)
+                {
+                    userPageViewModel = Mapper.Map<UserPageViewModel>(userPageDto);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+         
+            var news = userPageViewModel.News;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                news = news.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Section.Name.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }         
             userPageViewModel.News = news.ToList();
             return PartialView("MyNewsList", userPageViewModel);
         }
