@@ -120,8 +120,8 @@ namespace IT_News.Controllers
             var newsDto = newsService.Get(id);
             if (newsDto == null)
                 return HttpNotFound();
-            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
-            return View(newsViewModel);
+            newsService.Delete(id);
+            return RedirectToAction("Index","Page");
         }
     }
 }
