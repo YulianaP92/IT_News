@@ -1,0 +1,9 @@
+﻿@model IT_News.Models.News.CommentViewModel
+
+@using (Html.BeginForm("Comment", "News", FormMethod.Post))
+{
+    <div id="block">
+        <input type="text" name="Comments[0].Description" />
+    </div>
+    <input class="btn-primary" type="submit" value="Save" />
+}

@@ -354,6 +354,7 @@
     <Content Include="Views\Page\Create.cshtml" />
     <Content Include="Views\Page\MyNewsList.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Files\" />

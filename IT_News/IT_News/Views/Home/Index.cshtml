@@ -15,31 +15,58 @@
     <h1>HOME</h1>
 </div>
 
-<div style="color: white">
+<div style="color: black">
     <div id="tagsCloud">
         @if (ViewData["TagCloud"] != null)
         {
-            foreach (var t in (IEnumerable<TagCloud>) ViewData["TagCloud"])
-             {
-        @*{@Html.RouteLink(t.Name,"Name",new{controller = "News",action = "GetTagClouds", id = t.Id},
-        new { @class = NewsController.GetTagClass(t.CountOfTag,t.TotalNews)}*@
-                 @Html.ActionLink(t.Name, "Index", "Home", new {@class = HomeController.GetTagClass(t.CountOfTag, t.TotalNews, t.Name)})
-                 <span></span>
-                 <span></span>
-             }
+            foreach (var t in (IEnumerable<TagCloud>)ViewData["TagCloud"])
+            {
+                @*{@Html.RouteLink(t.Name,"Name",new{controller = "News",action = "GetTagClouds", id = t.Id},
+                    new { @class = NewsController.GetTagClass(t.CountOfTag,t.TotalNews)}*@
+                @Html.ActionLink(t.Name, "Index", "Home", new { @class = HomeController.GetTagClass(t.CountOfTag, t.TotalNews, t.Name) })
+                <span></span>
+                <span></span>
+            }
         }
     </div>
     <div style="width: 45%">
-        @*@if (Model != null)
+        @if (Model != null)
         {
             <p style="font-size: 30px; color: brown">@Model.NewsViewModels.Title</p>
             <p style="color: grey">@Model.NewsViewModels.ShortDescription</p>
             <p style="color: white">@Html.Raw(ViewData["Mark"])</p>
             <p style="color: grey">@Model.NewsViewModels.PostedOn</p>
             <p style="color: grey">@Model.NewsViewModels.Section.Name</p>
-            <p class="bg-warning">@Html.ActionLink("Edit", "EditNews", "News", new {id = Model.NewsViewModels.Id}, new object())</p>
-        }*@
+            @*<p class="bg-warning">@Html.ActionLink("Comment", "Comment", "News", new {id = Model.NewsViewModels.Id}, new object())</p>*@
+                @*@Ajax.ActionLink("Comment", "Comment", "News", new { id = Model.NewsViewModels.Id }, new AjaxOptions
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "comments",
+                    InsertionMode = InsertionMode.Replace
+                })*@
+           
+        }
     </div>
-    <div>       
+   @if (Model != null)
+   {
+       using (Ajax.BeginForm("Comment", "News", new {id = Model.NewsViewModels.Id},
+            new AjaxOptions
+            {
+                UpdateTargetId = "comments",
+                HttpMethod = "POST"
+            }))
+        {
+            <p>
+                @Html.TextBox("comments1")
+                <input type="submit" id="submit" name="submit" value="Save"/>
+            </p>
+        }
+   }
+    <div id="comments"></div>
+    <div>
     </div>
 </div>
+<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

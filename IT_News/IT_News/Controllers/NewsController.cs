@@ -122,6 +122,20 @@ namespace IT_News.Controllers
                 return HttpNotFound();
             newsService.Delete(id);
             return RedirectToAction("Index","Page");
+        }   
+        [HttpPost]
+        public ActionResult Comment(int id, string comments1)
+        {
+            var newsDto = newsService.Get(id);
+            if (newsDto == null)
+                return HttpNotFound();
+            var commentViewModel = new CommentViewModel(){Date = DateTime.Now,Description = comments1};
+
+            var commentDto = Mapper.Map<CommentDTO>(commentViewModel);
+            newsService.Create(commentDto);
+            newsDto.Comments.Add(commentDto);
+            return RedirectToAction("Index", "Home");
         }
+
     }
 }

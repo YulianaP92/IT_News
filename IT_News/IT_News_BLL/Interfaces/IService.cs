@@ -11,6 +11,7 @@ namespace IT_News_BLL.Interfaces
         void Create(T item);
         void Create(T item, List<TagDTO> element);
         void Create(T item, List<NewsDTO> element);
+        void Create(CommentDTO item);
         void Update(T item);
         void Delete(int id);
         IEnumerable<SectionDTO> GetAllSections();

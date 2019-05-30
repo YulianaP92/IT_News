@@ -53,7 +53,6 @@ namespace IT_News_DAL.Repositories
                 this.disposed = true;
             }
         }
-
         public void Dispose()
         {
             Dispose(true);

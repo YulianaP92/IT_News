@@ -65,6 +65,22 @@ namespace IT_News_BLL.Services
             return tagDto;
         }
 
+        
+        public IEnumerable<UserPageDTO> GetAllUsers()
+        {
+            var allUsers = Database.News.GetAllUsers().ToList();
+            var allUsersDto = Mapper.Map<IEnumerable<UserPageDTO>>(allUsers).ToList();
+            return allUsersDto;
+        }
+
+        public void Create(CommentDTO item)
+        {
+            var commentDAL = Mapper.Map<Comment>(item);
+            Database.News.Create(commentDAL);
+            Database.Save();
+        }
+
+        #region MyRegion
         public void Create(NewsDTO item)
         {
             throw new System.NotImplementedException();
@@ -80,11 +96,8 @@ namespace IT_News_BLL.Services
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<UserPageDTO> GetAllUsers()
-        {
-            var allUsers = Database.News.GetAllUsers().ToList();
-            var allUsersDto = Mapper.Map<IEnumerable<UserPageDTO>>(allUsers).ToList();
-            return allUsersDto;
-        }
+
+
+        #endregion
     }
 }

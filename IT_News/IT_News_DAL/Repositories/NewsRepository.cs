@@ -15,19 +15,12 @@ namespace IT_News_DAL.Repositories
         {
             this._db = context;
         }
-
-        public News Get(string id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void Create(News news, List<Tag> tags)
         {
             Section sectionRes;
             sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name));
             news.Section = sectionRes;
             UserPage userPage;
-            //ОШИБКА!!!!!!!!!!!!!!!!!!!!
             userPage = _db.UserPage.FirstOrDefault(x => x.UserId.Equals(news.UserPage.UserId));
             news.UserPage = userPage;
             // https://www.codeproject.com/Tips/893609/CRUD-Many-to-Many-Entity-Framework
@@ -46,16 +39,10 @@ namespace IT_News_DAL.Repositories
                     tagRes = _db.Tags.FirstOrDefault(x => x.Name.Equals(tag.Name));
                 }
 
-                news.Tags.Add(tagRes);
-               
+                news.Tags.Add(tagRes);              
             }
             _db.Entry(news).State = EntityState.Added;
-        }
-
-        public void Create(News item)
-        {
-            throw new System.NotImplementedException();
-        }
+        }     
 
         public void Delete(int id)
         {
@@ -68,7 +55,6 @@ namespace IT_News_DAL.Repositories
         {
             return _db.News.Find(id);
         }
-
 
         public IEnumerable<News> GetAll()
         {
@@ -93,7 +79,24 @@ namespace IT_News_DAL.Repositories
             _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
             _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
         }
+       
+        public void Create(Comment item)
+        {
+            _db.Comments.Add(item);
+            _db.Entry(item).State = EntityState.Added;
+        }
 
+
+
+        #region MyRegion
+        public News Get(string id)
+        {
+            throw new System.NotImplementedException();
+        }
+        public void Create(News item)
+        {
+            throw new System.NotImplementedException();
+        }
         public void Create(News item, List<News> element)
         {
             throw new System.NotImplementedException();
@@ -103,5 +106,8 @@ namespace IT_News_DAL.Repositories
         {
             return _db.UserPage.ToList();
         }
+
+        #endregion
+
     }
 }

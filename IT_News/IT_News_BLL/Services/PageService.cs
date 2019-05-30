@@ -27,16 +27,6 @@ namespace IT_News_BLL.Services
             Database.Save();
         }
 
-        public void Create(UserPageDTO item, List<TagDTO> tags)
-        {
-            
-        }
-
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public UserPageDTO Get(int id)
         {
             var page = Database.UserPage.Get(id);
@@ -50,7 +40,25 @@ namespace IT_News_BLL.Services
             var result = Mapper.Map<IEnumerable<UserPageDTO>>(allPage);
             return result;
         }
+        public UserPageDTO Get(string id)
+        {
+            var userPage = Database.UserPage.Get(id);
+            var result = Mapper.Map<UserPageDTO>(userPage);
+            return result;          
+        }
 
+       
+
+        #region MyRegion
+
+        public void Create(UserPageDTO item, List<TagDTO> tags)
+        {
+            throw new NotImplementedException();
+        }
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
         public IEnumerable<SectionDTO> GetAllSections()
         {
             throw new NotImplementedException();
@@ -70,16 +78,14 @@ namespace IT_News_BLL.Services
         {
             throw new NotImplementedException();
         }
-
-        public UserPageDTO Get(string id)
-        {
-            var userPage = Database.UserPage.Get(id);
-            var result = Mapper.Map<UserPageDTO>(userPage);
-            return result;          
-        }
-
         public void Create(UserPageDTO item, List<NewsDTO> news)
         {
+            throw new NotImplementedException();
         }
+        public void Create(CommentDTO item)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
