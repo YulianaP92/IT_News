@@ -16,9 +16,11 @@ namespace IT_News.Controllers
     public class NewsController : Controller
     {
         private IService<NewsDTO> newsService;
-        public NewsController(IService<NewsDTO> newsService)
+        private IService<UserPageDTO> pageService;
+        public NewsController(IService<NewsDTO> newsService, IService<UserPageDTO> pageService)
         {
             this.newsService = newsService;
+            this.pageService = pageService;
         }
         [HttpGet]
         public ActionResult CreateNews()
@@ -121,7 +123,12 @@ namespace IT_News.Controllers
                 return HttpNotFound();
             var commentDto = new CommentDTO(){Date = DateTime.Now,Description = comments1};            
             commentDto.NewsId = id;
+            var idCurrentUserPage= User.Identity.GetUserId();
+            var userDto = pageService.Get(idCurrentUserPage);
+            commentDto.AuthorId = userDto.Id;
+            
             newsService.Create(commentDto);
+           
             newsDto.Comments.Add(commentDto);
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);        
             return PartialView("Comment", newsViewModel);
