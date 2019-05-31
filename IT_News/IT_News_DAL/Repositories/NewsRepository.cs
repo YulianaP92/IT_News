@@ -18,10 +18,10 @@ namespace IT_News_DAL.Repositories
         public void Create(News news, List<Tag> tags)
         {
             Section sectionRes;
-            sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name));
+            sectionRes = _db.Sections.FirstOrDefault(x => x.Name.Equals(news.Section.Name)); //!!!!!!!!!!!!!!SectionId
             news.Section = sectionRes;
             UserPage userPage;
-            userPage = _db.UserPage.FirstOrDefault(x => x.UserId.Equals(news.UserPage.UserId));
+            userPage = _db.UserPage.FirstOrDefault(x => x.UserId.Equals(news.UserPage.UserId)); //!!!!!!!!!!!!!! UserPageId
             news.UserPage = userPage;
             // https://www.codeproject.com/Tips/893609/CRUD-Many-to-Many-Entity-Framework
             _db.News.Add(news);
@@ -41,7 +41,6 @@ namespace IT_News_DAL.Repositories
 
                 news.Tags.Add(tagRes);              
             }
-            _db.Entry(news).State = EntityState.Added;
         }     
 
         public void Delete(int id)
@@ -73,11 +72,11 @@ namespace IT_News_DAL.Repositories
 
         public void Update(News news)
         {
-            var modifiedNewsInDb = _db.News.Find(news.Id); 
-            if(modifiedNewsInDb == null) return;
+            //var modifiedNewsInDb = _db.News.Find(news.Id); 
+            //if(modifiedNewsInDb == null) return;
             
-            _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
-            _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
+            //_db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
+            _db.Entry(news).State = EntityState.Modified;
         }
        
         public void Create(Comment item)

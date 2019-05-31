@@ -3,6 +3,7 @@ using IT_News_DAL.Entities;
 
 namespace IT_News_DAL.Interfaces
 {
+    //!!!!!!!!!!!!!!Разделить интерфейс
     public interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();

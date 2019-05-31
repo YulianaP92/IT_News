@@ -3,6 +3,7 @@ using IT_News_BLL.DTO;
 
 namespace IT_News_BLL.Interfaces
 {
+    //!!!!!!!!!!!!!!Разделить интерфейс
     public interface IService<T>
     {
         IEnumerable<T> GetAll();

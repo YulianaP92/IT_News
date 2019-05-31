@@ -20,7 +20,6 @@ namespace IT_News_DAL.EF
                 .HasMany<Tag>(c => c.Tags)
                 .WithMany(s => s.News);
 
-
             modelBuilder.Entity<Section>()
                 .HasMany(p => p.News)
                 .WithRequired(p => p.Section);
@@ -32,10 +31,6 @@ namespace IT_News_DAL.EF
             modelBuilder.Entity<UserPage>()
                 .HasMany(c => c.News)
                 .WithRequired(p => p.UserPage);
-
-            //modelBuilder.Entity<Arbitter>()
-            //    .HasRequired(a => a.Game)
-            //    .WithRequiredPrincipal(g => g.Arbitter);
         }
     }
 }

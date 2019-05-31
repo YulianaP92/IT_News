@@ -25,7 +25,7 @@ namespace IT_News.Controllers
             {
                 var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
                 var tagsDto = newsService.GetAllTags().ToList();
-                var tagsViewModel = Mapper.Map<IEnumerable<TagDTO>, IEnumerable<TagViewModel>>(tagsDto).ToList();
+                var tagsViewModel = Mapper.Map<IEnumerable<TagDTO>, List<TagViewModel>>(tagsDto);
                 show = new StartPageView
                 {
                     NewsViewModels = newsViewModel,

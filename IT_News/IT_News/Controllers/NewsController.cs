@@ -20,19 +20,6 @@ namespace IT_News.Controllers
         {
             this.newsService = newsService;
         }
-        //public ActionResult MyNewsList()
-        //{
-        //    var news = newsService.GetAll();
-        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-        //    return View(result);
-        //    //return RedirectToAction("Index", "Home");
-        //}
-        //public ActionResult GetAllNews()
-        //{
-        //    var news = newsService.GetAll();
-        //    var result = Mapper.Map<IEnumerable<NewsDTO>, IEnumerable<NewsViewModel>>(news);
-        //    return View(result);
-        //}
         [HttpGet]
         public ActionResult CreateNews()
         {
@@ -101,9 +88,9 @@ namespace IT_News.Controllers
         public ActionResult EditNews(NewsViewModel newsViewModel)
         {
             var news = Mapper.Map<NewsDTO>(newsViewModel);
-            var allSections = newsService.GetAllSections();
-            var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
-            news.Section = selectedSection;
+            //var allSections = newsService.GetAllSections(); // SectionId
+            //var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
+            //news.Section = selectedSection;
             newsService.Update(news);
             return RedirectToAction("Index", "Home");
         }
@@ -132,8 +119,9 @@ namespace IT_News.Controllers
             var commentViewModel = new CommentViewModel(){Date = DateTime.Now,Description = comments1};
 
             var commentDto = Mapper.Map<CommentDTO>(commentViewModel);
+            commentDto.NewsId = id;
             newsService.Create(commentDto);
-            newsDto.Comments.Add(commentDto);
+            //newsDto.Comments.Add(commentDto);
             return RedirectToAction("Index", "Home");
         }
 

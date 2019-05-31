@@ -5,6 +5,7 @@ using IT_News_DAL.Interfaces;
 
 namespace IT_News_DAL.Repositories
 {
+    //!!!!!!!!!!!!!!!Удалить UnitOfWork
     public class EfUnitOfWork : IUnitOfWork
     {
         private readonly NewsContext db;

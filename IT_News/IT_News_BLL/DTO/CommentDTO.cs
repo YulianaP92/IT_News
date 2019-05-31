@@ -9,5 +9,6 @@ namespace IT_News_BLL.DTO
         public int CommentId { get; set; }
         public virtual UserPageDTO AuthorDto { get; set; }
         public virtual NewsDTO NewsDto { get; set; }
+        public int NewsId { get; set; }
     }
 }

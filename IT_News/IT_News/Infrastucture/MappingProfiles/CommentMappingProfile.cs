@@ -20,8 +20,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Date, c => c.MapFrom(src => src.Date))
                 .ForMember(dest => dest.CommentId, c => c.MapFrom(src => src.CommentId))
-                .ForMember(dest => dest.AuthorDto, c => c.MapFrom(src => src.AuthorViewModel))
-                .ForMember(dest => dest.NewsDto, c => c.MapFrom(src => src.NewsViewModel))
+                //.ForMember(dest => dest.AuthorDto, c => c.MapFrom(src => src.AuthorViewModel))
+                //.ForMember(dest => dest.NewsDto, c => c.MapFrom(src => src.NewsViewModel))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapCommentDTOToCommentViewModel()

@@ -7,7 +7,14 @@ namespace IT_News
     {
         public static void Configure()
         {
-            Mapper.Initialize(c => c.AddProfile(typeof(NewsMappingProfile)));
+            Mapper.Initialize(c =>
+            {
+                c.AddProfile(typeof(NewsMappingProfile));
+                c.AddProfile(typeof(CommentMappingProfile));
+                c.AddProfile(typeof(SectionMappingProfile));
+                c.AddProfile(typeof(TagMappingProfile));
+                c.AddProfile(typeof(UserPageMappingProfile));
+            });
         }
     }
 }

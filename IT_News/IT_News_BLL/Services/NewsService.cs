@@ -44,10 +44,11 @@ namespace IT_News_BLL.Services
             return result;
         }
 
-        public void Update(NewsDTO item)
+        public void Update(NewsDTO newPost)
         {
-            var newsDAL = Mapper.Map<News>(item);
-            Database.News.Update(newsDAL);
+            var oldPost = Database.News.Get(newPost.Id);
+            oldPost = Mapper.Map(newPost, oldPost);
+            Database.News.Update(oldPost);
             Database.Save();
         }
 
@@ -64,7 +65,6 @@ namespace IT_News_BLL.Services
             var tagDto = Mapper.Map<IEnumerable<TagDTO>>(allTags).ToList();
             return tagDto;
         }
-
         
         public IEnumerable<UserPageDTO> GetAllUsers()
         {
@@ -76,6 +76,7 @@ namespace IT_News_BLL.Services
         public void Create(CommentDTO item)
         {
             var commentDAL = Mapper.Map<Comment>(item);
+            commentDAL.News = Database.News.Get(item.NewsId);
             Database.News.Create(commentDAL);
             Database.Save();
         }
@@ -95,9 +96,6 @@ namespace IT_News_BLL.Services
         {
             throw new System.NotImplementedException();
         }
-
-
-
         #endregion
     }
 }

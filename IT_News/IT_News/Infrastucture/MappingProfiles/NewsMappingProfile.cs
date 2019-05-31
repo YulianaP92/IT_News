@@ -7,20 +7,13 @@ namespace IT_News.Infrastucture.MappingProfiles
 {
     public class NewsMappingProfile:Profile
     {
-        private CommentMappingProfile commentMappingProfile;
-        private SectionMappingProfile sectionMappingProfile;
-        private TagMappingProfile tagMappingProfile;
-        private UserPageMappingProfile userPageMappingProfile;
+        
         public NewsMappingProfile()
         {
             MapNewsViewModelToNewsDTO();
             MapNewsDTOToNewsViewModel();
             MapNewsToNewsDTO();
             MapNewsDTOToNews();
-            commentMappingProfile=new CommentMappingProfile();
-            sectionMappingProfile=new SectionMappingProfile();
-            tagMappingProfile=new TagMappingProfile();
-            userPageMappingProfile=new UserPageMappingProfile();
         }
         private void MapNewsViewModelToNewsDTO()
         {
