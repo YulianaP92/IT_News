@@ -52,7 +52,7 @@ namespace IT_News.Controllers
                         TotalNews = totalNews,
                     });
         }
-
+        //создать 1-ый метод: расчет веса тега, 2 метод: на основе веса тега вернуть css
         public static string GetTagClass(int tag, int news, string name)
         {
             var result = (tag * 100) / news;//процент содержания новостей в каждом теге
