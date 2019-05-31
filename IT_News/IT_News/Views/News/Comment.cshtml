@@ -1,9 +1,7 @@
-﻿@model IT_News.Models.News.CommentViewModel
+﻿@model IT_News.Models.News.NewsViewModel
 
-@using (Html.BeginForm("Comment", "News", FormMethod.Post))
+@foreach (var comment in Model.Comments)
 {
-    <div id="block">
-        <input type="text" name="Comments[0].Description" />
-    </div>
-    <input class="btn-primary" type="submit" value="Save" />
+    <p>@comment.Description</p>
+    <p>@comment.Date</p>
 }

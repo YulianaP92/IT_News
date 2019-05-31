@@ -12,7 +12,7 @@ namespace IT_News_DAL.Entities
         public bool Published { get; set; }
         public DateTime? PostedOn{ get; set; }
         public DateTime? Modified { get; set; }
-        public int SectionId { get; set; }
+       // public int SectionId { get; set; }
         public virtual Section Section { get; set; }
         public virtual IList<Tag> Tags { get; set; }
         public virtual IList<Comment> Comments { get; set; }

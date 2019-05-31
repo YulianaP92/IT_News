@@ -91,6 +91,9 @@ namespace IT_News.Controllers
             //var allSections = newsService.GetAllSections(); // SectionId
             //var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
             //news.Section = selectedSection;
+            var allSections = newsService.GetAllSections();
+            var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
+            news.Section = selectedSection;
             newsService.Update(news);
             return RedirectToAction("Index", "Home");
         }
@@ -116,13 +119,12 @@ namespace IT_News.Controllers
             var newsDto = newsService.Get(id);
             if (newsDto == null)
                 return HttpNotFound();
-            var commentViewModel = new CommentViewModel(){Date = DateTime.Now,Description = comments1};
-
-            var commentDto = Mapper.Map<CommentDTO>(commentViewModel);
+            var commentDto = new CommentDTO(){Date = DateTime.Now,Description = comments1};            
             commentDto.NewsId = id;
             newsService.Create(commentDto);
-            //newsDto.Comments.Add(commentDto);
-            return RedirectToAction("Index", "Home");
+            newsDto.Comments.Add(commentDto);
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);        
+            return PartialView("Comment", newsViewModel);
         }
 
     }

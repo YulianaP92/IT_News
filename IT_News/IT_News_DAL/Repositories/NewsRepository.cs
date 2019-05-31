@@ -72,11 +72,11 @@ namespace IT_News_DAL.Repositories
 
         public void Update(News news)
         {
-            //var modifiedNewsInDb = _db.News.Find(news.Id); 
-            //if(modifiedNewsInDb == null) return;
-            
-            //_db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
-            _db.Entry(news).State = EntityState.Modified;
+            var modifiedNewsInDb = _db.News.Find(news.Id);
+            if (modifiedNewsInDb == null) return;
+
+            _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
+            // _db.Entry(news).State = EntityState.Modified;
         }
        
         public void Create(Comment item)

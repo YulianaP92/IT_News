@@ -43,12 +43,14 @@ namespace IT_News_BLL.Services
             var result = Mapper.Map<IEnumerable<NewsDTO>>(allNews);
             return result;
         }
-
+        //исправить реализацию метода Update
         public void Update(NewsDTO newPost)
         {
-            var oldPost = Database.News.Get(newPost.Id);
-            oldPost = Mapper.Map(newPost, oldPost);
-            Database.News.Update(oldPost);
+            //var oldPost = Database.News.Get(newPost.Id);
+            //oldPost = Mapper.Map(newPost, oldPost);
+            //Database.News.Update(oldPost);
+            var newsDal = Mapper.Map<News>(newPost);
+            Database.News.Update(newsDal);
             Database.Save();
         }
 
