@@ -130,7 +130,8 @@ namespace IT_News.Controllers
             newsService.Create(commentDto);
            
             newsDto.Comments.Add(commentDto);
-            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);        
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
+            ViewBag.UserPage = userDto.Name;
             return PartialView("Comment", newsViewModel);
         }
 
