@@ -47,7 +47,7 @@
                     @Html.ActionLink("Edit", "EditNews", "News", new { id = item.Id },new object())
                 </td>
                 <td>
-                    @Ajax.ActionLink("Details", "Details", "News", new { id = item.Id }, new AjaxOptions
+                    @Ajax.ActionLink("Details", "Details", "News", new { id = item.Id,page="MyNewsList"}, new AjaxOptions
                {
                    HttpMethod = "GET",
                    UpdateTargetId = "details",

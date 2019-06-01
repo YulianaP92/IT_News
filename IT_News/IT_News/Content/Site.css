@@ -122,3 +122,7 @@ img {
     bottom: 400px;
     right: 0px;
 }
+.headerNews {
+    text-align: center;
+    font-size: 30px;
+}

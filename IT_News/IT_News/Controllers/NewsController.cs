@@ -96,16 +96,24 @@ namespace IT_News.Controllers
             var allSections = newsService.GetAllSections();
             var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
             news.Section = selectedSection;
+            news.PostedOn = DateTime.Now;
             newsService.Update(news);
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult Details(int id)
+        public ActionResult Details(int id,string page)
         {
             var newsDTO = newsService.Get(id);
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
-            return PartialView("Details",newsViewModel);
+            if (page== "MyNewsList")
+            {
+                return PartialView("Details", newsViewModel);
+            }
+            else
+            {
+                return View("MoreInformation", newsViewModel);
+            }
         }
         public ActionResult Delete(int id)
         {
@@ -134,6 +142,5 @@ namespace IT_News.Controllers
             ViewBag.UserPage = userDto.Name;
             return PartialView("Comment", newsViewModel);
         }
-
     }
 }

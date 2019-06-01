@@ -20,10 +20,11 @@ namespace IT_News.Controllers
         public ActionResult Index()
         {
             StartPageView show = null;
-            var newsDto = newsService.GetAll().ToList().LastOrDefault();
-            if (newsDto != null)
+            var newsDtoList = newsService.GetAll().ToList();
+            if (newsDtoList != null)
             {
-                var newsViewModel = Mapper.Map<NewsDTO, NewsViewModel>(newsDto);
+                var allNewsIndex = newsDtoList.OrderByDescending(s => s.PostedOn).Take(5).ToList();              
+                var newsViewModel = Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndex);
                 var tagsDto = newsService.GetAllTags().ToList();
                 var tagsViewModel = Mapper.Map<IEnumerable<TagDTO>, List<TagViewModel>>(tagsDto);
                 show = new StartPageView
@@ -33,8 +34,8 @@ namespace IT_News.Controllers
                 };
                 ViewData["TagCloud"] = GetTagClouds();
 
-                var html = Markdown.ToHtml(newsViewModel.Text);
-                ViewData["Mark"] = html;
+                //var html = Markdown.ToHtml(newsViewModel.Text);
+                //ViewData["Mark"] = html;
             }
             return View(show);
         }
