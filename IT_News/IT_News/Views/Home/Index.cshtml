@@ -29,7 +29,7 @@
             }
         }
     </div>
-    <div style="width: 45%">
+    <div style="float: left;width: 45%">
         <p class="headerNews">Latest news:</p>
         @if (Model != null)
         {
@@ -44,7 +44,9 @@
             }
         }
     </div>
-    
+    <div>
+        <p class="headerNews">News with the highest ratings ★ ☆:</p>
+    </div>
     @*@if (Model != null)
         {
             using (Ajax.BeginForm("Comment", "News", new {id = Model.NewsViewModels.Id},
@@ -63,8 +65,6 @@
          <div id="comments">
 
          </div>*@
-    <div>
-    </div>
 </div>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
 @Scripts.Render("~/bundles/modernizr")
