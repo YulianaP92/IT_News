@@ -18,6 +18,9 @@ namespace IT_News
             Database.SetInitializer<ApplicationDbContext>(new AppDbInitializer());
             Database.SetInitializer<NewsContext>(new StoreDbInitializer());
             AreaRegistration.RegisterAllAreas();
+
+           
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

@@ -122,25 +122,25 @@ namespace IT_News.Controllers
                 return HttpNotFound();
             newsService.Delete(id);
             return RedirectToAction("Index","Page");
-        }   
-        [HttpPost]
-        public ActionResult Comment(int id, string comments1)
-        {
-            var newsDto = newsService.Get(id);
-            if (newsDto == null)
-                return HttpNotFound();
-            var commentDto = new CommentDTO(){Date = DateTime.Now,Description = comments1};            
-            commentDto.NewsId = id;
-            var idCurrentUserPage= User.Identity.GetUserId();
-            var userDto = pageService.Get(idCurrentUserPage);
-            commentDto.AuthorId = userDto.Id;
-            
-            newsService.Create(commentDto);
-           
-            newsDto.Comments.Add(commentDto);
-            var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
-            ViewBag.UserPage = userDto.Name;
-            return PartialView("Comment", newsViewModel);
         }
+        //[HttpPost]
+        //public ActionResult Comment(int id, string comments1)
+        //{
+        //    var newsDto = newsService.Get(id);
+        //    if (newsDto == null)
+        //        return HttpNotFound();
+        //    var commentDto = new CommentDTO() { Date = DateTime.Now, Description = comments1 };
+        //    commentDto.NewsId = id;
+        //    var idCurrentUserPage = User.Identity.GetUserId();
+        //    var userDto = pageService.Get(idCurrentUserPage);
+        //    commentDto.AuthorId = userDto.Id;
+
+        //    newsService.Create(commentDto);
+
+        //    newsDto.Comments.Add(commentDto);
+        //    var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
+        //    ViewBag.UserPage = userDto.Name;
+        //    return PartialView("Comment", newsViewModel);
+        //}
     }
 }

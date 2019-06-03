@@ -9,6 +9,7 @@ namespace IT_News
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
 }

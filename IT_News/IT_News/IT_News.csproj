@@ -54,6 +54,12 @@
     <Reference Include="Markdig, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Markdig.0.17.0\lib\net40\Markdig.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
@@ -70,6 +76,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -208,6 +215,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\CommentHub.cs" />
     <Compile Include="Infrastucture\MappingProfiles\CommentMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\NewsMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\SectionMappingProfile.cs" />
@@ -299,6 +307,8 @@
     <Content Include="Scripts\jquery-editable\jquery-ui-datepicker\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\jquery-editable\js\jquery-editable-poshytip.js" />
     <Content Include="Scripts\jquery-editable\js\jquery-editable-poshytip.min.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\SignalR\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -308,6 +318,7 @@
     <Content Include="Scripts\jqueryui-editable\js\jqueryui-editable.js" />
     <Content Include="Scripts\jqueryui-editable\js\jqueryui-editable.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\SignalR\util.js" />
     <Content Include="Scripts\simplemde\codemirror\codemirror.css" />
     <Content Include="Scripts\simplemde\codemirror\tablist.js" />
     <Content Include="Scripts\simplemde\simplemde.js" />
