@@ -42,11 +42,9 @@ namespace IT_News.Hubs
             };
             var userDto = pageService.Get(int.Parse(userPageId));
             commentDto.AuthorId = userDto.Id;
-
             newsService.Create(commentDto);
-
             newsDto.Comments.Add(commentDto);
-            Clients.All.Send(commentDto.Description, userDto.Name, commentDto.Date.ToString("MM/dd/yyyy"));
+            Clients.All.Send(commentDto.Description, userDto.Name, commentDto.Date.ToString("dd.MM.yyyy"));
         }
 
     }

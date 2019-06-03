@@ -7,8 +7,23 @@
 
 
 <h2>News Details</h2>
-
+@*<p>
+        <b>
+            ' + htmlEncode(name)
+            + '
+        </b>: ' + htmlEncode(message) + '
+    </p>' + '<p>' + htmlEncode(date) + '</p>'*@
 @Html.Partial("Details", Model);
+@foreach (var comment in Model.Comments)
+{
+    <p>
+        <b>@comment.AuthorId</b>
+    @comment.Description
+</p>
+    <p>        
+        @comment.Date
+    </p>
+}
 <div id="inputForm">
     <input id="modelId" type="hidden" name="modelId" value="@Model.Id" />
     <input id="userPageId" type="hidden" name="userPageId" value="@Model.UserPage.Id" />
