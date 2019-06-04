@@ -33,9 +33,6 @@ namespace IT_News.Controllers
                     TagViewModel = tagsViewModel
                 };
                 ViewData["TagCloud"] = GetTagClouds();
-
-                //var html = Markdown.ToHtml(newsViewModel.Text);
-                //ViewData["Mark"] = html;
             }
             return View(show);
         }

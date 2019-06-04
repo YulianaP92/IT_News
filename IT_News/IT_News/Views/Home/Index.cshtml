@@ -23,9 +23,7 @@
         {
             foreach (var t in (IEnumerable<TagCloud>)ViewData["TagCloud"])
             {
-                @*{@Html.RouteLink(t.Name,"Name",new{controller = "News",action = "GetTagClouds", id = t.Id},
-                    new { @class = NewsController.GetTagClass(t.CountOfTag,t.TotalNews)}*@
-                @Html.ActionLink(t.Name, "Index", "Home", new { @class = HomeController.GetTagClass(t.CountOfTag, t.TotalNews, t.Name) })
+                @Html.ActionLink(t.Name, "ListNewsByTag", "News",new {id=t.Id }, new { @class = HomeController.GetTagClass(t.CountOfTag, t.TotalNews, t.Name) })
                 <span></span>
                 <span></span>
             }

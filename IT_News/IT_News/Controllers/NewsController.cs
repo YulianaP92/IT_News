@@ -100,6 +100,7 @@ namespace IT_News.Controllers
             newsService.Update(news);
             return RedirectToAction("Index", "Home");
         }
+        [AllowAnonymous]
         public ActionResult Details(int id,string page)
         {
             var newsDTO = newsService.Get(id);
@@ -123,24 +124,13 @@ namespace IT_News.Controllers
             newsService.Delete(id);
             return RedirectToAction("Index","Page");
         }
-        //[HttpPost]
-        //public ActionResult Comment(int id, string comments1)
-        //{
-        //    var newsDto = newsService.Get(id);
-        //    if (newsDto == null)
-        //        return HttpNotFound();
-        //    var commentDto = new CommentDTO() { Date = DateTime.Now, Description = comments1 };
-        //    commentDto.NewsId = id;
-        //    var idCurrentUserPage = User.Identity.GetUserId();
-        //    var userDto = pageService.Get(idCurrentUserPage);
-        //    commentDto.AuthorId = userDto.Id;
-
-        //    newsService.Create(commentDto);
-
-        //    newsDto.Comments.Add(commentDto);
-        //    var newsViewModel = Mapper.Map<NewsViewModel>(newsDto);
-        //    ViewBag.UserPage = userDto.Name;
-        //    return PartialView("Comment", newsViewModel);
-        //}
+       [AllowAnonymous]
+        public ActionResult ListNewsByTag(int id)
+        {
+            var tagDto = newsService.GetAllTags().Where(x => x.Id == id).FirstOrDefault();
+            var listNewsDto = tagDto.News;
+            var listNewsViewModel = Mapper.Map<IEnumerable<NewsViewModel>>(listNewsDto);
+            return View(listNewsViewModel);
+        }
     }
 }
