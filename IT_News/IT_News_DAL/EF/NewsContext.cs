@@ -33,6 +33,7 @@ namespace IT_News_DAL.EF
                 .HasMany(c => c.News)
                 .WithRequired(p => p.UserPage)
                 .WillCascadeOnDelete(false);
+
         }
     }
 }

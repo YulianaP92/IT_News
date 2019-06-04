@@ -15,6 +15,8 @@ namespace IT_News_DAL.Entities
         public string Name { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        
+       
+
+
     }
 }

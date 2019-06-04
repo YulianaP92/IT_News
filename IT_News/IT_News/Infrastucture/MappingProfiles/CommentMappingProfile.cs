@@ -5,7 +5,7 @@ using Profile = AutoMapper.Profile;
 
 namespace IT_News.Infrastucture.MappingProfiles
 {
-    public class CommentMappingProfile: Profile
+    public class CommentMappingProfile : Profile
     {
         public CommentMappingProfile()
         {
@@ -20,7 +20,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Date, c => c.MapFrom(src => src.Date))
                 .ForMember(dest => dest.CommentId, c => c.MapFrom(src => src.CommentId))
-               // .ForMember(dest => dest.AuthorDto, c => c.MapFrom(src => src.AuthorViewModel))
+                .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
+                .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
                 .ForMember(dest => dest.NewsDto, c => c.MapFrom(src => src.NewsViewModel))
                 .ForAllOtherMembers(c => c.Ignore());
         }
@@ -30,7 +31,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Date, c => c.MapFrom(src => src.Date))
                 .ForMember(dest => dest.CommentId, c => c.MapFrom(src => src.CommentId))
-               // .ForMember(dest => dest.AuthorViewModel, c => c.MapFrom(src => src.AuthorDto))
+                .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
+                .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
                 .ForMember(dest => dest.NewsViewModel, c => c.MapFrom(src => src.NewsDto))
                 .ForAllOtherMembers(c => c.Ignore());
         }
@@ -40,9 +42,9 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Date, c => c.MapFrom(src => src.Date))
                 .ForMember(dest => dest.CommentId, c => c.MapFrom(src => src.CommentId))
-               // .ForMember(dest => dest.AuthorDto, c => c.MapFrom(src => src.Author))
                 .ForMember(dest => dest.NewsDto, c => c.MapFrom(src => src.News))
-                .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src))
+                .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
+                .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapCommentDTOToComment()
@@ -51,8 +53,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.Description, c => c.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Date, c => c.MapFrom(src => src.Date))
                 .ForMember(dest => dest.CommentId, c => c.MapFrom(src => src.CommentId))
-                //.ForMember(dest => dest.Author, c => c.MapFrom(src => src.AuthorDto))
                 .ForMember(dest => dest.News, c => c.MapFrom(src => src.NewsDto))
+                .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
                 .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForAllOtherMembers(c => c.Ignore());
         }

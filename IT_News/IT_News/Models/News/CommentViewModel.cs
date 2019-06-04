@@ -9,5 +9,6 @@ namespace IT_News.Models.News
         public int CommentId { get; set; }
         public virtual NewsViewModel NewsViewModel { get; set; }
         public int AuthorId { get; set; }
+        public string AuthorName { get; set; }
     }
 }
