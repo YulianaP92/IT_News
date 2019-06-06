@@ -42,7 +42,7 @@
     {
         <div id="block">
             @*<input type="text" name="i.Name" />*@
-            @Html.TextBoxFor(model => i.Name, new { data_autocomplete = Url.Action("AutocompleteSearch", "News") })
+            @Html.TextBoxFor(model => i.Name, new { autocomplete = Url.Action("AutocompleteSearch", "News") })
 
         </div>
     }
@@ -73,9 +73,9 @@
     <script src="~/Scripts/jquery-ui-1.12.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function() {
-            $("[data_autocomplete]").each(function() {
+            $("[autocomplete]").each(function() {
                 var target = $(this);
-                target.autocomplete({ source: target.attr("data_autocomplete") });
+                target.autocomplete({ source: target.attr("autocomplete") });
             });
         });
     </script>
