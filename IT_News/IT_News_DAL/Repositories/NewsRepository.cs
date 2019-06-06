@@ -30,7 +30,7 @@ namespace IT_News_DAL.Repositories
             {
                 var allTags = _db.Tags.AsNoTracking().ToList();
                 Tag tagRes;
-                if (!allTags.Select(x=>x.Name).Contains(tag.Name))
+                if (!allTags.Select(x => x.Name).Contains(tag.Name))
                 {
                     tagRes = _db.Tags.Add(tag);
                 }
@@ -39,9 +39,9 @@ namespace IT_News_DAL.Repositories
                     tagRes = _db.Tags.FirstOrDefault(x => x.Name.Equals(tag.Name));
                 }
 
-                news.Tags.Add(tagRes);              
+                news.Tags.Add(tagRes);
             }
-        }     
+        }
 
         public void Delete(int id)
         {
@@ -70,18 +70,18 @@ namespace IT_News_DAL.Repositories
             return _db.Tags.ToList();
         }
 
-        public void Update(News news,List<Tag> tags)
+        public void Update(News news, List<Tag> tags)
         {
             var modifiedNewsInDb = _db.News.Find(news.Id);
             modifiedNewsInDb.Tags.Clear();
             if (modifiedNewsInDb == null) return;
-           
+
             // _db.Entry(news).State = EntityState.Modified;
 
-
+            List<Tag> allTags = null;
             foreach (var tag in tags)
             {
-                var allTags = _db.Tags.AsNoTracking().ToList();
+                allTags = _db.Tags.AsNoTracking().ToList();
                 Tag tagRes;
                 if (!allTags.Select(x => x.Name).Contains(tag.Name))
                 {
@@ -94,11 +94,19 @@ namespace IT_News_DAL.Repositories
 
                 modifiedNewsInDb.Tags.Add(tagRes);
             }
+            foreach (var tag in allTags)
+            {
+                if (tag.News.Count == 0)
+                {
+                    var tagRemove = _db.Tags.FirstOrDefault(x => x.Name.Equals(tag.Name));
+                    _db.Tags.Remove(tagRemove);
+                }
+            }
             _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
 
             _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
         }
-       
+
         public void Create(Comment item)
         {
             _db.Comments.Add(item);
