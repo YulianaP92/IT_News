@@ -44,13 +44,14 @@ namespace IT_News_BLL.Services
             return result;
         }
         //исправить реализацию метода Update
-        public void Update(NewsDTO newPost)
+        public void Update(NewsDTO newPost,List<TagDTO> tags)
         {
+            var tagCollection = Mapper.Map<List<Tag>>(tags);
             //var oldPost = Database.News.Get(newPost.Id);
             //oldPost = Mapper.Map(newPost, oldPost);
             //Database.News.Update(oldPost);
             var newsDal = Mapper.Map<News>(newPost);
-            Database.News.Update(newsDal);
+            Database.News.Update(newsDal, tagCollection);
             Database.Save();
         }
 

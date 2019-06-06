@@ -74,7 +74,7 @@ namespace IT_News_BLL.Services
             throw new NotImplementedException();
         }
 
-        public void Update(UserPageDTO item)
+        public void Update(UserPageDTO item,List<TagDTO>tags)
         {
             throw new NotImplementedException();
         }

@@ -97,8 +97,10 @@ namespace IT_News.Controllers
             var selectedSection = allSections.FirstOrDefault(x => x.Id == newsViewModel.SectionId);
             news.Section = selectedSection;
             news.PostedOn = DateTime.Now;
-            newsService.Update(news);
+            var tags = Mapper.Map<List<TagDTO>>(news.Tags);
+            newsService.Update(news, tags);
             return RedirectToAction("Index", "Home");
+
         }
         [AllowAnonymous]
         public ActionResult Details(int id,string page)

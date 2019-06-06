@@ -70,13 +70,33 @@ namespace IT_News_DAL.Repositories
             return _db.Tags.ToList();
         }
 
-        public void Update(News news)
+        public void Update(News news,List<Tag> tags)
         {
             var modifiedNewsInDb = _db.News.Find(news.Id);
+            modifiedNewsInDb.Tags.Clear();
             if (modifiedNewsInDb == null) return;
-
-            _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
+           
             // _db.Entry(news).State = EntityState.Modified;
+
+
+            foreach (var tag in tags)
+            {
+                var allTags = _db.Tags.AsNoTracking().ToList();
+                Tag tagRes;
+                if (!allTags.Select(x => x.Name).Contains(tag.Name))
+                {
+                    tagRes = _db.Tags.Add(tag);
+                }
+                else
+                {
+                    tagRes = _db.Tags.FirstOrDefault(x => x.Name.Equals(tag.Name));
+                }
+
+                modifiedNewsInDb.Tags.Add(tagRes);
+            }
+            _db.Entry(modifiedNewsInDb).CurrentValues.SetValues(news);
+
+            _db.Entry(modifiedNewsInDb).State = EntityState.Modified;
         }
        
         public void Create(Comment item)

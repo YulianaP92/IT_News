@@ -38,15 +38,14 @@
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
-    foreach (var i in Model.Tags)
+    for (int i = 0; i < Model.Tags.Count; i++)
     {
         <div id="block">
-            @*<input type="text" name="i.Name" />*@
-            @Html.TextBoxFor(model => i.Name, new { autocomplete = Url.Action("AutocompleteSearch", "News") })
-
+            @Html.TextBoxFor(model => model.Tags[i].Name, new {autocomplete = Url.Action("AutocompleteSearch", "News") })
+            @*<input type="text" name="i.Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "News")' />*@
         </div>
     }
-    // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
+    //@Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
     //<input id="Name" name="Name" type="text" />
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Save" />

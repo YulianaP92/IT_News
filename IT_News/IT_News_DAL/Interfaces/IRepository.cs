@@ -14,7 +14,7 @@ namespace IT_News_DAL.Interfaces
         void Create(T item, List<News> element);
         void Create(T item);
         void Create(Comment item);
-        void Update(T item);
+        void Update(T item, List<Tag> element);
         void Delete(int id);
         IEnumerable<Section> GetAllSections();
         IEnumerable<Tag> GetAllTags();

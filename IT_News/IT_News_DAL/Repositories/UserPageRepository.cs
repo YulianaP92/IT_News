@@ -66,7 +66,7 @@ namespace IT_News_DAL.Repositories
         {
             throw new NotImplementedException();
         }
-        public void Update(UserPage item)
+        public void Update(UserPage item, List<Tag>tags)
         {
             throw new NotImplementedException();
         }
