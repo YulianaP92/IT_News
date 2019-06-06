@@ -10,6 +10,7 @@
 
 <link rel="stylesheet" href="~/Scripts/simplemde/codemirror/codemirror.css">
 <link rel="stylesheet" href="~/Scripts/simplemde/simplemde.min.css">
+<link rel="stylesheet" href="~/Content/themes/base/all.css" />
 <script src="~/Scripts/simplemde/simplemde.min.js"></script>
 <script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
 <script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
@@ -38,7 +39,7 @@
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
     <div id="block">
-        <input type="text" name="Tags[0].Name" />
+        <input type="text" name="Tags[0].Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "News")' />
     </div>
     // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
     //<input id="Name" name="Name" type="text" />
@@ -62,8 +63,17 @@
         })
     </script>
     <script src="~/Scripts/simplemde/simplemde.js"></script>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("[data-autocomplete-source]").each(function() {
+                var target = $(this);
+                target.autocomplete({ source: target.attr("data-autocomplete-source") });
+            });
+        });
+    </script>
 }
-
-
-
 

@@ -132,5 +132,15 @@ namespace IT_News.Controllers
             var listNewsViewModel = Mapper.Map<IEnumerable<NewsViewModel>>(listNewsDto);
             return View(listNewsViewModel);
         }
+
+        public ActionResult AutocompleteSearch(string term)   //Autocomplete
+        {
+            var alltags = newsService.GetAllTags().ToList();
+            var tagsSearch = alltags.Where(a => a.Name.Contains(term))
+                .Select(a => new { value = a.Name })
+                .Distinct();
+
+            return Json(tagsSearch, JsonRequestBehavior.AllowGet);
+        }
     }
 }
