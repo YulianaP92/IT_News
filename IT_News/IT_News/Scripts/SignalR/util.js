@@ -2,14 +2,13 @@
     // Ссылка на автоматически-сгенерированный прокси хаба
     var comment = $.connection.commentHub;
     // Объявление функции, которая хаб вызывает при получении сообщений
-    comment.client.Send = function (message, name,date,rating) {
+    comment.client.Send = function (message, name, date, rating) {
         // Добавление сообщений на веб-страницу 
-        $('#comments').append('<p><b>' + htmlEncode(name)
-            + '</b>: ' + htmlEncode(message) + '</p>' + '<p>' + htmlEncode(date) + '</p>'
-            + renderRating(rating));
+        $('#comments').append(renderRating(rating) + '<p><b>' + htmlEncode(name)
+            + '</b>: ' + htmlEncode(message) + '</p>' + '<p>' + htmlEncode(date) + '</p>');
     };
 
-   
+
     // Открываем соединение
     $.connection.hub.start().done(function () {
 
@@ -21,7 +20,9 @@
             var rating = document.getElementById("Rating").value;
             comment.server.comments(postId, content, userId, rating);
             $('#message').val('').focus();
-            cRateOut();
+            $("#Rating").val("").focus();
+            //cRateOut();
+            setDefaultStars();
         });
     });
 });
@@ -43,8 +44,10 @@ function renderRating(rating) {
     return result;
 }
 
-function cRateOut() {
+function setDefaultStars() {
+    var rate = '#Rate';
     for (var i = 1; i <= 5; i++) {
-        result += '<span class="starFadeN"></span>';
+        var tempRate = rate + i;
+        $(tempRate).attr("class", 'starFade');
     }
 }
