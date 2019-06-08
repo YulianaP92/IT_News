@@ -4,17 +4,6 @@
     ViewBag.Title = "MoreInformation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{
-    var ratingSum = ViewBag.RatingSum;
-    var ratingCount = ViewBag.RatingCount;
-
-    decimal rating = 0;
-    if (ratingCount > 0)
-    {
-        rating = (ratingSum / ratingCount);
-    }
-    var totalRating = decimal.Parse(rating.ToString());
-}
 
 <h2>News Details</h2>
 <div>
@@ -85,17 +74,7 @@
         }
     }
 </script>
-<script>
-    function SCRate()
-    {
-        for (var i = 1; i <= @totalRating; i++) {
-            $("#sRate" + i).attr('class', 'starGlowN');
-        }
-    }
-    $(function(){
-        SCRate();
-    });
-</script>
+
 @section scripts{
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <!--Ссылка на библиотеку SignalR -->
@@ -103,6 +82,14 @@
     <!--Ссылка на автоматически сгенерированный скрипт хаба SignalR -->
     <script src="~/signalr/hubs"></script>
     <script src="~/Scripts/SignalR/util.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            for (var i = 1; i <= @ViewBag.TotalRating; i++) {
+                $("#sRate" + i).attr('class', 'starGlowN');
+            }
+        });
+    </script>
 }
 
 

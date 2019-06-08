@@ -114,11 +114,19 @@ namespace IT_News.Controllers
                 ViewBag.RatingSum = ratingSum;
                 var ratingCount = ratings.Count();
                 ViewBag.RatingCount = ratingCount;
+                decimal rating = 0;
+                if (ratingCount > 0)
+                {
+                    rating = (ratingSum / ratingCount);
+                }
+                var totalRating = decimal.Parse(rating.ToString());
+                ViewBag.TotalRating = totalRating;
             }
             else
             {
                 ViewBag.RatingSum = 0;
                 ViewBag.RatingCount = 0;
+                ViewBag.TotalRating = 0;
             }
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             var html = Markdown.ToHtml(newsViewModel.Text);
