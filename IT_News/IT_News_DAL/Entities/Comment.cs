@@ -10,5 +10,6 @@ namespace IT_News_DAL.Entities
         public virtual int AuthorId { get; set; }
         public string AuthorName { get; set; }
         public virtual News News { get; set; }
+        public int Rating { get; set; }
     }
 }

@@ -17,7 +17,8 @@
             var userId = document.getElementById("userPageId").value;
             var postId = document.getElementById("modelId").value;
             var content = document.getElementById("message").value;
-            comment.server.comments(postId,content,userId);
+            var rating = document.getElementById("Rating").value;
+            comment.server.comments(postId, content, userId, rating);
             $('#message').val('').focus();
         });
     });

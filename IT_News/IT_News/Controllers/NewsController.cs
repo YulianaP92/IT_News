@@ -106,16 +106,32 @@ namespace IT_News.Controllers
         public ActionResult Details(int id,string page)
         {
             var newsDTO = newsService.Get(id);
-            var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
-            var html = Markdown.ToHtml(newsViewModel.Text);
-            ViewData["Mark"] = html;
-            if (page== "MyNewsList")
+
+            var ratings = newsDTO.Comments.ToList();
+            if (ratings.Count() > 0)
             {
-                return PartialView("Details", newsViewModel);
+                var ratingSum = ratings.Sum(d => d.Rating);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
             }
             else
             {
-                return View("MoreInformation", newsViewModel);
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
+            var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
+            var html = Markdown.ToHtml(newsViewModel.Text);
+            ViewData["Mark"] = html;
+
+            if (page== "MyNewsList")
+            {
+                return PartialView("Details", newsViewModel); //предназначено для частичного обновления на личной странице пользователя
+                //(/Page/Index) информации без комментариев
+            }
+            else
+            {
+                return View("MoreInformation", newsViewModel); //информация с комментариями
             }
         }
         public ActionResult Delete(int id)

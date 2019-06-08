@@ -30,7 +30,7 @@ namespace IT_News.Hubs
             this.pageService = DependencyResolver.Current.GetService<IService<UserPageDTO>>();
         }
 
-        public void Comments(string modelId, string comments1, string userPageId)
+        public void Comments(string modelId, string comments1, string userPageId,string Rating)
         {
             var id = int.Parse(modelId);
             var newsDto = newsService.Get(id);
@@ -43,6 +43,7 @@ namespace IT_News.Hubs
             var userDto = pageService.Get(int.Parse(userPageId));
             commentDto.AuthorId = userDto.Id;
             commentDto.AuthorName = userDto.Name;
+            commentDto.Rating= Int32.Parse(Rating);
             newsService.Create(commentDto);
             newsDto.Comments.Add(commentDto);
             Clients.All.Send(commentDto.Description, userDto.Name, commentDto.Date.ToString("dd.MM.yyyy"));

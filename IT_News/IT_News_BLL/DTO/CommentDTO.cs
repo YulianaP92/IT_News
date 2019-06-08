@@ -11,5 +11,6 @@ namespace IT_News_BLL.DTO
         public int NewsId { get; set; }
         public int AuthorId { get; set; }
         public string AuthorName { get; set; }
+        public int Rating { get; set; }
     }
 }

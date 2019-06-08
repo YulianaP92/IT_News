@@ -4,34 +4,98 @@
     ViewBag.Title = "MoreInformation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    var ratingSum = ViewBag.RatingSum;
+    var ratingCount = ViewBag.RatingCount;
 
+    decimal rating = 0;
+    if (ratingCount > 0)
+    {
+        rating = (ratingSum / ratingCount);
+    }
+    var totalRating = decimal.Parse(rating.ToString());
+}
 
 <h2>News Details</h2>
-@*<p>
-        <b>
-            ' + htmlEncode(name)
-            + '
-        </b>: ' + htmlEncode(message) + '
-    </p>' + '<p>' + htmlEncode(date) + '</p>'*@
+<div>
+    <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
+</div>
 @Html.Partial("Details", Model);
 @foreach (var comment in Model.Comments)
 {
     <p>
         <b>@comment.AuthorName</b>
-    @comment.Description
-</p>
-    <p>        
-        @comment.Date
+        @comment.Description
     </p>
+    <p>
+        <i> @comment.Date</i>
+    </p>
+    <br />
+    for (var i = 1; i <= comment.Rating; i++)
+    {
+        <span class="starGlowN"></span>
+    }
+    for (var i = (comment.Rating + 1); i <= 5; i++)
+    {
+        <span class="starFadeN"></span>
+    }
 }
 <div id="inputForm">
+    <div onmouseout="CRateSelected()">
+        <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span><span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span><span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)"></span><span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)"></span><span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
+    </div>
     <input id="modelId" type="hidden" name="modelId" value="@Model.Id" />
     <input id="userPageId" type="hidden" name="userPageId" value="@Model.UserPage.Id" />
     <input type="text" id="message" />
+    <input type="hidden" name="Rating" id="Rating" value="0" />
     <input type="button" id="sendmessage" value="Send" />
 </div>
 <div id="comments"></div>
+@*@Html.Partial("_CommentBox")*@
 
+
+<script>
+    function CRate(r) {
+        $("#Rating").val(r);
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+        // unselect remaining
+        for (var i = r + 1; i <= 5; i++) {
+            $("#Rate" + i).attr('class', 'starFade');
+        }
+    }
+
+    function CRateOver(r) {
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+    }
+
+    function CRateOut(r) {
+        for (var i = 1; i <= r; i++) {
+            $("#Rate" + i).attr('class', 'starFade');
+        }
+    }
+
+    function CRateSelected() {
+        var setRating = $("#Rating").val();
+        for (var i = 1; i <= setRating; i++) {
+            $("#Rate" + i).attr('class', 'starGlow');
+        }
+    }
+</script>
+<script>
+    function SCRate()
+    {
+        for (var i = 1; i <= @totalRating; i++) {
+            $("#sRate" + i).attr('class', 'starGlowN');
+        }
+    }
+    $(function(){
+        SCRate();
+    });
+</script>
 @section scripts{
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <!--Ссылка на библиотеку SignalR -->
