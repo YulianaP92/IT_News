@@ -5,8 +5,7 @@
     comment.client.Send = function (message, name, date, rating) {
         // Добавление сообщений на веб-страницу 
         $('#comments').append(renderRating(rating) + '<p><b>' + htmlEncode(name)
-            + '</b>: ' + htmlEncode(message) + '</p>' + '<p>' + htmlEncode(date) + '</p>');
-    };
+            + '</b>: ' + htmlEncode(message) + '</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
 
 
     // Открываем соединение
@@ -21,7 +20,6 @@
             comment.server.comments(postId, content, userId, rating);
             $('#message').val('').focus();
             $("#Rating").val("").focus();
-            //cRateOut();
             setDefaultStars();
         });
     });
