@@ -46,7 +46,7 @@ namespace IT_News.Hubs
             commentDto.Rating= Int32.Parse(Rating);
             newsService.Create(commentDto);
             newsDto.Comments.Add(commentDto);
-            Clients.All.Send(commentDto.Description, userDto.Name, commentDto.Date.ToString("dd.MM.yyyy"));
+            Clients.All.Send(commentDto.Description, userDto.Name, commentDto.Date.ToString("dd.MM.yyyy"), commentDto.Rating);
         }
 
     }

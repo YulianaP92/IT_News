@@ -108,7 +108,7 @@ namespace IT_News.Controllers
             var newsDTO = newsService.Get(id);
 
             var ratings = newsDTO.Comments.ToList();
-            if (ratings.Count() > 0)
+            if (ratings.Count > 0)
             {
                 var ratingSum = ratings.Sum(d => d.Rating);
                 ViewBag.RatingSum = ratingSum;
