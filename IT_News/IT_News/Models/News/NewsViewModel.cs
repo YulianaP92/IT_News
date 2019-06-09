@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using IT_News_BLL.DTO;
 
 namespace IT_News.Models.News
 {

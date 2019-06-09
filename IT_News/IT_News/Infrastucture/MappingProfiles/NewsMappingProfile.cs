@@ -6,8 +6,7 @@ using Profile = AutoMapper.Profile;
 namespace IT_News.Infrastucture.MappingProfiles
 {
     public class NewsMappingProfile:Profile
-    {
-        
+    {      
         public NewsMappingProfile()
         {
             MapNewsViewModelToNewsDTO();

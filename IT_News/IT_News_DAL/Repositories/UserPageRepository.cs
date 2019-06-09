@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using IT_News_DAL.EF;
 using IT_News_DAL.Entities;
 using IT_News_DAL.Interfaces;
@@ -47,7 +44,6 @@ namespace IT_News_DAL.Repositories
         public void Create(UserPage page, List<News> listNews)
         {
         }
-
         public void Delete(int id)
         {
             throw new NotImplementedException();
@@ -74,7 +70,6 @@ namespace IT_News_DAL.Repositories
         {
 
         }
-
         public void Save(News news, decimal total)
         {
             throw new NotImplementedException();

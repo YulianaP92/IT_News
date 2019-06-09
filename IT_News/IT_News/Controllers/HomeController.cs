@@ -5,7 +5,6 @@ using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
-using Markdig;
 
 
 namespace IT_News.Controllers
@@ -23,8 +22,9 @@ namespace IT_News.Controllers
             var newsDtoList = newsService.GetAll().ToList();
             if (newsDtoList != null)
             {
-                
-                //var newsViewModelRating= newsDtoList.OrderByDescending(s => s.Comments.)
+
+                var allNewsIndexRating = newsDtoList.OrderByDescending(s => s.TotalRating).Take(5).ToList();
+                var newsViewModelRating= Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndexRating);
                 var allNewsIndex = newsDtoList.OrderByDescending(s => s.PostedOn).Take(5).ToList();              
                 var newsViewModel = Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndex);
                 var tagsDto = newsService.GetAllTags().ToList();
@@ -32,7 +32,8 @@ namespace IT_News.Controllers
                 show = new StartPageView
                 {
                     NewsViewModels = newsViewModel,
-                    TagViewModel = tagsViewModel
+                    TagViewModel = tagsViewModel,
+                    NewsViewModelsRating = newsViewModelRating
                 };
                 ViewData["TagCloud"] = GetTagClouds();
             }

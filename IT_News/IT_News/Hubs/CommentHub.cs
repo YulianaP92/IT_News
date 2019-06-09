@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using AutoMapper;
-using IT_News.Models;
-using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
-using IT_News_DAL.EF;
-using IT_News_DAL.Entities;
 using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR.Hubs;
-using Ninject;
 
 namespace IT_News.Hubs
 {
