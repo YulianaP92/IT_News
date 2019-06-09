@@ -111,9 +111,7 @@ namespace IT_News.Controllers
             if (ratings.Count > 0)
             {
                 var ratingSum = ratings.Sum(d => d.Rating);
-                ViewBag.RatingSum = ratingSum;
-                var ratingCount = ratings.Count();
-                ViewBag.RatingCount = ratingCount;
+                var ratingCount = ratings.Count;
                 decimal rating = 0;
                 if (ratingCount > 0)
                 {
@@ -124,8 +122,6 @@ namespace IT_News.Controllers
             }
             else
             {
-                ViewBag.RatingSum = 0;
-                ViewBag.RatingCount = 0;
                 ViewBag.TotalRating = 0;
             }
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);

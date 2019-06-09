@@ -7,7 +7,9 @@
         $('#comments').append(renderRating(rating) + '<p><b>' + htmlEncode(name)
             + '</b>: ' + htmlEncode(message) + '</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
 
-
+    comment.client.TotalRatingSend = function (totalDecimal) {
+        $('#starMain').html("");
+        $('#starMain').append(setTotalStars(totalDecimal))};
     // Открываем соединение
     $.connection.hub.start().done(function () {
 
@@ -16,11 +18,13 @@
             var userId = document.getElementById("userPageId").value;
             var postId = document.getElementById("modelId").value;
             var content = document.getElementById("message").value;
-            var rating = document.getElementById("Rating").value;
+            var rating = document.getElementById("Rating").value;          
             comment.server.comments(postId, content, userId, rating);
             $('#message').val('').focus();
             $("#Rating").val("").focus();
             setDefaultStars();
+            var totalDecimal = 0;
+            comment.server.show(totalDecimal, postId);
         });
     });
 });
@@ -48,4 +52,33 @@ function setDefaultStars() {
         var tempRate = rate + i;
         $(tempRate).attr("class", 'starFade');
     }
+}
+//function setTotalStars(total) {
+//    var rate = '#sRate';
+
+//    var tempRate = 0;
+//    for (var i = 1; i <= total; i++) {
+//        tempRate = rate + i;
+//        $(tempRate).attr("class", 'starGlowN');
+//    }
+
+//    for (var i = (total + 1); i <= 5; i++) {
+//        tempRate = rate + i;
+//        $(tempRate).attr("class", 'starFadeN');
+//    }
+//  //return result;
+//}
+function setTotalStars(totalDecimal) {
+
+    var result = "";
+
+    for (var i = 1; i <= totalDecimal; i++) {
+        result += `<span class="starGlowN id="sRate${i}"></span>`;
+    }
+
+    for (var i = (totalDecimal + 1); i <= 5; i++) {
+        result += `<span class="starFadeN id="sRate${i}"></span>`;
+    }
+    return result;
+
 }
