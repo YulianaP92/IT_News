@@ -53,21 +53,7 @@ function setDefaultStars() {
         $(tempRate).attr("class", 'starFade');
     }
 }
-//function setTotalStars(total) {
-//    var rate = '#sRate';
 
-//    var tempRate = 0;
-//    for (var i = 1; i <= total; i++) {
-//        tempRate = rate + i;
-//        $(tempRate).attr("class", 'starGlowN');
-//    }
-
-//    for (var i = (total + 1); i <= 5; i++) {
-//        tempRate = rate + i;
-//        $(tempRate).attr("class", 'starFadeN');
-//    }
-//  //return result;
-//}
 function setTotalStars(totalDecimal) {
 
     var result = "";
@@ -80,5 +66,4 @@ function setTotalStars(totalDecimal) {
         result += `<span class="starFadeN id="sRate${i}"></span>`;
     }
     return result;
-
 }
