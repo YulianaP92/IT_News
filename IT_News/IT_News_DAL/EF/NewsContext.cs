@@ -27,7 +27,6 @@ namespace IT_News_DAL.EF
             modelBuilder.Entity<News>()
                 .HasMany(c => c.Comments)
                 .WithRequired(p => p.News);
-                
 
             modelBuilder.Entity<UserPage>()
                 .HasMany(c => c.News)

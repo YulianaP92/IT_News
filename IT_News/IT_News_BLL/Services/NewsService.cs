@@ -36,7 +36,6 @@ namespace IT_News_BLL.Services
             var result = Mapper.Map<NewsDTO>(news);
             return result;
         }
-
         public IEnumerable<NewsDTO> GetAll()
         {
             var allNews = Database.News.GetAll().ToList();
@@ -54,7 +53,6 @@ namespace IT_News_BLL.Services
             Database.News.Update(newsDal, tagCollection);
             Database.Save();
         }
-
         public IEnumerable<SectionDTO> GetAllSections()
         {
             var allSections = Database.News.GetAllSections().ToList();

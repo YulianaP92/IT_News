@@ -24,14 +24,12 @@ namespace IT_News_BLL.Services
             Database.UserPage.Create(pageDal);
             Database.Save();
         }
-
         public UserPageDTO Get(int id)
         {
             var page = Database.UserPage.Get(id);
             var result = Mapper.Map<UserPageDTO>(page);
             return result;
         }
-
         public IEnumerable<UserPageDTO> GetAll()
         {
             var allPage = Database.UserPage.GetAll().ToList();
@@ -44,7 +42,6 @@ namespace IT_News_BLL.Services
             var result = Mapper.Map<UserPageDTO>(userPage);
             return result;          
         }
-
        
 
         #region MyRegion

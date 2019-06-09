@@ -16,11 +16,9 @@ namespace IT_News.Controllers
     public class NewsController : Controller
     {
         private IService<NewsDTO> newsService;
-        private IService<UserPageDTO> pageService;
-        public NewsController(IService<NewsDTO> newsService, IService<UserPageDTO> pageService)
+        public NewsController(IService<NewsDTO> newsService)
         {
             this.newsService = newsService;
-            this.pageService = pageService;
         }
         [HttpGet]
         public ActionResult CreateNews()
@@ -103,7 +101,7 @@ namespace IT_News.Controllers
 
         }
         [AllowAnonymous]
-        public ActionResult Details(int id,string page)
+        public ActionResult Details(int id, string page)
         {
             var newsDTO = newsService.Get(id);
 
@@ -128,7 +126,7 @@ namespace IT_News.Controllers
             var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
 
-            if (page== "MyNewsList")
+            if (page == "MyNewsList")
             {
                 return PartialView("Details", newsViewModel); //предназначено для частичного обновления на личной странице пользователя
                 //(/Page/Index) информации без комментариев
@@ -144,9 +142,9 @@ namespace IT_News.Controllers
             if (newsDto == null)
                 return HttpNotFound();
             newsService.Delete(id);
-            return RedirectToAction("Index","Page");
+            return RedirectToAction("Index", "Page");
         }
-       [AllowAnonymous]
+        [AllowAnonymous]
         public ActionResult ListNewsByTag(int id)
         {
             var tagDto = newsService.GetAllTags().Where(x => x.Id == id).FirstOrDefault();

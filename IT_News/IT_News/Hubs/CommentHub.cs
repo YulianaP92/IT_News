@@ -63,7 +63,6 @@ namespace IT_News.Hubs
             }
             newsService.Save(newsDto, totalRating);
             return totalRating;
-
         }
 
         public void Show(string total,string modelId)

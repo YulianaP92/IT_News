@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using IT_News.Models.News;
-using IT_News_BLL.DTO;
 
 namespace IT_News.Models
 {
