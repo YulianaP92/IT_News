@@ -74,6 +74,11 @@ namespace IT_News_DAL.Repositories
         {
 
         }
+
+        public void Save(News news, decimal total)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

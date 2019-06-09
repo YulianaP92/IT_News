@@ -16,5 +16,6 @@ namespace IT_News_BLL.DTO
         public virtual IList<TagDTO> Tags { get; set; }
         public virtual IList<CommentDTO> Comments { get; set; }
         public virtual UserPageDTO UserPage { get; set; }
+        public decimal TotalRating { get; set; }
     }
 }

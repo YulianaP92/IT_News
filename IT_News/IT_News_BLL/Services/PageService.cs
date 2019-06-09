@@ -86,6 +86,12 @@ namespace IT_News_BLL.Services
         {
             throw new NotImplementedException();
         }
+
+        public void Save(NewsDTO news, decimal total)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

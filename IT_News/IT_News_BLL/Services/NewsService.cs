@@ -84,6 +84,11 @@ namespace IT_News_BLL.Services
             Database.Save();
         }
 
+        public void Save(NewsDTO newsDto, decimal total)
+        {          
+            var news=Mapper.Map<News>(newsDto);
+            Database.News.Save(news, total);
+        }
         #region MyRegion
         public void Create(NewsDTO item)
         {

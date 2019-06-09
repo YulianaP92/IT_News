@@ -18,5 +18,6 @@ namespace IT_News_BLL.Interfaces
         IEnumerable<SectionDTO> GetAllSections();
         IEnumerable<TagDTO> GetAllTags();
         IEnumerable<UserPageDTO> GetAllUsers();
+        void Save(NewsDTO news, decimal total);
     }
 }

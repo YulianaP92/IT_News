@@ -23,6 +23,8 @@ namespace IT_News.Controllers
             var newsDtoList = newsService.GetAll().ToList();
             if (newsDtoList != null)
             {
+                
+                //var newsViewModelRating= newsDtoList.OrderByDescending(s => s.Comments.)
                 var allNewsIndex = newsDtoList.OrderByDescending(s => s.PostedOn).Take(5).ToList();              
                 var newsViewModel = Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndex);
                 var tagsDto = newsService.GetAllTags().ToList();

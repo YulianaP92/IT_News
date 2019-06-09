@@ -65,13 +65,13 @@ namespace IT_News.Hubs
                 {
                     rating = (ratingSum / ratingCount);
                 }
-                totalRating = decimal.Parse(rating.ToString());
+                totalRating = decimal.Parse(rating.ToString());               
             }
             else
             {
                 totalRating = 0;
             }
-           
+            newsService.Save(newsDto, totalRating);
             return totalRating;
 
         }

@@ -112,8 +112,15 @@ namespace IT_News_DAL.Repositories
             _db.Comments.Add(item);
             _db.Entry(item).State = EntityState.Added;
         }
-
-
+        public void Save(News news,decimal total)
+        {
+            var t= _db.News.Find(news.Id);
+            if (t!=null)
+            {
+                t.TotalRating = total;
+            }            
+            _db.SaveChanges();
+        }
 
         #region MyRegion
         public News Get(string id)
@@ -133,6 +140,8 @@ namespace IT_News_DAL.Repositories
         {
             return _db.UserPage.ToList();
         }
+
+       
 
         #endregion
 

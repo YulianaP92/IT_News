@@ -17,5 +17,6 @@ namespace IT_News_DAL.Entities
         public virtual IList<Tag> Tags { get; set; }
         public virtual IList<Comment> Comments { get; set; }
         public virtual UserPage UserPage { get; set; }
+        public decimal TotalRating { get; set; }
     }
 }

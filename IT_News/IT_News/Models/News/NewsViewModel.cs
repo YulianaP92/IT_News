@@ -18,5 +18,6 @@ namespace IT_News.Models.News
         public virtual IList<TagViewModel> Tags { get; set; }
         public virtual IList<CommentViewModel> Comments { get; set; }
         public virtual UserPageViewModel UserPage { get; set; }
+        public decimal TotalRating { get; set; }
     }
 }
