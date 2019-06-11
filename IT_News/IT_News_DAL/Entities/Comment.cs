@@ -11,5 +11,6 @@ namespace IT_News_DAL.Entities
         public string AuthorName { get; set; }
         public virtual News News { get; set; }
         public int Rating { get; set; }
+        public int LikeCount { get; set; }
     }
 }

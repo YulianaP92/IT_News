@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IT_News_BLL.DTO
 {
@@ -12,5 +13,7 @@ namespace IT_News_BLL.DTO
         public int AuthorId { get; set; }
         public string AuthorName { get; set; }
         public int Rating { get; set; }
-    }
+        public int LikeCount { get; set; }
+        public virtual IList<LikePostDto> PostLikes { get; set; }
+}
 }

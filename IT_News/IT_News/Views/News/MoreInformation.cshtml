@@ -34,6 +34,7 @@
     <br />
 }
 <div id="comments"></div>
+
 <div id="inputForm">
     <input id="modelId" type="hidden" name="modelId" value="@Model.Id" />
     <input id="userPageId" type="hidden" name="userPageId" value="@Model.UserPage.Id" />
@@ -45,8 +46,9 @@
         <span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
     </div>
     <input type="text" id="message" />
-    <input type="hidden" name="Rating" id="Rating" value="0" />
+    <input type="hidden" name="Rating" id="Rating" value="0" /> 
     <input type="button" id="sendmessage" value="Send" />
+   
 </div>
 
 <script>

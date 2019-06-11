@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\CommentDTO.cs" />
+    <Compile Include="DTO\LikePostDto.cs" />
     <Compile Include="DTO\NewsDTO.cs" />
     <Compile Include="DTO\SectionDTO.cs" />
     <Compile Include="DTO\TagDTO.cs" />

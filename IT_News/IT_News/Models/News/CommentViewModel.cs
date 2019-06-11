@@ -11,5 +11,6 @@ namespace IT_News.Models.News
         public int AuthorId { get; set; }
         public string AuthorName { get; set; }
         public int Rating { get; set; }
+        public int LikeCount { get; set; }
     }
 }

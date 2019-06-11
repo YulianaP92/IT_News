@@ -52,6 +52,7 @@
     <Compile Include="EF\NewsContext.cs" />
     <Compile Include="EF\StoreDbInitializer.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\LikePost.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Tag.cs" />
