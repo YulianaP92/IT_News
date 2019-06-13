@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
+using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using IT_News.Models.News;
@@ -72,6 +75,24 @@ namespace IT_News.Controllers
             if (result <= 30)
                 return "tag7";
             return result <= 50 ? "tag8" : "tag9";
+        }
+
+        public ActionResult ChooseLang(string languageAbbrevation)
+        {
+            if (languageAbbrevation!=null)
+            {
+                //if (languageAbbrevation=="RU")
+                //{
+                //    languageAbbrevation = "EN";
+                //}
+                Thread.CurrentThread.CurrentCulture=CultureInfo.CreateSpecificCulture(languageAbbrevation);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageAbbrevation);
+            }
+            HttpCookie cookie=new HttpCookie("Language");
+            cookie.Value = languageAbbrevation;
+            Response.Cookies.Add(cookie);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

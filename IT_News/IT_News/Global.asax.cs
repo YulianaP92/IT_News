@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -19,7 +21,7 @@ namespace IT_News
             Database.SetInitializer<NewsContext>(new StoreDbInitializer());
             AreaRegistration.RegisterAllAreas();
 
-           
+
 
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -31,6 +33,23 @@ namespace IT_News
             var kernel = new StandardKernel(newsModule);
             kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
+
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies["Language"];
+            if (cookie != null && cookie.Value != null)
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(cookie.Value);
+                System.Threading.Thread.CurrentThread.CurrentUICulture=new System.Globalization.CultureInfo(cookie.Value);
+            }
+            else
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("EN");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("EN");
+            }
         }
     }
 }

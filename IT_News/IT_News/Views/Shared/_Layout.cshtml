@@ -21,13 +21,23 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("User Page", "Index", "Page")</li>
-                    <li>@Html.ActionLink("Create Page", "Create", "Page")</li>
+                    <li>@Html.ActionLink(IT_News.Resources.Resource.Home, "Index", "Home")</li>
+                    <li>@Html.ActionLink(IT_News.Resources.Resource.UserPage, "Index", "Page")</li>
+                    <li>@Html.ActionLink(IT_News.Resources.Resource.CreatePage, "Create", "Page")</li>
                     <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-globe">EN/RU </span>
-                        </a>
+                        @if (IT_News.Resources.Resource.Language == "RU")
+                        {
+                        <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" }, new { style = "color: azure" })</span>
+                            @*@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" }, new object())*@
+                            @*<a href="#">
+                <span class="glyphicon glyphicon-globe">@IT_News.Resources.Resource.Language </span>
+            </a>*@
+                        }
+                        else
+                        {
+                        <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU", @class = "glyphicon glyphicon - globe" }, new { style = "color: azure" })</span>
+                            @*@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU", @class = "glyphicon glyphicon - globe" }, new object())*@
+                        }
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
