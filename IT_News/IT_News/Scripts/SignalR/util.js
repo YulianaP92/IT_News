@@ -5,7 +5,7 @@
     comment.client.Send = function (message, name, date, rating) {
         // Добавление сообщений на веб-страницу 
         $('#comments').append(renderRating(rating) + '<p><b>' + htmlEncode(name)
-            + '</b>: ' + htmlEncode(message) + '</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
+            + '</b>: ' + htmlEncode(message)+" "+like() +'</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
 
     comment.client.TotalRatingSend = function (totalDecimal) {
         $('#starMain').html("");
@@ -27,6 +27,29 @@
             comment.server.show(totalDecimal, postId);
         });
     });
+});
+
+
+$(function (element) {
+   // var hearts = document.querySelectorAll(".like-button");
+    var postClient = $.connection.likeCommentHub;
+    postClient.client.updateLikeCount = function (post) {
+        var counter = $(".like-count");
+        $(counter).fadeOut(function () {
+            $(this).text(post.LikeCount);//?????????????
+            $(this).fadeIn();
+        });
+    };
+    $(".like-button").on("click", function () {
+        var code = $(this).attr("data-id");
+        var comment = element.closest("button").getElementsByTagName("input")[0].value;
+        //var comment = $(this).attr("input-id");
+       // var comment = document.getElementById("commentId").value; 
+        postClient.server.like(code, comment);
+    });
+
+    $.connection.hub.start();
+
 });
 // Кодирование тегов
 function htmlEncode(value) {
@@ -67,3 +90,9 @@ function setTotalStars(totalDecimal) {
     }
     return result;
 }
+
+function like() {
+    var result = '<a href="#" style="color: red"><span class="glyphicon glyphicon-heart" ></span></a>';
+    return result;
+}
+

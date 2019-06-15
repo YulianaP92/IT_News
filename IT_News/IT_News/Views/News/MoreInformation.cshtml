@@ -1,4 +1,5 @@
-﻿@model IT_News.Models.News.NewsViewModel
+﻿@using IT_News.Hubs
+@model IT_News.Models.News.NewsViewModel
 
 @{
     ViewBag.Title = "MoreInformation";
@@ -24,10 +25,15 @@
     {
         <span class="starFadeN"></span>
     }
-    <p>
-        <b>@comment.AuthorName</b>
-        @comment.Description
-    </p>
+        <p>
+            <b>@comment.AuthorName</b>
+            @comment.Description    
+            <button data-id="@Model.Id"  class="like-button"
+                    style="color: red">
+                <input id="commentId" type="hidden" name="commentId" value="@comment.CommentId" />
+                <span class="glyphicon glyphicon-heart like-count">@comment.LikeCount</span>
+            </button>
+        </p>
     <p>
         <i> @comment.Date</i>
     </p>
@@ -99,5 +105,5 @@
         });
     </script>
 }
-
+    
 
