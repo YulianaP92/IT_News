@@ -1,84 +1,83 @@
 ﻿@model IT_News.Models.UserPageViewModel
 
-    @using (Ajax.BeginForm("Search", "Page",
-        new AjaxOptions
-        {
-            UpdateTargetId = "news",
-            HttpMethod = "POST"
-        }))
+@using (Ajax.BeginForm("Search", "Page",
+    new AjaxOptions
     {
-        <p>
-            @Html.TextBox("searchString")
-            <input type="submit" id="submit" name="submit" value="Search" />
-        </p>
-    }
-    <table class="table table-bordered">
-        <tr scope="row" class="table-active">
-            <th>Edit</th>
-            <th>Details</th>
-            <th>Delete</th>
-            <th>
-                @Ajax.ActionLink("Title", "Sort", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
+        UpdateTargetId = "news",
+        HttpMethod = "POST"
+    }))
+{
+    <p>
+        @Html.TextBox("searchString")
+        <input type="submit" id="submit" name="submit" value="Search" />
+    </p>
+}
+<table class="table table-bordered">
+    <tr scope="row" class="table-active">
+        <th>@IT_News.Resources.Resource.Edit</th>
+        <th>@IT_News.Resources.Resource.Details</th>
+        <th>@IT_News.Resources.Resource.Delete</th>
+        <th>
+            @Ajax.ActionLink("Title", "Sort", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
+       {
+           HttpMethod = "GET",
+           UpdateTargetId = "news",
+           InsertionMode = InsertionMode.Replace
+       })
+
+        </th>
+        <th>@IT_News.Resources.Resource.ShortDescription</th>
+        <th>@IT_News.Resources.Resource.Section</th>
+        <th>@IT_News.Resources.Resource.Tags</th>
+        <th>
+
+            @Ajax.ActionLink(IT_News.Resources.Resource.Date, "Sort", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
+       {
+           HttpMethod = "GET",
+           UpdateTargetId = "news",
+           InsertionMode = InsertionMode.Replace
+       })
+        </th>
+    </tr>
+
+    @foreach (var item in Model.News)
+    {
+        <tr scope="row">
+            <td>
+                @Html.ActionLink(IT_News.Resources.Resource.Edit, "EditNews", "News", new { id = item.Id }, new object())
+            </td>
+            <td>
+                @Ajax.ActionLink(IT_News.Resources.Resource.Details, "Details", "News", new { id = item.Id,page="MyNewsList"}, new AjaxOptions
            {
                HttpMethod = "GET",
-               UpdateTargetId = "news",
+               UpdateTargetId = "details",
                InsertionMode = InsertionMode.Replace
            })
-
-            </th>
-            <th>Short Description</th>
-            <th>Section</th>
-            <th>Tags</th>
-            <th>
-
-                @Ajax.ActionLink("Date", "Sort", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
-           {
-               HttpMethod = "GET",
-               UpdateTargetId = "news",
-               InsertionMode = InsertionMode.Replace
-           })
-            </th>
+            </td>
+            <td>
+                @Html.ActionLink(IT_News.Resources.Resource.Delete, "Delete", "News", new { id = item.Id }, new object())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section.Name)
+            </td>
+            <td>
+                @foreach (var tag in item.Tags)
+                {
+                    <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostedOn)
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model.News)
-        {
-            <tr scope="row">
-                <td>
-                    @Html.ActionLink("Edit", "EditNews", "News", new { id = item.Id },new object())
-                </td>
-                <td>
-                    @Ajax.ActionLink("Details", "Details", "News", new { id = item.Id,page="MyNewsList"}, new AjaxOptions
-               {
-                   HttpMethod = "GET",
-                   UpdateTargetId = "details",
-                   InsertionMode = InsertionMode.Replace
-               })
-                    @*@Html.ActionLink("Details", "Details", new {id = item.Id}, new object())*@
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", "News", new { id = item.Id }, new object())
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ShortDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Section.Name)
-                </td>
-                <td>
-                    @foreach (var tag in item.Tags)
-                    {
-                        <p> @Html.DisplayFor(modelItem => tag.Name)</p>}
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostedOn)
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
 <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
 @Scripts.Render("~/bundles/modernizr")
 @Scripts.Render("~/bundles/jquery")

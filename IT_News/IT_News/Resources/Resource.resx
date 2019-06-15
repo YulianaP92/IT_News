@@ -117,11 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add_new_tag" xml:space="preserve">
+    <value>Add new tag</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Age</value>
+  </data>
   <data name="ButtonReadMore" xml:space="preserve">
     <value>Read more &gt;&gt;</value>
   </data>
+  <data name="CreateNews" xml:space="preserve">
+    <value>Create News</value>
+  </data>
   <data name="CreatePage" xml:space="preserve">
     <value>CreatePage</value>
+  </data>
+  <data name="Create_account" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditNews" xml:space="preserve">
+    <value>Edit News</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot your password?</value>
   </data>
   <data name="HighestRatings" xml:space="preserve">
     <value>News with the highest ratings ★ ☆:</value>
@@ -132,8 +162,14 @@
   <data name="Language" xml:space="preserve">
     <value>EN</value>
   </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
   <data name="LatestNews" xml:space="preserve">
     <value>Latest news:</value>
+  </data>
+  <data name="ListNewsOfTag" xml:space="preserve">
+    <value>Список новостей по тегу</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log In</value>
@@ -141,8 +177,35 @@
   <data name="LogOff" xml:space="preserve">
     <value>Log Off</value>
   </data>
+  <data name="MyPage" xml:space="preserve">
+    <value>My Page</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="Register_user" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="ShortDescription" xml:space="preserve">
+    <value>Short Description</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="UserPage" xml:space="preserve">
     <value>User Page</value>

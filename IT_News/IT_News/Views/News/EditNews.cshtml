@@ -1,9 +1,6 @@
-﻿@using IT_News.Models.News
-@model IT_News.Models.News.NewsViewModel
+﻿@model IT_News.Models.News.NewsViewModel
 
 @{
-    /**/
-
     ViewBag.Title = "Edit News";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,20 +12,19 @@
 <script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
 <script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
 
-<h2>Edit News</h2>
+<h2>@IT_News.Resources.Resource.EditNews</h2>
 
 @using (Html.BeginForm("EditNews", "News", FormMethod.Post))
 {
-    // @Html.HiddenFor(model => model.Id)
-    @Html.LabelFor(model => model.Title, "Title")
+    @Html.LabelFor(model => model.Title, IT_News.Resources.Resource.Title)
     <br />
     @Html.TextBoxFor(model => model.Title)
     <br /><br />
-    @Html.LabelFor(model => model.ShortDescription, "Short Description")
+    @Html.LabelFor(model => model.ShortDescription, IT_News.Resources.Resource.ShortDescription)
     <br />
     @Html.TextAreaFor(model => model.ShortDescription, new { style = "width: 40%; max-width: 40%;" })
     <br /><br />
-    @Html.LabelFor(model => model.Text, "Text")
+    @Html.LabelFor(model => model.Text, IT_News.Resources.Resource.Text)
     <br />
     <div id="text">
         <textarea name="Text" id="myTextArea">@ViewData["Mark"]</textarea>
@@ -41,15 +37,11 @@
     for (int i = 0; i < Model.Tags.Count; i++)
     {
         <div id="block">
-            @Html.TextBoxFor(model => model.Tags[i].Name, new {autocomplete = Url.Action("AutocompleteSearch", "News") })
-            @*<input type="text" name="i.Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "News")' />*@
+            @Html.TextBoxFor(model => model.Tags[i].Name, new { autocomplete = Url.Action("AutocompleteSearch", "News") })
         </div>
     }
-    //@Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
-    //<input id="Name" name="Name" type="text" />
-    <p><a class="addLink">Add new tag</a></p>
-    <input class="btn-primary" type="submit" value="Save" />
-
+    <p><a class="addLink">@IT_News.Resources.Resource.Add_new_tag</a></p>
+    <input class="btn-primary" type="submit" value=@IT_News.Resources.Resource.Save />
 }
 
 @section Scripts {
@@ -71,8 +63,8 @@
 
     <script src="~/Scripts/jquery-ui-1.12.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(function() {
-            $("[autocomplete]").each(function() {
+        $(function () {
+            $("[autocomplete]").each(function () {
                 var target = $(this);
                 target.autocomplete({ source: target.attr("autocomplete") });
             });

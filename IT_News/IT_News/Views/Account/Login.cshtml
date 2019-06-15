@@ -4,7 +4,7 @@
     ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@IT_News.Resources.Resource.LogIn</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
@@ -41,18 +41,15 @@
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Register as a new user", "Register")
+                    @Html.ActionLink(IT_News.Resources.Resource.Register_user, "Register")
                 </p>
                     <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        @Html.ActionLink(IT_News.Resources.Resource.ForgotPassword, "ForgotPassword")
                     </p>
             }
         </section>
     </div>
     <div class="col-md-4">
-        <section id="socialLoginForm">
-            @*@Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })*@
-        </section>
     </div>
 </div>
 

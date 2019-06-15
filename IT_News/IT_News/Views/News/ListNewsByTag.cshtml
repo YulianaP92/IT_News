@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List of News by tag:</h2>
+<h2>@IT_News.Resources.Resource.ListNewsOfTag</h2>
 @if (Model != null)
 {
     foreach (var news in Model)
     {
         <p style="font-size: 30px; color: brown">@news.Title</p>
         <p style="color: grey">@news.ShortDescription</p>
-        @Html.ActionLink("Read more >>", "Details", "News", new { id = news.Id, page = "MoreInformation" }, new object())
+        @Html.ActionLink(IT_News.Resources.Resource.ButtonReadMore, "Details", "News", new { id = news.Id, page = "MoreInformation" }, new object())
     }
 }
 

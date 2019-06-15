@@ -1,5 +1,4 @@
-﻿@using IT_News.Models.News
-@model IT_News.Models.News.NewsViewModel
+﻿@model IT_News.Models.News.NewsViewModel
 
 @{
     /**/
@@ -15,37 +14,33 @@
 <script type="text/javascript" src="~/Scripts/inline-attachment/inline-attachment.js"></script>
 <script src="~/Scripts/inline-attachment/codemirror-4.inline-attachment.js"></script>
 
-<h2>Create News</h2>
+<h2>@IT_News.Resources.Resource.CreateNews</h2>
 
 @using (Html.BeginForm("CreateNews", "News", FormMethod.Post))
 {
-    // @Html.HiddenFor(model => model.Id)
-    @Html.LabelFor(model => model.Title, "Title")
+    @Html.LabelFor(model => model.Title, IT_News.Resources.Resource.Title)
     <br />
     @Html.TextBoxFor(model => model.Title, "Title")
     <br /><br />
-    @Html.LabelFor(model => model.ShortDescription, "Short Description")
+    @Html.LabelFor(model => model.ShortDescription, IT_News.Resources.Resource.ShortDescription)
     <br />
     @Html.TextAreaFor(model => model.ShortDescription, new { style = "width: 40%; max-width: 40%;" })
     <br /><br />
-    @Html.LabelFor(model => model.Text, "Text")
+    @Html.LabelFor(model => model.Text, IT_News.Resources.Resource.Text)
     <br />
     <div id="text">
         <textarea name="Text" id="myTextArea"></textarea>
     </div>
     <br /><br />
-    @Html.LabelFor(model => model.Section, "Section")
+    @Html.LabelFor(model => model.Section, IT_News.Resources.Resource.Section)
     <br />
     @Html.DropDownListFor(model => model.SectionId, ViewBag.Sections as SelectList)
     <br /><br />
     <div id="block">
         <input type="text" name="Tags[0].Name" data-autocomplete-source='@Url.Action("AutocompleteSearch", "News")' />
     </div>
-    // @Html.TextBoxFor(model => model.Tags[0].Name, "Tags")
-    //<input id="Name" name="Name" type="text" />
     <p><a class="addLink">Add new tag</a></p>
     <input class="btn-primary" type="submit" value="Add" />
-
 }
 
 @section Scripts {

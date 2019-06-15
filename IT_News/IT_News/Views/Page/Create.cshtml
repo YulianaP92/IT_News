@@ -5,19 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create Page</h2>
+<h2>@IT_News.Resources.Resource.CreatePage</h2>
 @using (Html.BeginForm("Create", "Page", FormMethod.Post))
     {
 
-        @Html.LabelFor(model => model.Name, "Name")
+        @Html.LabelFor(model => model.Name, IT_News.Resources.Resource.Name)
         <br />
         @Html.TextBoxFor(model => model.Name, "Name")
         <br /><br />
-        @Html.LabelFor(model => model.LastName, "Last Name")
+        @Html.LabelFor(model => model.LastName, IT_News.Resources.Resource.LastName)
         <br />
         @Html.TextBoxFor(model => model.LastName, "LastName")
         <br /><br />
-        @Html.LabelFor(model => model.Age, "Age")
+        @Html.LabelFor(model => model.Age, IT_News.Resources.Resource.Age)
         <br />
         @Html.TextBoxFor(model => model.Age, "Age")
         <br /><br />
