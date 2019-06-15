@@ -14,7 +14,7 @@
     }
 </style>
 <div id="heading">
-    <h1>HOME</h1>
+    <h1>@IT_News.Resources.Resource.Home</h1>
 </div>
 
 <div style="color: black">
@@ -30,7 +30,7 @@
         }
     </div>
     <div style="float: left;width: 45%">
-        <p class="headerNews">Latest news:</p>
+        <p class="headerNews">@IT_News.Resources.Resource.LatestNews</p>
         @if (Model != null)
         {
             foreach (var news in Model.NewsViewModels)
@@ -39,13 +39,13 @@
                 <p style="color: grey">@news.ShortDescription</p>
                 <p style="color: grey">@news.PostedOn</p>
                 <p style="color: grey">@news.Section.Name</p>
-                @Html.ActionLink("Read more >>", "Details", "News", new { id = news.Id, page = "MoreInformation" }, new object())
+                @Html.ActionLink(IT_News.Resources.Resource.ButtonReadMore, "Details", "News", new { id = news.Id, page = "MoreInformation" }, new object())
 
             }
         }
     </div>
     <div style="float: left;width: 45%">
-        <p class="headerNews">News with the highest ratings ★ ☆:</p>
+        <p class="headerNews">@IT_News.Resources.Resource.HighestRatings</p>
     
     @if (Model != null)
     {

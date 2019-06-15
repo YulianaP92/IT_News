@@ -61,11 +61,29 @@ namespace IT_News.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Read more &gt;&gt;.
+        /// </summary>
+        public static string ButtonReadMore {
+            get {
+                return ResourceManager.GetString("ButtonReadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CreatePage.
         /// </summary>
         public static string CreatePage {
             get {
                 return ResourceManager.GetString("CreatePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to News with the highest ratings ★ ☆:.
+        /// </summary>
+        public static string HighestRatings {
+            get {
+                return ResourceManager.GetString("HighestRatings", resourceCulture);
             }
         }
         
@@ -88,11 +106,29 @@ namespace IT_News.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Latest news:.
+        /// </summary>
+        public static string LatestNews {
+            get {
+                return ResourceManager.GetString("LatestNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log In.
         /// </summary>
         public static string LogIn {
             get {
                 return ResourceManager.GetString("LogIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Off.
+        /// </summary>
+        public static string LogOff {
+            get {
+                return ResourceManager.GetString("LogOff", resourceCulture);
             }
         }
         

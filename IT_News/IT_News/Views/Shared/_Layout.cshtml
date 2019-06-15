@@ -6,8 +6,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - IТ News</title>
-
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #000080">
@@ -27,16 +25,11 @@
                     <li>
                         @if (IT_News.Resources.Resource.Language == "RU")
                         {
-                        <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" }, new { style = "color: azure" })</span>
-                            @*@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" }, new object())*@
-                            @*<a href="#">
-                <span class="glyphicon glyphicon-globe">@IT_News.Resources.Resource.Language </span>
-            </a>*@
+                        <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" , @class = "glyphicon glyphicon - globe" }, new { style = "color: azure" })</span>
                         }
                         else
                         {
                         <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU", @class = "glyphicon glyphicon - globe" }, new { style = "color: azure" })</span>
-                            @*@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU", @class = "glyphicon glyphicon - globe" }, new object())*@
                         }
                     </li>
                 </ul>
@@ -44,7 +37,6 @@
             </div>
 
         </div>
-
     </div>
 <div class="container body-content">
     @RenderBody()       
@@ -53,8 +45,6 @@
     <p>&copy; @DateTime.Now.Year - IT News</p>
 </footer>
     @Styles.Render("~/Content/css")
-@*<script src="/Scripts/jquery.unobtrusive-ajax.min.js" type = "text/javascript" ></script>*@
-
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
