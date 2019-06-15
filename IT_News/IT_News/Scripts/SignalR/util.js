@@ -29,8 +29,7 @@
     });
 });
 
-
-$(function (element) {
+$(function () {
    // var hearts = document.querySelectorAll(".like-button");
     var postClient = $.connection.likeCommentHub;
     postClient.client.updateLikeCount = function (post) {
@@ -41,11 +40,16 @@ $(function (element) {
         });
     };
     $(".like-button").on("click", function () {
-        var code = $(this).attr("data-id");
-        var comment = element.closest("button").getElementsByTagName("input")[0].value;
+        [].forEach.call(document.querySelectorAll(".like-button"), function (item) {
+            item.addEventListener("click", function () {
+                var comment = item.closest("button").getElementsByTagName("input")[0].value;
+                var code = $(this).attr("data-id");
+                postClient.server.like(code, comment);
+            });
+        });
         //var comment = $(this).attr("input-id");
        // var comment = document.getElementById("commentId").value; 
-        postClient.server.like(code, comment);
+       
     });
 
     $.connection.hub.start();

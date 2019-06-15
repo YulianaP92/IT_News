@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using AutoMapper;
+using IT_News.Models;
+using IT_News_DAL.EF;
+using IT_News_DAL.Entities;
 
 
 namespace IT_News.Hubs
@@ -14,12 +19,14 @@ namespace IT_News.Hubs
     [HubName("likeCommentHub")]
     public class LikeCommentHub : Hub
     {
-        private IService<NewsDTO> newsService;
-
+        //private IService<NewsDTO> newsService;
+        private readonly NewsContext _db;
         public LikeCommentHub()
         {
-            this.newsService = DependencyResolver.Current.GetService<IService<NewsDTO>>();
+            this._db = DependencyResolver.Current.GetService<NewsContext>();
+
         }
+
         public Task Like(int newstId, int commentId)
         {
             var likePost = SaveLike(newstId,commentId);
@@ -27,27 +34,34 @@ namespace IT_News.Hubs
         }
         private int SaveLike(int newstId, int commentId)
         {
-            var baseContext = this.Context.Request.GetHttpContext();
-            var newsDto = newsService.Get(newstId);
-            var commentDto = newsDto.Comments.Where(x => x.CommentId == commentId).FirstOrDefault();
-            var liked = new LikePostDto
+            var news = _db.News.Where(x => x.Id == newstId).FirstOrDefault();
+            var comment = news.Comments.Where(x => x.CommentId == commentId).FirstOrDefault();
+            LikePost liked = null;
+            if (comment!=null)
             {
-                CommentId = commentDto.CommentId,
-                NewsId = newsDto.Id,
-                Like = true,
-                UserId = baseContext.Request.UserHostAddress
-            };
-            var like = commentDto.PostLikes.FirstOrDefault(e => e.UserId == liked.UserId);
+                liked = new LikePost()
+                {
+                    CommentId = comment.CommentId,
+                    NewsId = news.Id,
+                    Like = true,
+                    User = HttpContext.Current.User.Identity.GetUserId()
+
+                };
+            }
+
+            var like = comment.PostLikes.FirstOrDefault(e => e.User == liked.User);
             if (like == null)
             {
-                commentDto.PostLikes.Add(liked);
+                
+                comment.PostLikes.Add(liked);
+               
             }
             else
             {
                 like.Like = !like.Like;
             }
-
-            return  commentDto.PostLikes.Count(e => e.Like);
+            _db.SaveChanges();
+            return  comment.PostLikes.Count(e => e.Like);
 
         }
 

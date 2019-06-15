@@ -28,11 +28,11 @@
         <p>
             <b>@comment.AuthorName</b>
             @comment.Description    
-            <button data-id="@Model.Id"  class="like-button"
+            <a data-id="@Model.Id" class="like-button"
                     style="color: red">
-                <input id="commentId" type="hidden" name="commentId" value="@comment.CommentId" />
+                <input id="commentId" type="hidden" name="commentId" value="@comment.CommentId" />               
                 <span class="glyphicon glyphicon-heart like-count">@comment.LikeCount</span>
-            </button>
+            </a>
         </p>
     <p>
         <i> @comment.Date</i>

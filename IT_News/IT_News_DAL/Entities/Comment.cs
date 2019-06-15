@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IT_News_DAL.Entities
 {
@@ -12,5 +13,6 @@ namespace IT_News_DAL.Entities
         public virtual News News { get; set; }
         public int Rating { get; set; }
         public int LikeCount { get; set; }
+        public virtual IList<LikePost> PostLikes { get; set; }
     }
 }

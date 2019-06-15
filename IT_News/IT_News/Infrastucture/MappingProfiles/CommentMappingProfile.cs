@@ -51,6 +51,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForMember(dest => dest.LikeCount, c => c.MapFrom(src => src.LikeCount))
+                .ForMember(dest => dest.PostLikes, c => c.MapFrom(src => src.PostLikes))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapCommentDTOToComment()
@@ -64,6 +65,7 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForMember(dest => dest.LikeCount, c => c.MapFrom(src => src.LikeCount))
+                .ForMember(dest => dest.PostLikes, c => c.MapFrom(src => src.PostLikes))
                 .ForAllOtherMembers(c => c.Ignore());
         }
     }

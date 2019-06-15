@@ -121,7 +121,6 @@ namespace IT_News_DAL.Repositories
             }            
             _db.SaveChanges();
         }
-
         #region MyRegion
         public News Get(string id)
         {
