@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IT_News.Models.News
 {
@@ -12,5 +13,6 @@ namespace IT_News.Models.News
         public string AuthorName { get; set; }
         public int Rating { get; set; }
         public int LikeCount { get; set; }
+        public virtual IList<LikePostView> PostLikes { get; set; }
     }
 }

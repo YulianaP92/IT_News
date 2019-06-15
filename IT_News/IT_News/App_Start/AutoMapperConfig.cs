@@ -14,6 +14,7 @@ namespace IT_News
                 c.AddProfile(typeof(SectionMappingProfile));
                 c.AddProfile(typeof(TagMappingProfile));
                 c.AddProfile(typeof(UserPageMappingProfile));
+                c.AddProfile(typeof(LikePostMappingProfile));
             });
         }
     }

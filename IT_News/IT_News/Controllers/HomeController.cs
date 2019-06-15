@@ -39,6 +39,7 @@ namespace IT_News.Controllers
                     NewsViewModelsRating = newsViewModelRating
                 };
                 ViewData["TagCloud"] = GetTagClouds();
+               
             }
             return View(show);
         }

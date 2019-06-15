@@ -60,7 +60,10 @@ namespace IT_News.Hubs
             {
                 like.Like = !like.Like;
             }
+            comment.LikeCount= comment.PostLikes.Count(e => e.Like);
+            var i = comment.LikeCount;
             _db.SaveChanges();
+            
             return  comment.PostLikes.Count(e => e.Like);
 
         }

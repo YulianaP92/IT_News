@@ -31,7 +31,7 @@
             <a data-id="@Model.Id" class="like-button"
                     style="color: red">
                 <input id="commentId" type="hidden" name="commentId" value="@comment.CommentId" />               
-                <span class="glyphicon glyphicon-heart like-count">@comment.LikeCount</span>
+                <span class="glyphicon glyphicon-heart like-count">@ViewBag.CountLike</span>
             </a>
         </p>
     <p>

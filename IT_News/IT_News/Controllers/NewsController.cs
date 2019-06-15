@@ -7,6 +7,8 @@ using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
+using IT_News_DAL.EF;
+using IT_News_DAL.Entities;
 using Markdig;
 using Microsoft.AspNet.Identity;
 
@@ -19,6 +21,7 @@ namespace IT_News.Controllers
         public NewsController(IService<NewsDTO> newsService)
         {
             this.newsService = newsService;
+            
         }
         [HttpGet]
         public ActionResult CreateNews()
@@ -104,7 +107,7 @@ namespace IT_News.Controllers
         public ActionResult Details(int id, string page)
         {
             var newsDTO = newsService.Get(id);
-
+            var news = Mapper.Map<News>(newsDTO);
             var ratings = newsDTO.Comments.ToList();
             if (ratings.Count > 0)
             {
@@ -116,11 +119,16 @@ namespace IT_News.Controllers
                     rating = (ratingSum / ratingCount);
                 }
                 var totalRating = decimal.Parse(rating.ToString());
+               
                 ViewBag.TotalRating = totalRating;
             }
             else
             {
                 ViewBag.TotalRating = 0;
+            }
+            foreach (var i in news.Comments)
+            {
+                ViewBag.CountLike = i.LikeCount;
             }
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             var html = Markdown.ToHtml(newsViewModel.Text);

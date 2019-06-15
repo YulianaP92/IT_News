@@ -23,8 +23,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
                 .ForMember(dest => dest.NewsDto, c => c.MapFrom(src => src.NewsViewModel))
-                .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForMember(dest => dest.LikeCount, c => c.MapFrom(src => src.LikeCount))
+                .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapCommentDTOToCommentViewModel()
@@ -36,8 +36,8 @@ namespace IT_News.Infrastucture.MappingProfiles
                 .ForMember(dest => dest.AuthorId, c => c.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.AuthorName, c => c.MapFrom(src => src.AuthorName))
                 .ForMember(dest => dest.NewsViewModel, c => c.MapFrom(src => src.NewsDto))
-                .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForMember(dest => dest.LikeCount, c => c.MapFrom(src => src.LikeCount))
+                .ForMember(dest => dest.Rating, c => c.MapFrom(src => src.Rating))
                 .ForAllOtherMembers(c => c.Ignore());
         }
         private void MapCommentToCommentDTO()

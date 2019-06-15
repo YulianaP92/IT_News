@@ -39,10 +39,10 @@ $(function () {
             $(this).fadeIn();
         });
     };
-    $(".like-button").on("click", function () {
+    //$(".like-button").on("click", function () {
         [].forEach.call(document.querySelectorAll(".like-button"), function (item) {
             item.addEventListener("click", function () {
-                var comment = item.closest("button").getElementsByTagName("input")[0].value;
+                var comment = item.closest("a").getElementsByTagName("input")[0].value;
                 var code = $(this).attr("data-id");
                 postClient.server.like(code, comment);
             });
@@ -50,7 +50,7 @@ $(function () {
         //var comment = $(this).attr("input-id");
        // var comment = document.getElementById("commentId").value; 
        
-    });
+    //});
 
     $.connection.hub.start();
 
