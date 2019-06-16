@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using IT_News.Models;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
 using IT_News_DAL.Entities;
 using Markdig;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IT_News.Controllers
 {
@@ -126,6 +128,10 @@ namespace IT_News.Controllers
             }
 
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
+            var UserId = User.Identity.GetUserId();
+            var UserPage = newsService.GetAllUsers().Where(x => x.UserId == UserId).FirstOrDefault();
+            var idUser = UserPage.Id;
+            ViewData["User"] = idUser;
             var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
 

@@ -42,7 +42,7 @@
 
 <div id="inputForm">
     <input id="modelId" type="hidden" name="modelId" value="@Model.Id" />
-    <input id="userPageId" type="hidden" name="userPageId" value="@Model.UserPage.Id" />
+    <input id="userPageId" type="hidden" name="userPageId" value="@ViewData["User"]" />
     <div onmouseout="CRateSelected()">
         <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span>
         <span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span>
