@@ -126,10 +126,7 @@ namespace IT_News.Controllers
             {
                 ViewBag.TotalRating = 0;
             }
-            foreach (var i in news.Comments)
-            {
-                ViewBag.CountLike = i.LikeCount;
-            }
+
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
