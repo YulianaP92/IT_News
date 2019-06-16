@@ -26,7 +26,7 @@ namespace IT_News.Controllers
             if (newsDtoList != null)
             {
 
-                var allNewsIndexRating = newsDtoList.OrderByDescending(s => s.TotalRating).Take(5).ToList();
+                var allNewsIndexRating = newsDtoList.OrderByDescending(s => s.TotalRating).Take(3).ToList();
                 var newsViewModelRating= Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndexRating);
                 var allNewsIndex = newsDtoList.OrderByDescending(s => s.PostedOn).Take(5).ToList();              
                 var newsViewModel = Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndex);
