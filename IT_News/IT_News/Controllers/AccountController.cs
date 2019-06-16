@@ -75,11 +75,9 @@ namespace IT_News.Controllers
                 if (user != null)
                 {
                     if (user.Email == "belez.spk@mail.ru")
-                    {
-                        
+                    {                       
                             await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                            return RedirectToLocal(returnUrl);
-                       
+                            return RedirectToLocal(returnUrl);                      
                     }
                     if (user.Email != "belez.spk@mail.ru")
                     {
