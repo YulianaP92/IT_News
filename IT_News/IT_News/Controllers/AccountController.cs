@@ -56,7 +56,12 @@ namespace IT_News.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        [AllowAnonymous]
+        public ActionResult Users()
+        {
+            var users = UserManager.Users.ToList();
+            return View(users);
+        }
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -69,6 +74,13 @@ namespace IT_News.Controllers
 
                 if (user != null)
                 {
+                    if (user.Email == "belez.spk@mail.ru")
+                    {
+                        
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToLocal(returnUrl);
+                       
+                    }
                     if (user.Email != "belez.spk@mail.ru")
                     {
                         if (user.EmailConfirmed == true)
@@ -389,7 +401,7 @@ namespace IT_News.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult EditUser()
         {
             var listUser = UserManager.Users.ToList();

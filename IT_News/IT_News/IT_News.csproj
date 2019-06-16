@@ -424,6 +424,7 @@
     <Content Include="Views\News\Comment.cshtml" />
     <Content Include="Views\News\MoreInformation.cshtml" />
     <Content Include="Views\News\ListNewsByTag.cshtml" />
+    <Content Include="Views\Account\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Files\" />
