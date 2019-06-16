@@ -81,7 +81,6 @@ namespace IT_News_BLL.Services
             Database.News.Create(commentDAL);
             Database.Save();
         }
-
         public void Save(NewsDTO newsDto, decimal total)
         {          
             var news=Mapper.Map<News>(newsDto);

@@ -7,7 +7,6 @@ using AutoMapper;
 using IT_News.Models.News;
 using IT_News_BLL.DTO;
 using IT_News_BLL.Interfaces;
-using IT_News_DAL.EF;
 using IT_News_DAL.Entities;
 using Markdig;
 using Microsoft.AspNet.Identity;
@@ -101,7 +100,6 @@ namespace IT_News.Controllers
             var tags = Mapper.Map<List<TagDTO>>(news.Tags);
             newsService.Update(news, tags);
             return RedirectToAction("Index", "Home");
-
         }
         [AllowAnonymous]
         public ActionResult Details(int id, string page)

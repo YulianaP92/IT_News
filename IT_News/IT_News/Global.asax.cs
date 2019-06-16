@@ -21,20 +21,15 @@ namespace IT_News
             Database.SetInitializer<NewsContext>(new StoreDbInitializer());
             AreaRegistration.RegisterAllAreas();
 
-
-
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.Configure();
 
-
             NinjectModule newsModule = new NinjectRegistrations();
             var kernel = new StandardKernel(newsModule);
             kernel.Unbind<ModelValidatorProvider>();
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
-
-
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

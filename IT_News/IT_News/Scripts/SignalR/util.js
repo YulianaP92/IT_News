@@ -5,7 +5,7 @@
     comment.client.Send = function (message, name, date, rating) {
         // Добавление сообщений на веб-страницу 
         $('#comments').append(renderRating(rating) + '<p><b>' + htmlEncode(name)
-            + '</b>: ' + htmlEncode(message) + " " /*+ likeV()*/ +'</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
+            + '</b>: ' + htmlEncode(message) + " " + likeV() +'</p>' + '<p><i>' + htmlEncode(date) + '</i></p>')};
 
     comment.client.TotalRatingSend = function (totalDecimal) {
         $('#starMain').html("");
@@ -35,7 +35,7 @@ $(function () {
 
         var counter = $(".like-count");
         $(counter).fadeOut(function () {
-            $(this).text(post);
+            $(this).text(post.text);
             $(this).fadeIn();
         });
     };
@@ -92,14 +92,20 @@ function setTotalStars(totalDecimal) {
 }
 
 
+//function likeV() {
+//    var postId = document.getElementById("data-id").value;
+//    var valueComment = document.getElementById("commentId").value;
+//    var likeCount = document.getElementsByClassName(".like-count").value;
+//    var result = `<a data-id='${postId}'class="like-button" style="color: red">+
+//        <input id="commentId" type="hidden" name="commentId" value='${valueComment}' />+
+//        <span class="glyphicon glyphicon-heart like-count">'${likeCount}'</span></a>`;
+//    return result;
+//}
+
+
 function likeV() {
-    var postId = document.getElementById("data-id").value;
-    var valueComment = document.getElementById("commentId").value;
-    var likeCount = document.getElementsByClassName(".like-count").value;
-    var result = `<a data-id='${postId}'class="like-button" style="color: red">+
-        <input id="commentId" type="hidden" name="commentId" value='${valueComment}' />+
-        <span class="glyphicon glyphicon-heart like-count">'${likeCount}'</span></a>`;
+    var result = "<a class='like-button' style='color: red'>" +
+        "<input id='commentId' type='hidden' name='commentId' />" +
+        "<span class='glyphicon glyphicon-heart like-count'>0</span></a>";
     return result;
 }
-
-

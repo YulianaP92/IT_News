@@ -42,7 +42,6 @@ namespace IT_News_BLL.Services
             var result = Mapper.Map<UserPageDTO>(userPage);
             return result;          
         }
-       
 
         #region MyRegion
 

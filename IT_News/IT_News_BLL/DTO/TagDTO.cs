@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace IT_News_BLL.DTO
 {
    public  class TagDTO

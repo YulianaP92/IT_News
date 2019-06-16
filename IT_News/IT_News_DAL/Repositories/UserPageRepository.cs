@@ -33,8 +33,7 @@ namespace IT_News_DAL.Repositories
         public IEnumerable<UserPage> GetAll()
         {
             return _db.UserPage.ToList();
-        }
-        
+        }       
 
         #region MyRegion    
         public void Create(UserPage item, List<Tag> element)

@@ -193,6 +193,7 @@ namespace IT_News.Controllers
             return View(model);
         }
 
+        #region MyRegion    
         //
         // GET: /Manage/ManageLogins
         //public async Task<ActionResult> ManageLogins(ManageMessageId? message)
@@ -238,8 +239,8 @@ namespace IT_News.Controllers
         //    var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
         //    return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         //}
-
- protected override void Dispose(bool disposing)
+        #endregion
+        protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
             {
