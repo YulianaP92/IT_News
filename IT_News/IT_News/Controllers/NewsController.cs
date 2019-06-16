@@ -130,8 +130,11 @@ namespace IT_News.Controllers
             var newsViewModel = Mapper.Map<NewsViewModel>(newsDTO);
             var UserId = User.Identity.GetUserId();
             var UserPage = newsService.GetAllUsers().Where(x => x.UserId == UserId).FirstOrDefault();
-            var idUser = UserPage.Id;
-            ViewData["User"] = idUser;
+            if (UserPage != null)
+            {
+                var idUser = UserPage.Id;           
+                ViewData["User"] = idUser;
+            }         
             var html = Markdown.ToHtml(newsViewModel.Text);
             ViewData["Mark"] = html;
 

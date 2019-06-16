@@ -5,33 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div>
-<h2>EditUser</h2>
-<table>
-    <tr>
-        <td><p>NameUser</p></td>
-        <td><p>View</p></td>
-        <td><p>Block</p></td>
-        <td><p>Delete</p></td>
-        <td><p>Edit Role</p></td>
+    <h2>EditUser</h2>
+    <table class="table table-bordered">
+        <tr scope="row" class="table-active">
+            <th>NameUser</th>
+            <th>Delete</th>
+            <th>Block</th>
+            <th>Edit Role</th>
 
-    </tr>
-    @foreach (var user in Model)
-    {
-        <tr>
-            
-            <td>
-                <p>@user.UserName</p></td>
-            <td>
-                <p>@Html.ActionLink("View", "View", new {id = user.Id})</p></td>
-            <td>
-
-                    <p>@Html.ActionLink("Delete", "DeleteUser", "Account" ,  new { userName = user.UserName }, null)</p>
-            </td>
-            <td>
-                <p>@Html.ActionLink("Block", "BlockUser", "Account", new { userId = user.Id}, null)</p></td>
-            <td>
-                <p>@Html.ActionLink("Edit Role", "Edit", "Role", new { userId = user.Id}, null)</p></td>
         </tr>
+        @foreach (var user in Model)
+        {
+            <tr scope="row">
+
+                <td>
+                    <p>@user.UserName</p>
+                </td>
+                <td>
+                    <p>@Html.ActionLink("Delete", "DeleteUser", "Account", new { userName = user.UserName }, null)</p>
+                </td>
+                <td>
+                    <p>@Html.ActionLink("Block", "BlockUser", "Account", new { userId = user.Id }, null)</p>
+                </td>
+                <td>
+                    <p>@Html.ActionLink("Edit Role", "Edit", "Role", new { userId = user.Id }, null)</p>
+                </td>
+            </tr>
         }
-</table>
+    </table>
 </div>

@@ -16,7 +16,10 @@
     margin-left: 0;
     width: 100%;
 }
-
+img {
+    width: 300px;
+    height:300px;
+}
 .nav {
     font-size: 20px;
     padding-top: 10px;
@@ -110,9 +113,9 @@ A.tag9 {
     max-width: 500px;
 }
 
-img {
+/*img {
     width: 95%;
-}
+}*/
 
 #tagsCloud a {
     font-family: Arial;

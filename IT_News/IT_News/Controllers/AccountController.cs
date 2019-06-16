@@ -56,12 +56,6 @@ namespace IT_News.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-        [AllowAnonymous]
-        public ActionResult Users()
-        {
-            var users = UserManager.Users.ToList();
-            return View(users);
-        }
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
