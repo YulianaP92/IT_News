@@ -223,6 +223,15 @@
     <Compile Include="Infrastucture\MappingProfiles\SectionMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\TagMappingProfile.cs" />
     <Compile Include="Infrastucture\MappingProfiles\UserPageMappingProfile.cs" />
+    <Compile Include="Migrations\201904281633091_InitialCreate.cs" />
+    <Compile Include="Migrations\201904281633091_InitialCreate.Designer.cs">
+      <DependentUpon>201904281633091_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906161527008_MigrateDB.cs" />
+    <Compile Include="Migrations\201906161527008_MigrateDB.Designer.cs">
+      <DependentUpon>201906161527008_MigrateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\ChangeRoleViewModel.cs" />
@@ -455,6 +464,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904281633091_InitialCreate.resx">
+      <DependentUpon>201904281633091_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161527008_MigrateDB.resx">
+      <DependentUpon>201906161527008_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.ru.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.ru.Designer.cs</LastGenOutput>

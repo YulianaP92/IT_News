@@ -210,4 +210,7 @@
   <data name="UserPage" xml:space="preserve">
     <value>Моя страница</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
 </root>

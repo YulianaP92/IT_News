@@ -23,29 +23,28 @@
                     <li>@Html.ActionLink(IT_News.Resources.Resource.UserPage, "Index", "Page")</li>
                     <li>@Html.ActionLink(IT_News.Resources.Resource.CreatePage, "Create", "Page")</li>
                     <li>
+                        @Html.ActionLink(IT_News.Resources.Resource.Users, "Users", "Account")
+                    </li>
+                    <li>
                         @if (IT_News.Resources.Resource.Language == "RU")
                         {
-                            <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN" , @class = "glyphicon glyphicon - globe" }, new { style = "color: azure" })</span>
+                            <span class="glyphicon glyphicon-globe" style="color:#C0C0C0; top: 15px;">@Html.ActionLink("RU", "ChooseLang", "Home", new { languageAbbrevation = "EN"}, new { style = "color: #C0C0C0" })</span>
                         }
                         else
                         {
-                            <span class="glyphicon glyphicon-globe" style="color: azure; top: 15px;">@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU", @class = "glyphicon glyphicon - globe" }, new { style = "color: azure" })</span>
+                            <span class="glyphicon glyphicon-globe" style="color:#C0C0C0; top: 15px;">@Html.ActionLink("EN", "ChooseLang", "Home", new { languageAbbrevation = "RU"}, new { style = "color: #C0C0C0" })</span>
                         }
-                    </li>
-                    <li>
-                        @Html.ActionLink("Users", "Users", "Account")
-                    </li>
+                    </li>                
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
-
         </div>
     </div>
 <div class="container body-content">
     @RenderBody()       
 </div>
 <footer>
-    <p>&copy; @DateTime.Now.Year - IT News</p>
+    <p style="color: #000080">&copy; @DateTime.Now.Year - IT News</p>
 </footer>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")

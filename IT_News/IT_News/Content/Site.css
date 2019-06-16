@@ -20,6 +20,7 @@
 .nav {
     font-size: 20px;
     padding-top: 10px;
+    color: azure;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -53,7 +54,7 @@ h1 {
     font: 40px/40px 'Oswald', sans-serif;
     margin: 0;
     padding: 0 10px;
-    color: darkblue;
+    color: dodgerblue;
 }
 
 A.tag1 {
@@ -133,6 +134,7 @@ img {
 .headerNews {
     text-align: center;
     font-size: 30px;
+    color: azure;
 }
 
 .commentBox {

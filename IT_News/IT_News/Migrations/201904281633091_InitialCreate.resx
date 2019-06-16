@@ -117,100 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add_new_tag" xml:space="preserve">
-    <value>Add new tag</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="Age" xml:space="preserve">
-    <value>Age</value>
-  </data>
-  <data name="ButtonReadMore" xml:space="preserve">
-    <value>Read more &gt;&gt;</value>
-  </data>
-  <data name="CreateNews" xml:space="preserve">
-    <value>Create News</value>
-  </data>
-  <data name="CreatePage" xml:space="preserve">
-    <value>CreatePage</value>
-  </data>
-  <data name="Create_account" xml:space="preserve">
-    <value>Create a new account</value>
-  </data>
-  <data name="Date" xml:space="preserve">
-    <value>Date</value>
-  </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="EditNews" xml:space="preserve">
-    <value>Edit News</value>
-  </data>
-  <data name="ForgotPassword" xml:space="preserve">
-    <value>Forgot your password?</value>
-  </data>
-  <data name="HighestRatings" xml:space="preserve">
-    <value>News with the highest ratings ★ ☆:</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Language" xml:space="preserve">
-    <value>EN</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
-  </data>
-  <data name="LatestNews" xml:space="preserve">
-    <value>Latest news:</value>
-  </data>
-  <data name="ListNewsOfTag" xml:space="preserve">
-    <value>Список новостей по тегу</value>
-  </data>
-  <data name="LogIn" xml:space="preserve">
-    <value>Log In</value>
-  </data>
-  <data name="LogOff" xml:space="preserve">
-    <value>Log Off</value>
-  </data>
-  <data name="MyPage" xml:space="preserve">
-    <value>My Page</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>Register</value>
-  </data>
-  <data name="Register_user" xml:space="preserve">
-    <value>Register as a new user</value>
-  </data>
-  <data name="Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="Section" xml:space="preserve">
-    <value>Section</value>
-  </data>
-  <data name="ShortDescription" xml:space="preserve">
-    <value>Short Description</value>
-  </data>
-  <data name="Tags" xml:space="preserve">
-    <value>Tags</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
-  </data>
-  <data name="UserPage" xml:space="preserve">
-    <value>User Page</value>
-  </data>
-  <data name="Users" xml:space="preserve">
-    <value>Users</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>
