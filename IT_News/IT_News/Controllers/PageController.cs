@@ -47,7 +47,7 @@ namespace IT_News.Controllers
         }
 
         [HttpGet]
-        public ActionResult Sort(string sortOrder)
+        public ActionResult SortTitle(string sortOrder)
         {
             var userPageViewModel = CreateUserPageViewModel();
 
@@ -56,7 +56,6 @@ namespace IT_News.Controllers
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Title desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
             var news = userPageViewModel.News;
 
             switch (sortOrder)
@@ -64,14 +63,32 @@ namespace IT_News.Controllers
                 case "Title desc":
                     news = news.OrderByDescending(s => s.Title).ToList();
                     break;
-                case "Date":
-                    news = news.OrderBy(s => s.PostedOn).ToList();
+                default:
+                    news = news.OrderBy(s => s.Title).ToList();
                     break;
+            }
+            userPageViewModel.News = news.ToList();
+            return PartialView("MyNewsList", userPageViewModel);
+        }
+        [HttpGet]
+        public ActionResult SortDate(string sortOrder)
+        {
+            var userPageViewModel = CreateUserPageViewModel();
+
+            if (userPageViewModel == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.DateSortParm = String.IsNullOrEmpty(sortOrder) ? "Date desc" : null;
+            var news = userPageViewModel.News;
+
+            switch (sortOrder)
+            {
                 case "Date desc":
                     news = news.OrderByDescending(s => s.PostedOn).ToList();
                     break;
                 default:
-                    news = news.OrderByDescending(s => s.PostedOn).ToList();
+                    news = news.OrderBy(s => s.PostedOn).ToList();
                     break;
             }
             userPageViewModel.News = news.ToList();

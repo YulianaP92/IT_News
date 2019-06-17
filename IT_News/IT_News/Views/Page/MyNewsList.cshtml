@@ -18,7 +18,7 @@
         <th>@IT_News.Resources.Resource.Details</th>
         <th>@IT_News.Resources.Resource.Delete</th>
         <th>
-            @Ajax.ActionLink("Title", "Sort", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
+            @Ajax.ActionLink("Title", "SortTitle", "Page", new {sortOrder = ViewBag.NameSortParm}, new AjaxOptions
        {
            HttpMethod = "GET",
            UpdateTargetId = "news",
@@ -31,7 +31,7 @@
         <th>@IT_News.Resources.Resource.Tags</th>
         <th>
 
-            @Ajax.ActionLink(IT_News.Resources.Resource.Date, "Sort", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
+            @Ajax.ActionLink(IT_News.Resources.Resource.Date, "SortDate", "Page", new {sortOrder = ViewBag.DateSortParm}, new AjaxOptions
        {
            HttpMethod = "GET",
            UpdateTargetId = "news",

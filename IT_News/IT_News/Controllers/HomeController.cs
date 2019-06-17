@@ -25,7 +25,6 @@ namespace IT_News.Controllers
             var newsDtoList = newsService.GetAll().ToList();
             if (newsDtoList != null)
             {
-
                 var allNewsIndexRating = newsDtoList.OrderByDescending(s => s.TotalRating).Take(3).ToList();
                 var newsViewModelRating= Mapper.Map<List<NewsDTO>, List<NewsViewModel>>(allNewsIndexRating);
                 var allNewsIndex = newsDtoList.OrderByDescending(s => s.PostedOn).Take(5).ToList();              
@@ -38,8 +37,7 @@ namespace IT_News.Controllers
                     TagViewModel = tagsViewModel,
                     NewsViewModelsRating = newsViewModelRating
                 };
-                ViewData["TagCloud"] = GetTagClouds();
-               
+                ViewData["TagCloud"] = GetTagClouds();               
             }
             return View(show);
         }
@@ -82,10 +80,6 @@ namespace IT_News.Controllers
         {
             if (languageAbbrevation!=null)
             {
-                //if (languageAbbrevation=="RU")
-                //{
-                //    languageAbbrevation = "EN";
-                //}
                 Thread.CurrentThread.CurrentCulture=CultureInfo.CreateSpecificCulture(languageAbbrevation);
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageAbbrevation);
             }
